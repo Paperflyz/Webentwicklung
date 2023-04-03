@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Stundenplan</title>
+</head>
+<body id="schedulesite">
+    <header>
+        <!-- DIV Element war hier für die vertikale (Block-) ausrichtung nicht nötig, da die Elemente sich bereits in der <nav> bzw <header> befinden. Beide sind von Natur aus Block-Level Elemente -->
+        <nav>
+            <ul>
+                <li><a href="./index.html">Zur Startseite</a></li>
+                <li><a href="./firstpage.html">Zur ersten Webseite</a></li>
+                <li><a href="./vacation.html">Zum Traumurlaubsort</a></li><br />
+            </ul>
+        </nav>
+    </header>
+    <section class="main-section" id="schedule-section">
+        <h1>Das ist mein Stundenplan an der HS Worms.</h1>
+        <h2>Sehr klein, aber ich bin schon im 6. Semester und schreibe meine Bachelor-Arbeit auch dieses Semester.</h2>
+    
+        <table>
+            <tr>
+                <th></th>
+                <th>Montag</th>
+                <th>Dienstag</th>
+                <th>Mittwoch</th>
+                <th>Donnerstag</th>
+                <th>Freitag</th>
+            </tr>
+            <tr>
+                <th>
+                    9:00 Uhr - 12:15 Uhr
+                </th>
+                <td>Webentwicklung</td>
+                <td> - </td>
+                <td rowspan="2" colspan="3">
+                    Bachelor Thesis
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    13:00 Uhr - 18:00 Uhr
+                </th>
+                <td>
+                    Management Skills
+                </td>
+                <td>
+                    Machine Learning
+                </td>
+    
+            </tr>
+        </table>
+    </section>
+    <section id="form-section">
+        <h3>Welche der Vorlesungen sind langweilig?</h3>
+        <form action="dummyscript.php" method="post">
+            <input type="radio" name="Programmierung" id="programmierung--checkbox"><label for="programmierung--checkbox">Programmierung</label><br>
+            <input type="radio" name="Software_Architektur" id="software_architektur--checbox"><label for="software_architektur--checbox">Software Architektur</label><br>
+            <input type="radio" name="Webentwicklung" id="webentwicklung--checbox"><label for="webentwicklung--checbox">Webentwicklung</label><br>
+            <input type="submit" value="Senden">
+        </form>
+        <p>made during 🐰🥚 in Worms</p>
+    </section>
+    <footer>
+        Ⓒ made by Denis Kudic
+    </footer>
+
+</body>
+</html>

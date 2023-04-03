@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    background: powderblue;
+  }
+  
+  nav {
+    background: orange;
+  }
+  
+  header {
+    background: gold;
+  }
+  
+  section {
+    background: lime;
+  }
+  
+  aside {
+    background: rebeccapurple;
+  }
+  
+  article {
+    background: pink;
+  }
+  
+  footer {
+    background: fuchsia;
+    height: 20vh;
+  }
+
+#mainsite {
+    background: coral;
+}
+
+#vacationsite {
+    background: maroon;
+}
+
+#schedulesite {
+    background: lightseagreen;
+}
+
+#form-seciton input {
+    display: block;
+}
+  
