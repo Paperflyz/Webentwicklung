@@ -1,0 +1,35 @@
+#index_body {
+    background: powderblue;
+}
+
+#schedule_body {
+    background: brown;
+}
+
+#vacation_body {
+    background: burlywood;
+}
+
+nav {
+    background: orange;
+}
+
+header {
+    background: gold;
+}
+
+section {
+    background: yellow;
+}
+
+aside {
+    background: grey;
+}
+
+article {
+    background: lightgreen;
+}
+
+footer {
+    background: aquamarine;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Stundenplan</title>
+</head>
+<body id = "schedule_body">
+    <header>
+        <h1>Stundenplan</h1>
+    </header>
+
+    <nav>
+        <div><a href="index.html">Startseite</a></div>
+        <div><a href="firstpage.html">Meine erste HTML-Seite</a></div>
+        <div><a href="vacation.html">Urlaubsziele</a></div>
+    </nav>
+
+    <section>
+        <h2>Das ist mein Stundenplan an das HS Worms</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th>Montag</th>
+                <th>Dienstag</th>
+                <th>Mittwoch</th>
+                <th>Donnerstag</th>
+                <th>Freitag</th>
+            </tr>
+            <tr>
+                <th>09:00 -<br>12:15 Uhr</th>
+                <td>Webentwicklung /<br>Change Management</td>
+                <td rowspan="2" colspan="4">Bachelorarbeit</td>
+            </tr>
+            <tr>
+                <th>13:00 -<br>18:00 Uhr</th>
+                <td>Management<br>Skills</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Welche der Vorlesungen sind langweilig?</h2>
+        <form action="/dummyscript.php" method="post">
+            <input type="radio" id="module1" name="modules" value="Bachelorarbeit">
+            <label for="module1">Bachelorarbeit</label>
+            <br>
+            <input type="radio" id="module2" name="modules" value="Change Management">
+            <label for="module2">Change Management</label>
+            <br>
+            <input type="radio" id="module3" name="modules" value="Management Skills">
+            <label for="module3">Management Skills</label>
+            <br>
+            <input type="radio" id="module4" name="modules" value="Webentwicklung">
+            <label for="module4">Webentwicklung</label>
+            <br>
+            <input type="submit" value="Senden">
+        </form>
+    </section>
+
+    <footer>
+        made by Sebastian Rose<br>
+        E-Mail: inf3763@hs-worms.de
+    </footer>
+</body>
+</html>
