@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+body {
+    padding-inline: .5rem;
+}
+
+header {
+    font-family: "Muli";
+    background: olive;
+    padding: 1rem;
+    position: sticky;
+}
+
+header h1 {
+    color: oldlace;
+    font-style: italic;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-align: center;
+}
+
+header nav ul {
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    font-family: "Muli";
+    background: khaki;
+    padding-block: .7rem;
+    padding-inline: 3rem;
+    margin-inline: 1rem;
+    border-radius: 1rem;
+
+    box-shadow: 0px 5px 15px black;
+}
+
+header nav ul li:hover {
+    background: rgb(255, 244, 150);
+    cursor: pointer;
+}
+
+section {
+    background: lightgray;
+    border-radius: 5px;
+}
+
+section h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+section p {
+    text-align: center;
+}
+
+.container-xxl {
+    max-width: 80%;
+}
+
+
