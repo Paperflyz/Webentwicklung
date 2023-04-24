@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
+
+h1 {
+    font-family: 'Vina Sans', cursive;
+    font-size: 4rem;
+    text-align: center;
+}
+li {
+    background-color: aquamarine;
+}
