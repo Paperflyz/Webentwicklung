@@ -1,0 +1,45 @@
+ul {
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+}
+
+li {
+    padding: 30px;
+    margin: 5;
+}
+
+li:nth-child(1) {
+    width: 40%;
+}
+
+li:nth-child(2) {
+    width: 50%;
+}
+
+li:nth-child(3) {
+    width: 60%;
+}
+
+li:nth-child(4) {
+    width: 20%;
+}
+
+li:nth-child(5) {
+    width: 30%;
+}
+
+
+
+/* Ignore below*/
+ul {
+    margin-left: -40px;
+}
+
+li {
+    background: #0be;
+    border: 2px solid #0088ff;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    list-style: none;
+}
