@@ -1,19 +1,21 @@
 .gridcontainer {
     display: grid;
-    grid-template: 1fr 1fr / 1fr 2fr;
+    grid-template-areas:
+        '. header header'
+        'sidebar content content';
     grid-gap: .5rem;
 }
 
 .sidebar {
-    grid-area: 2 / 1;
+    grid-area: sidebar;
 }
 
 .content {
-    grid-area: 2 / 2;
+    grid-area: content;
 }
 
 .header {
-    grid-area: 1 / 2;
+    grid-area: header;
 }
 
 .item {

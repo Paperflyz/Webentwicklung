@@ -1,0 +1,139 @@
+:root {
+    --main-border: 4px solid black;
+}
+
+/* Allgemeiner Aufbau */
+
+body {
+    display: grid;
+    grid-template:
+        'header header header' 75px
+        'nav nav nav'
+        'side1 main side2' 300px
+        'footer footer footer' 75px;
+    grid-gap: 10px;
+}
+
+header, .mainDiv, .sideDiv1, .sideDiv2, footer {
+    border: var(--main-border);
+}
+
+header {
+    grid-area: header;
+    background: lime;
+}
+
+nav {
+    grid-area: nav;
+}
+
+.mainDiv {
+    grid-area: main;
+    background: blue;
+}
+
+.sideDiv1 {
+    grid-area: side1;
+    background: yellow;
+}
+
+.sideDiv2 {
+    grid-area: side2;
+    background: lightblue;
+}
+
+footer {
+    grid-area: footer;
+    background: red;
+}
+
+/* Navigationsleiste */
+
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    background: orange;
+    border: var(--main-border);
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    align-self: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 16px 20px;
+    color: black;
+}
+
+#checkbox, .toggle {
+    display: none;
+}
+
+.nav-menu li a:hover {
+    background: #ff7f50;
+}
+
+/* Anpassung für mobile-Version*/
+
+@media screen and (max-width: 720px) {
+    body {
+        grid-template:
+            'header header' 75px
+            'nav nav'
+            'main main' 300px
+            'side1 side2' 75px
+            'footer footer' 25px;
+    }
+    
+    .toggle {
+        display: block;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        font-size: 18px;
+        border: var(--main-border);
+        background: orange;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        height: 0px;
+        border: none;
+    }
+
+    .nav-menu li {
+        display: flex;
+        align-self: center;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nav-menu li a {
+        width: 100%;
+        text-align: center;
+        align-self: center;
+        align-content: center;
+    }
+
+    #checkbox:checked + label .toggle {
+        border-top: none;
+    }
+
+    #checkbox:checked + label .nav-menu {
+        height: 200px;
+        border: var(--main-border);
+        border-bottom: none;
+    }
+
+    #checkbox:checked + label .nav-menu li {
+        opacity: 1;
+        visibility: visible;
+    }
+}
