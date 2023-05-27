@@ -1,5 +1,0 @@
-1. DATENBANKEN
-Wenn der Nutzer den Auftrag bestätigt, könnte man die Eingabe in einer Datenbank speichern.
-
-2. SVG
-Für die einzelnen "Modulgruppen" (z.B. Gehäuse, Grafikkarte, SSD, ...) könnte man jeweils ein Emoji anzeigen lassen, welches wir per SVG selbst erstellen.
