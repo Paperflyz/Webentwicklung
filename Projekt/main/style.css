@@ -29,6 +29,8 @@
   --font-weight-bold: 700;
 }
 
+
+
 h1 {
   font-size: var(--h1_font_size);
   font-family: var(--font-family);

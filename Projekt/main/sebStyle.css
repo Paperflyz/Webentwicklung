@@ -1,0 +1,118 @@
+:root {
+    --grid_gap_mobile: 16px;
+    --grid_gap_desktop: 32px;
+    --h2_font_size: 3.125rem;
+    --font-family: "Roboto", sans-serif;
+}
+
+.main_container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--grid_gap_mobile);
+    grid-auto-rows: auto;
+}
+
+h2 {
+    font-size: var(--h2_font_size);
+    font-family: var(--font-family);
+}
+
+#main_container2 {
+    background: #2b2b2b;
+}
+
+#main_container2 > * {
+    color: #ffffff;
+}
+
+.main-container_title, .main_container_text {
+    grid-column: 2 / span 10;
+
+    font-family: 'Roboto';
+    font-style: normal;
+}
+
+.main-container_title {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+.person_image {
+    grid-column: 3 / span 8;
+    clip-path: circle(50% at center);
+    width: 100%;
+}
+
+.person_text {
+    grid-column: 3 / span 8;
+    text-align: center;
+}
+
+@media screen and (min-width: 475px) {
+    .person_image, .person_text {
+        grid-column: 4 / span 6;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #denis_img, #denis_txt {
+        grid-column: 2 / span 4;
+    }
+
+    #seb_img, #seb_txt {
+        grid-column: 8 / span 4;
+    }
+
+    .person_image {
+        grid-row: 3;
+    }
+
+    .person_text {
+        grid-row: 4;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    #denis_img, #denis_txt {
+        grid-column: 3 / span 3;
+    }
+
+    #seb_img, #seb_txt {
+        grid-column: 8 / span 3;
+    }
+
+    .person_image {
+        grid-row: 3;
+    }
+
+    .person_text {
+        grid-row: 4;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .main_container {
+        grid-gap: var(--grid_gap_desktop);
+    }
+    
+    .main-container_title, .main_container_text {
+        grid-column: 2 / span 5;
+    }
+    
+    #denis_img, #denis_txt {
+        grid-column: 8 / span 2;
+    }
+
+    #seb_img, #seb_txt {
+        grid-column: 10 / span 2;
+    }
+
+    .person_image {
+        grid-row: 2;
+    }
+
+    .person_text {
+        grid-row: 3;
+    }
+}
