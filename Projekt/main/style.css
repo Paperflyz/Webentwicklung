@@ -27,9 +27,85 @@
   --font-weight-thin: 400;
   --font-weight-regular: 500;
   --font-weight-bold: 700;
+
+  /* Display-Types */
+  --grid-gutter-width: 16px;
+
 }
 
-h1 {
-  font-size: var(--h1_font_size);
-  font-family: var(--font-family);
+/* General Settings */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Colored Settings */
+
+.bg-primary {
+  background: var(--color_primary);
+}
+
+.bg-secondary {
+  background: var(--color_secondary);
+}
+
+.bg-darken {
+  background: var(--color-darken);
+}
+
+/* Display Settings */
+.ds-grid { display: grid;  }
+
+.ds-flex { display: flex; }
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.grid-template-cols-12 {
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: var(--grid-gutter-width);
+}
+
+.col-12 {
+  grid-column: 1 / -1;
+}
+
+nav {
+  height: 5.625rem;
+}
+
+nav img {
+  max-width: 50%;
+}
+
+nav ul,
+nav .icon-mail {
+  display: none;
+}
+
+.hamburger {
+  display: block;
+  background: url(./assets/icons/hamburger.svg);
+  background-repeat: no-repeat;
+  width: 29px;
+  height: 22px;
+  background-size: 29px 22px;
+  cursor: pointer;
 }
