@@ -1,3 +1,10 @@
+/*
+Frage 1: Gesamtseitenlayout Grid bedeutet dass Body grid sein kann.
+
+
+*/
+
+
 @import url("https://api.fonts.coollabs.io/css2?family=Roboto&display=swap");
 
 :root {
@@ -45,17 +52,15 @@ body {
 
 /* Colored Settings */
 
-.bg-primary {
-  background: var(--color_primary);
-}
+.bg-primary { background: var(--color_primary); }
 
-.bg-secondary {
-  background: var(--color_secondary);
-}
+.bg-secondary { background: var(--color_secondary); }
 
-.bg-darken {
-  background: var(--color-darken);
-}
+.bg-darken { background: var(--color-darken); }
+
+.text-light { color: var(--color_text-light); }
+
+.text-dark { color: var(--color_text-dark); }
 
 /* Display Settings */
 .ds-grid { display: grid;  }
@@ -85,6 +90,16 @@ body {
 
 .col-12 {
   grid-column: 1 / -1;
+}
+
+.grid-debug {
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: var(--grid-gutter-width);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100vw;
+  height: 5vh;
 }
 
 nav {
