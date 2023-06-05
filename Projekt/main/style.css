@@ -1,9 +1,9 @@
 /*
 Frage 1: Gesamtseitenlayout Grid bedeutet dass Body grid sein kann.
+Frage 2: Wie viele H2, H3 usw. : Grundsätzlich eine H1 als Headerbild. Anschließend dürfen H2 in jeweils die Sektionen unterteilt werden. usw
 
 
 */
-
 
 @import url("https://api.fonts.coollabs.io/css2?family=Roboto&display=swap");
 
@@ -35,37 +35,88 @@ Frage 1: Gesamtseitenlayout Grid bedeutet dass Body grid sein kann.
   --font-weight-regular: 500;
   --font-weight-bold: 700;
 
+  /* Font-Sizes */
+
+  --font-size-small: 1rem;
+  --font-size-regular: 1.5rem;
+  --font-size-big: 2rem;
+
   /* Display-Types */
   --grid-gutter-width: 16px;
-
 }
 
 /* General Settings */
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: var(--font-family);
 }
 
 body {
   min-height: 100vh;
 }
 
+/* Debugging */
+
+.grid-debug {
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: var(--grid-gutter-width);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5vh;
+  opacity: 50%;
+}
+
+.grid-debug::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: lime;
+}
+
+.grid-debug-item {
+  background: hotpink;
+  text-align: center;
+  z-index: 2;
+}
+
 /* Colored Settings */
 
-.bg-primary { background: var(--color_primary); }
+.bg-primary {
+  background: var(--color_primary);
+}
 
-.bg-secondary { background: var(--color_secondary); }
+.bg-secondary {
+  background: var(--color_secondary);
+}
 
-.bg-darken { background: var(--color-darken); }
+.bg-darken {
+  background: var(--color-darken);
+}
 
-.text-light { color: var(--color_text-light); }
+.text-light {
+  color: var(--color_text-light);
+}
 
-.text-dark { color: var(--color_text-dark); }
+.text-dark {
+  color: var(--color_text-dark);
+}
 
 /* Display Settings */
-.ds-grid { display: grid;  }
+.ds-grid {
+  display: grid;
+}
 
-.ds-flex { display: flex; }
+.ds-flex {
+  display: flex;
+}
+
+.ds-none {
+  display: none;
+}
 
 .justify-content-center {
   justify-content: center;
@@ -92,15 +143,40 @@ body {
   grid-column: 1 / -1;
 }
 
-.grid-debug {
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: var(--grid-gutter-width);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:100vw;
-  height: 5vh;
+/* Bullets */
+
+.bullet-unstyled {
+  list-style: none;
 }
+
+/* Distances */
+
+.p-0 {
+  padding: 0;
+}
+
+/* Fonts */
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+/* Icons */
+
+.icon-mail {
+  background: url(./assets/icons/mail.svg);
+  background-repeat: no-repeat;
+  width: 29px;
+  height: 22px;
+  background-size: 29px 22px;
+  cursor: pointer;
+}
+
+/* Specifics */
 
 nav {
   height: 5.625rem;
@@ -108,14 +184,18 @@ nav {
 
 nav img {
   max-width: 50%;
+  height: 3.75rem;
 }
 
-nav ul,
-nav .icon-mail {
-  display: none;
+nav ul {
+  font-size: var(--font-size-regular);
 }
 
-.hamburger {
+nav ul li {
+  margin-inline: 2rem;
+}
+
+.icon-hamburger {
   display: block;
   background: url(./assets/icons/hamburger.svg);
   background-repeat: no-repeat;
@@ -123,4 +203,26 @@ nav .icon-mail {
   height: 22px;
   background-size: 29px 22px;
   cursor: pointer;
+}
+
+@media (min-width: 960px) {
+  :root {
+    --grid-gutter-width: 32px;
+  }
+
+  nav {
+    height: 6.25rem;
+  }
+
+  .ds-lg-none {
+    display: none;
+  }
+
+  .ds-lg-flex {
+    display: flex;
+  }
+
+  .ds-lg-block {
+    display: block;
+  }
 }
