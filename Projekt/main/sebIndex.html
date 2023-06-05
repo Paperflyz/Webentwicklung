@@ -6,31 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="sebStyle.css" />
+    <script src="sebScript.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="main_container" id="main_container2">
-        <h2 class="main-container_title">H2 Über DreamScape Events</h2>
-        <p class="main_container_text">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in
+    <section class="grid-12 bg-dark">
+        <h2 class="main-h2 ft-light" id="main-sect2-h2">H2 Über DreamScape Events</h2>
+        <p class="main-p ft-light" id="main-sect2-p">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in
             hendrerit urna.
             Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
             tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur
             pellentesque nibh nibh, at maximus ante fermentum sit amet.
         </p>
 
-        <img src="denis.jpg" class="person_image" id="denis_img">
-        <p class="person_text" id="denis_txt">
-            Denis Kudic<br>
-            Event Manager
+        <img src="denis.jpg" class="person-image" id="denis-img">
+        <p class="person-text ft-light" id="denis-txt">Denis Kudic<br>Event Manager</p>
+
+        <img src="sebastian.jpg" class="person-image" id="seb-img">
+        <p class="person-text ft-light" id="seb-txt">Sebastian Rose<br>Event Manager</p>
+    </section>
+
+    <section class="grid-12 bg-orange">
+        <h2 class="main-h2 ft-dark" id="main-sect3-h2">H3 Lorem Ipsum</h2>
+        <p class="main-p ft-dark" id="main-sect3-p">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
+            Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices
+            mauris.
+            Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna
+            interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo
+            lacus at
+            sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In iaculis arcu eros,
+            eget tempus orci facilisis id. Praesent lorem orci, mattis non efficitur id, ultricies vel nibh. Sed
+            volutpat
+            lacus vitae gravida viverra. Fusce vel tempor elit. Proin tempus,.
         </p>
-        
-        <img src="sebastian.jpg" class="person_image" id="seb_img">
-        <p class="person_text" id="seb_txt">
-            Sebastian Rose<br>
-            Event Manager
-        </p>
-    </div>
+
+        <img src="example.jpg" id="sect3-img">
+    </section>
+
+    <section class="grid-12 bg-dark" id="main-sect4">
+        <h2 class="main-h2 ft-light" id="main-sect4-h2">H4 Lorem Ipsum</h2>
+        <div class="main-p ft-dark bg-lime" id="main-sect4-tab1" onclick="switchTab(0)">Lorem Ipsum</div>
+        <div class="main-p ft-dark bg-orange" id="main-sect4-tab2" onclick="switchTab(1)">Lorem Ipsum</div>
+        <div class="bg-light" id="main-sect4-tabcontainer1">
+            <p class="main-p">Test 1</p>
+            <p class="main-p">Test 1</p>
+            <p class="main-p">Test 1</p>
+        </div>
+        <div class="bg-light" id="main-sect4-tabcontainer2">
+            <p class="main-p">Test 2</p>
+            <p class="main-p">Test 2</p>
+            <p class="main-p">Test 2</p>
+            <p class="main-p">Test 2</p>
+        </div>
+    </section>
 </body>
 
 </html>
