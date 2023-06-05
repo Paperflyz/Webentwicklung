@@ -23,6 +23,12 @@
     justify-content: left;
 }
 
+.foo-flex-item {
+    padding: 5px;
+    width: 3vh;
+    height: 3vh;
+}
+
 h2 {
     font-family: var(--font-family);
     font-size: var(--h2_font_size);
@@ -99,20 +105,12 @@ p {
     grid-column: 5 / 8;
 }
 
-#foo-title-soci {
+#foo-title-soci, #foo-soci-container {
     grid-column: 9 / 13;
 }
 
 .foo-data {
     grid-row: 2;
-}
-
-#fb-img {
-    grid-column: 9;
-}
-
-#ia-img {
-    grid-column: 10;
 }
 
 #sect3-img {
