@@ -1,3 +1,7 @@
+
+
+/* Variablen */
+
 :root {
     --grid_gap_mobile: 16px;
     --grid_gap_desktop: 32px;
@@ -8,47 +12,8 @@
     --font-family: "Roboto", sans-serif;
 }
 
-.grid-12 {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: var(--grid_gap_mobile);
-    grid-auto-rows: auto;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-}
 
-footer {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: var(--grid_gap_mobile) / 2;
-    grid-auto-rows: auto;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-}
-
-.flex {
-    display: flex;
-    flex-flow: row;
-    justify-content: left;
-}
-
-.foo-flex-item {
-    padding: 5px;
-    width: 3vh;
-    height: 3vh;
-}
-
-h2 {
-    font-family: var(--font-family);
-    font-size: var(--h2_font_size);
-    line-height: var(--h2_font_size) + 5;
-    font-weight: var(--weight-bold);
-}
-
-p {
-    font-family: var(--font-family);
-    font-size: var(--p_font_size);
-}
+/* Color-Classes (Background & Font) */
 
 .bg-light {
     background: #ffffff;
@@ -82,28 +47,65 @@ p {
     color: #d3d3d3;
 }
 
-.main-h2, .main-p {
-    grid-column: 2 / 12;
 
-    font-family: 'Roboto';
-    font-style: normal;
+/* Boilerplate */
+
+h2 {
+    font-family: var(--font-family);
+    font-size: var(--h2_font_size);
+    line-height: var(--h2_font_size) + 5;
+    font-weight: var(--weight-bold);
 }
 
-.person-image {
-    grid-column: 3 / 11;
-    clip-path: circle(50% at center);
-    width: 100%;
+p {
+    font-family: var(--font-family);
+    font-size: var(--p_font_size);
 }
 
-.person-text {
-    grid-column: 3 / 11;
-    text-align: center;
+footer {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--grid_gap_mobile) / 2;
+    grid-auto-rows: auto;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
+
+
+/* Grid & Flex */
+
+.grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--grid_gap_mobile);
+    grid-auto-rows: auto;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.flex {
+    display: flex;
+    flex-flow: row;
+    justify-content: left;
+}
+
+
+/* Footer-Klassen */
 
 .foo-title {
     font-family: var(--font-family);
     font-size: var(--foo-title_font_size);
     grid-row: 1;
+}
+
+.foo-data {
+    grid-row: 2;
+}
+
+.foo-flex-item {
+    padding: 5px;
+    width: 3vh;
+    height: 3vh;
 }
 
 #foo-title-vers, #foo-data-vers {
@@ -118,17 +120,34 @@ p {
     grid-column: 9 / 13;
 }
 
-.foo-data {
-    grid-row: 2;
+
+/* index.html */
+
+.main-h2, .main-p {
+    grid-column: 2 / 12;
+
+    font-family: 'Roboto';
+    font-style: normal;
+}
+/* index.html (Section 2) */
+.person-image {
+    grid-column: 3 / 11;
+    clip-path: circle(50% at center);
+    width: 100%;
 }
 
+.person-text {
+    grid-column: 3 / 11;
+    text-align: center;
+}
+/* index.html (Section 3) */
 #sect3-img {
     grid-column: 2 / 12;
     width: 100%;
     border-top-right-radius: 33%;
     box-shadow: 2vh -2vh 2vh #2b2b2b;
 }
-
+/* index.html (Section 4) */
 #main-sect4-tab1, #main-sect4-tab2 {
     display: flex;
     justify-content: center;
