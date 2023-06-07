@@ -100,6 +100,7 @@ footer {
 
 .foo-data {
     grid-row: 2;
+    margin: 0;
 }
 
 .foo-flex-item {
@@ -145,15 +146,14 @@ footer {
     grid-column: 2 / 12;
     width: 100%;
     border-top-right-radius: 33%;
-    box-shadow: 2vh -2vh 2vh #2b2b2b;
+    box-shadow: 1rem -1rem 0 #2b2b2b;
 }
 /* index.html (Section 4) */
 #main-sect4-tab1, #main-sect4-tab2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-right-radius: 2vh;
-    border-top-left-radius: 2vh;
+    border-top-right-radius: 1vh;
     padding: 1vh;
 }
 
@@ -165,6 +165,7 @@ footer {
 #main-sect4-tab2 {
     grid-column: 7 / 11;
     grid-row: 3;
+    opacity: 0.5;
 }
 
 #main-sect4-tabcontainer1, #main-sect4-tabcontainer2 {
@@ -175,7 +176,7 @@ footer {
 }
 
 #main-sect4-tabcontainer2 {
-    display: none;
+    visibility: hidden;
 }
 
 @media screen and (min-width: 475px) {
