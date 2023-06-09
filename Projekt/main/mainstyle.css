@@ -85,10 +85,6 @@ h2 {
   font-weight: var(--weight-bold);
 }
 
-p {
-  font-size: var(--font-size-small);
-}
-
 footer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
