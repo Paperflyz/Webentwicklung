@@ -1,149 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body class="ds-grid grid-template-cols-12">
-    <div class="grid-debug ds-grid">
-      <div class="grid-debug-item">1</div>
-      <div class="grid-debug-item">2</div>
-      <div class="grid-debug-item">3</div>
-      <div class="grid-debug-item">4</div>
-      <div class="grid-debug-item">5</div>
-      <div class="grid-debug-item">6</div>
-      <div class="grid-debug-item">7</div>
-      <div class="grid-debug-item">8</div>
-      <div class="grid-debug-item">9</div>
-      <div class="grid-debug-item">10</div>
-      <div class="grid-debug-item">11</div>
-      <div class="grid-debug-item">12</div>
-    </div>
-    <nav
-      class="col-12 ds-flex justify-content-around bg-darken align-items-center"
-    >
-      <img src="./assets/logo.svg" alt="Dreamscape Unternehmenslogo" />
-      <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <title>Document</title>
+</head>
+
+<body class="ds-grid">
+  <div class="grid-debug ds-grid">
+    <div class="grid-debug-item">1</div>
+    <div class="grid-debug-item">2</div>
+    <div class="grid-debug-item">3</div>
+    <div class="grid-debug-item">4</div>
+    <div class="grid-debug-item">5</div>
+    <div class="grid-debug-item">6</div>
+    <div class="grid-debug-item">7</div>
+    <div class="grid-debug-item">8</div>
+    <div class="grid-debug-item">9</div>
+    <div class="grid-debug-item">10</div>
+    <div class="grid-debug-item">11</div>
+    <div class="grid-debug-item">12</div>
+  </div>
+
+  <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+    <img src="./assets/logo.svg" alt="Dreamscape Unternehmenslogo" />
+    <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+    </ul>
+    <a href="#"><i class="icon-mail ds-none ds-lg-block"></i></a>
+    <i class="icon-hamburger ds-lg-none"></i>
+    <div class="menu-slide bg-darken">
+      <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0">
         <li><a href="#" class="text-light text-decoration-none">Link</a></li>
         <li><a href="#" class="text-light text-decoration-none">Link</a></li>
         <li><a href="#" class="text-light text-decoration-none">Link</a></li>
         <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+        <li>
+          <a href="#"><i class="icon-mail"></i></a>
+        </li>
       </ul>
-      <a href="#"><i class="icon-mail ds-none ds-lg-block"></i></a>
-      <i class="icon-hamburger ds-lg-none"></i>
-      <div class="menu-slide bg-darken">
-        <ul
-          class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0"
-        >
-          <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-          <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-          <li>
-            <a href="#"><i class="icon-mail"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <header class="col-12 ds-grid grid-template-cols-12">
-      <h1 class="text-light">Erwecke dein Event zum Leben</h1>
-      <h2 class="text-primary">
-        Entdecke die Vielfalt unserer Bauteile und erschaffe etwas Einzigartiges
-      </h2>
-      <button class="bg-secondary text-light">
-        Jetzt loslegen und gestalten!
-      </button>
-    </header>
-    <section class="ds-grid bg-darken col-12">
-      <h2 class="text-light" id="main-sect2-h2">H2 Über DreamScape Events</h2>
-      <p class="text-light" id="main-sect2-p">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
-        ante fermentum sit amet.
-      </p>
+    </div>
+  </nav>
 
-      <img src="./assets/denis.jpg" class="person-image" id="denis-img" />
-      <p class="person-text text-light" id="denis-txt">
-        Denis Kudic<br />Event Manager
-      </p>
+  <header class="col-12 ds-grid" id="main-header">
+    <h1 class="text-light" id="main-header-title">Erwecke dein Event zum Leben</h1>
+    <h2 class="text-primary" id="main-header-txt">
+      Entdecke die Vielfalt unserer Bauteile und erschaffe etwas Einzigartiges
+    </h2>
+    <button class="bg-secondary text-light" id="main-header-btn">
+      Jetzt loslegen und gestalten!
+    </button>
+  </header>
 
-      <img src="./assets/sebastian.jpg" class="person-image" id="seb-img" />
-      <p class="person-text text-light" id="seb-txt">
-        Sebastian Rose<br />Event Manager
-      </p>
-    </section>
+  <section class="ds-grid bg-darken col-12 main-sect" id="main-sect2">
+    <h2 class="text-light main-sect-title">H2 Über DreamScape Events</h2>
+    <p class="text-light main-sect-txt">
+      Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
+      Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+      mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
+      tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
+      suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
+      ante fermentum sit amet.
+    </p>
 
-    <section class="ds-grid bg-primary col-12">
-      <h2 class="text-dark" id="main-sect3-h2">H3 Lorem Ipsum</h2>
-      <p class="text-dark" id="main-sect3-p">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-        suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
-        ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
-        Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In
-        iaculis arcu eros, eget tempus orci facilisis id. Praesent lorem orci,
-        mattis non efficitur id, ultricies vel nibh. Sed volutpat lacus vitae
-        gravida viverra. Fusce vel tempor elit. Proin tempus,.
-      </p>
+    <img src="./assets/denis.jpg" class="person-image" id="denis-img" />
+    <p class="person-text text-light" id="denis-txt">
+      Denis Kudic<br>Event Manager
+    </p>
 
-      <img src="./assets/example.jpg" id="sect3-img" />
-    </section>
+    <img src="./assets/sebastian.jpg" class="person-image" id="seb-img" />
+    <p class="person-text text-light" id="seb-txt">
+      Sebastian Rose<br>Event Manager
+    </p>
+  </section>
 
-    <section class="ds-grid bg-darken col-12" id="main-sect4">
-      <h2 class="text-light" id="main-sect4-h2">H4 Lorem Ipsum</h2>
-      <div
-        class="text-dark bg-tertary main-sect4-activeTab"
-        id="main-sect4-tab1"
-        onclick="switchTab(0)"
-      >
-        Lorem Ipsum
-      </div>
-      <div
-        class="text-dark bg-primary main-sect4-hiddenTab"
-        id="main-sect4-tab2"
-        onclick="switchTab(1)"
-      >
-        Lorem Ipsum
-      </div>
-      <div class="bg-light" id="main-sect4-tabcontainer1">
-        <p class="main-p">Test 1</p>
-        <p class="main-p">Test 1</p>
-        <p class="main-p">Test 1</p>
-      </div>
-      <div class="bg-light" id="main-sect4-tabcontainer2">
-        <p class="main-p">Test 2</p>
-        <p class="main-p">Test 2</p>
-        <p class="main-p">Test 2</p>
-        <p class="main-p">Test 2</p>
-      </div>
-    </section>
+  <section class="ds-grid bg-primary col-12 main-sect" id="main-sect3">
+    <h2 class="text-dark main-sect-title">H3 Lorem Ipsum</h2>
+    <p class="text-dark main-sect-txt">
+      Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
+      Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+      mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
+      tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
+      suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
+      ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
+      Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In
+      iaculis arcu eros, eget tempus orci facilisis id. Praesent lorem orci,
+      mattis non efficitur id, ultricies vel nibh. Sed volutpat lacus vitae
+      gravida viverra. Fusce vel tempor elit. Proin tempus,.
+    </p>
 
-    <footer class="bg-darkgrey">
-      <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
-      <p class="main-p foo-data text-light" id="foo-data-vers">
-        2023 © Edition
-      </p>
-      <p class="foo-title text-lightgray" id="foo-title-time">Local Time</p>
-      <p class="main-p foo-data text-light" id="foo-data-time">
-        11:59 pm [DUMMY!!]
-      </p>
-      <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
-      <div class="ds-flex foo-data" id="foo-soci-container">
-        <a href="https://www.facebook.com/" target="_blank"
-          ><img src="./assets/facebook.svg" class="foo-flex-item"
-        /></a>
-        <a href="https://www.instagram.com/" target="_blank"
-          ><img src="./assets/instagram.svg" class="foo-flex-item"
-        /></a>
-      </div>
-    </footer>
-  </body>
+    <img src="./assets/example.jpg" id="main-sect3-img" />
+  </section>
+
+  <section class="ds-grid bg-darken col-12 main-sect" id="main-sect4">
+    <h2 class="text-light main-sect-title" id="main-sect4-h2">H4 Lorem Ipsum</h2>
+    <div class="text-dark bg-tertary main-sect4-activeTab" id="main-sect4-tab1" onclick="switchTab(0)">
+      Lorem Ipsum
+    </div>
+    <div class="text-dark bg-primary main-sect4-hiddenTab" id="main-sect4-tab2" onclick="switchTab(1)">
+      Lorem Ipsum
+    </div>
+    <div class="bg-light main-sect4-tabcontainer" id="main-sect4-tabcontainer1">
+      <p class="main-p">Test 1</p>
+      <p class="main-p">Test 1</p>
+      <p class="main-p">Test 1</p>
+    </div>
+    <div class="bg-light main-sect4-tabcontainer" id="main-sect4-tabcontainer2">
+      <p class="main-p">Test 2</p>
+      <p class="main-p">Test 2</p>
+      <p class="main-p">Test 2</p>
+      <p class="main-p">Test 2</p>
+    </div>
+  </section>
+
+  <footer class="bg-darkgrey">
+    <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
+    <p class="main-p foo-data text-light" id="foo-data-vers">
+      2023 © Edition
+    </p>
+    <p class="foo-title text-lightgray" id="foo-title-time">Local Time</p>
+    <p class="main-p foo-data text-light" id="foo-data-time">
+      11:59 pm [DUMMY!!]
+    </p>
+    <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
+    <div class="ds-flex foo-data" id="foo-soci-container">
+      <a href="https://www.facebook.com/" target="_blank"><img src="./assets/facebook.svg" class="foo-flex-item" /></a>
+      <a href="https://www.instagram.com/" target="_blank"><img src="./assets/instagram.svg"
+          class="foo-flex-item" /></a>
+    </div>
+  </footer>
+</body>
+
 </html>
