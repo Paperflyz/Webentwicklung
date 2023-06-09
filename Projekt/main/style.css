@@ -1,11 +1,6 @@
-/*
-Frage 1: Gesamtseitenlayout Grid bedeutet dass Body grid sein kann.
-Frage 2: Wie viele H2, H3 usw. : Grundsätzlich eine H1 als Headerbild. Anschließend dürfen H2 in jeweils die Sektionen unterteilt werden. usw
-
-
-*/
-
 @import url("https://api.fonts.coollabs.io/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+/* Variablen */
 
 :root {
   /* Header Font-sizes */
@@ -61,6 +56,7 @@ Frage 2: Wie viele H2, H3 usw. : Grundsätzlich eine H1 als Headerbild. Anschlie
 }
 
 /* General Settings */
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -172,6 +168,7 @@ footer {
 }
 
 /* Display Settings */
+
 .ds-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -346,8 +343,18 @@ header button {
   text-transform: uppercase;
 }
 
+/* Bigger than SM */
+@media screen and (min-width: var(--breakpoint-sm)) {
+
+}
+
+/* Bigger than MD */
+@media screen and (min-width: var(--breakpoint-md)) {
+
+}
+
 /* Bigger than LG */
-@media (min-width: var(--breakpoint-lg)) {
+@media screen and (min-width: var(--breakpoint-lg)) {
   :root {
     --grid-gutter-width: 32px;
 
@@ -386,4 +393,9 @@ header button {
   .menu-slide {
     display: none;
   }
+}
+
+/* Bigger than XXL */
+@media screen and (min-width: var(--breakpoint-xxl)) {
+
 }
