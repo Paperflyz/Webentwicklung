@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sebStyle.css" />
+    <script src="sebScript.js"></script>
+    <title>Support</title>
+</head>
+<body class="bg-black">
+    <section class="grid-12" id="help-grid">
+        <h1 class="ft-light">H1 Sie haben Fragen?</h1>
+        <section class="help-col1 help-row1">
+            <label for="fstName" class="ft-light">Vorname</label>
+            <input type="text" id="fstName">
+        </section>
+        <section class="help-col2 help-row1">
+            <label for="lstName" class="ft-light">Nachname</label>
+            <input type="text" id="lstName">
+        </section>
+        <section class="help-col1 help-row2">
+            <label for="street" class="ft-light">Straße</label>
+            <input type="text" id="street">
+        </section>
+        <section class="help-col2 help-row2">
+            <label for="houseNmb" class="ft-light">Hausnummer</label>
+            <input type="text" id="houseNmb">
+        </section>
+        <section class="help-col1 help-row3">
+            <label for="cityNmb" class="ft-light">PLZ</label>
+            <input type="text" id="cityNmb">
+        </section>
+        <section class="help-col2 help-row3">
+            <label for="city" class="ft-light">Stadt</label>
+            <input type="text" id="city">
+        </section>
+        <section class="help-col1 help-row4">
+            <label for="mail" class="ft-light">E-Mail*</label>
+            <input type="text" class="help-input-empty" id="mail">
+        </section>
+        <input type="button" value="Absenden" class="bg-red ft-light" id="help-button" onclick="checkSupportRequest()" disabled>
+    </section>
+</body>
+</html>
