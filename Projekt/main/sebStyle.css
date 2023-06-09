@@ -3,15 +3,42 @@
 /* Variablen */
 
 :root {
-    --grid_gap_mobile: 16px;
-    --grid_gap_desktop: 32px;
+    /* Header Font-sizes */
     --h1_font_size: 5rem;
     --h2_font_size: 3.125rem;
-    --p_font_size: 1rem;
-    --foo-title_font_size: 0.75rem;
-    --weight-bold: 600;
+    --h3_font_size: 2.5rem;
+    --h4_font_size: 1.875rem;
+    --h5_font_size: 1.25rem;
+  
+    /* Colors */
+    --color_primary: #ff9900;
+    --color_secondary: #00ccff;
+    --color_tertary: #99ff00;
+  
+    --color_text-dark: #333333;
+    --color_text-gray: #aaaaaa;
+  
+    --color-white: #FFFFFF;
+    --color-dark: #464646;
+    --color-darken: #2b2b2b;
+  
+    /* Fonts */
     --font-family: "Roboto", sans-serif;
-}
+  
+    /* Font-Weights */
+    --font-weight-thin: 400;
+    --font-weight-regular: 500;
+    --font-weight-bold: 700;
+  
+    /* Font-Sizes */
+  
+    --font-size-small: 1rem;
+    --font-size-regular: 1.5rem;
+    --font-size-big: 2rem;
+  
+    /* Display-Types */
+    --grid-gutter-width: 16px;
+  }
 
 
 /* Color-Classes (Background & Font) */
@@ -75,13 +102,13 @@ h2 {
 
 p {
     font-family: var(--font-family);
-    font-size: var(--p_font_size);
+    font-size: var(--font-size-small);
 }
 
 footer {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: var(--grid_gap_mobile) / 2;
+    grid-gap: var(--grid-gutter-width) / 2;
     grid-auto-rows: auto;
     padding-top: 10vh;
     padding-bottom: 10vh;
@@ -93,7 +120,7 @@ footer {
 .grid-12 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: var(--grid_gap_mobile);
+    grid-gap: var(--grid-gutter-width);
     grid-auto-rows: auto;
     padding-top: 10vh;
     padding-bottom: 10vh;
@@ -110,7 +137,7 @@ footer {
 
 .foo-title {
     font-family: var(--font-family);
-    font-size: var(--foo-title_font_size);
+    font-size: var(--font-size-small);
     grid-row: 1;
 }
 
@@ -169,13 +196,13 @@ footer {
 .main-sect4-activeTab {
     grid-row: 2 / 4;
     opacity: 1;
-    border-top-right-radius: calc(1.5 * var(--p_font_size));
+    border-top-right-radius: calc(1.5 * var(--font-size-small));
 }
 
 .main-sect4-hiddenTab {
     grid-row: 3;
     opacity: 0.5;
-    border-top-right-radius: var(--p_font_size);
+    border-top-right-radius: var(--font-size-small);
 }
 
 #main-sect4-tab1 {
@@ -189,7 +216,7 @@ footer {
 #main-sect4-tabcontainer1, #main-sect4-tabcontainer2 {
     grid-column: 2 / 12;
     grid-row: 4;
-    margin-top: calc(-1 * var(--grid_gap_mobile));
+    margin-top: calc(-1 * var(--grid-gutter-width));
     text-align: center;
 }
 
@@ -201,14 +228,15 @@ footer {
 
 label {
     font-family: var(--font-family);
-    font-size: var(--p_font_size);
+    font-size: var(--font-size-small);
 }
 
 input[type="text"], #help-button {
     font-family: var(--font-family);
-    font-size: var(--p_font_size);
+    font-size: var(--font-size-small);
     line-height: 250%;
-    border-top-right-radius: var(--p_font_size);
+    width: 100%;
+    border-top-right-radius: var(--font-size-small);
 }
 
 input[type="text"] {
@@ -225,7 +253,7 @@ input[type="text"] {
 }
 
 .help-input-true {
-    box-shadow: 4px 4px 0px 0px #99FF00;
+    box-shadow: 4px 4px 0px 0px #73C000;
 }
 
 .help-col1 {
@@ -319,14 +347,10 @@ input[type="text"] {
 }
 
 @media screen and (min-width: 1100px) {
-    .grid-12 {
-        grid-gap: var(--grid_gap_desktop);
+    :root {
+        --grid-gutter-width: 32px;
     }
 
-    footer {
-        grid-gap: var(--grid_gap_desktop) / 2;
-    }
-    
     .main-h2, .main-p {
         grid-column: 2 / 7;
     }
@@ -362,7 +386,6 @@ input[type="text"] {
 
     #main-sect4-tabcontainer1, #main-sect4-tabcontainer2 {
         grid-column: 3 / 11;
-        margin-top: calc(-1 * var(--grid_gap_desktop));
     }
 }
 
