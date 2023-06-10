@@ -47,21 +47,6 @@ GENERAL SETTINGS
 
   /* Display */
   --grid-gutter-width: 16px;
-
-  /* @media-Breakpoints */
-
-  /* Defined breakpoints
-    xs: <576px
-    sm: >= 576px
-    md: >= 768px
-    lg: >= 992px
-    xl >= 1200px
-    xxl >= 1400px
-  */
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xxl: 1400px;
 }
 
 /* General - Tag-Settings */
@@ -696,6 +681,17 @@ input[type="text"] {
 /* BIGGER THAN MD (>= 992px) */
 
 @media screen and (min-width: 992px) {
+/* Defined BREAKPOINTS
+    xs: <576px
+    sm: >= 576px
+    md: >= 768px
+    lg: >= 992px
+    xl >= 1200px
+    xxl >= 1400px
+  */
+
+/* Bigger than LG */
+@media (min-width: 992px) {
   :root {
     --grid-gutter-width: 32px;
 
