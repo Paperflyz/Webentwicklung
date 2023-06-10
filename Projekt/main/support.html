@@ -13,8 +13,7 @@
 
 <body class="ds-grid bg-darken" id="help-grid">
 
-
-  <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+  <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center" id="help-nav">
     <img src="./assets/logo.svg" alt="Dreamscape Unternehmenslogo" />
     <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
       <li><a href="#" class="text-light text-decoration-none">Link</a></li>
@@ -69,7 +68,7 @@
     <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help-mail')"/>
     <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Falsch</label>
 
-    <input type="button" value="Absenden" class="bg-blutrubin grid-gap text-light" id="help-button"
+    <input type="button" value="Absenden" class="bg-primary grid-gap text-light" id="help-button"
       onclick="checkSupportRequest()" disabled />
   </form>
 

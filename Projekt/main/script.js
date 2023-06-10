@@ -12,13 +12,17 @@ function switchTab(tabI) {
 }
 
 function checkMailInput(idArea) {
-    let inputField = document.getElementById(idArea);
+    let inputField = document.getElementById(idArea + '-mail');
     let isValid = new RegExp("^[^\s@]+@[^\s@]+\.[a-zA-Z]{1,3}").test(inputField.value);
 
     if(isValid === true) {
-        alert("Ist ok.");
+        inputField.classList.remove(idArea + '-input-empty');
+        inputField.classList.remove(idArea + '-input-false');
+        inputField.classList.add(idArea + '-input-true');
     } else {
-        alert("E-Mail-Adresse ungültig!")
+        inputField.classList.remove(idArea + '-input-empty');
+        inputField.classList.remove(idArea + '-input-true');
+        inputField.classList.add(idArea + '-input-false');
     }
 }
 
