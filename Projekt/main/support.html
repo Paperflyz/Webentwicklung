@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="sebStyle.css" />
-    <script src="sebScript.js"></script>
-    <title>Support</title>
-  </head>
-  <body class="bg-black">
-    <section class="grid-12" id="help-grid">
-      <h1 class="ft-light">H1 Sie haben Fragen?</h1>
-      <section class="help-col1 help-row1">
-        <label for="fstName" class="ft-light">Vorname</label>
-        <input type="text" id="fstName" />
-      </section>
-      <section class="help-col2 help-row1">
-        <label for="lstName" class="ft-light">Nachname</label>
-        <input type="text" id="lstName" />
-      </section>
-      <section class="help-col1 help-row2">
-        <label for="street" class="ft-light">Straße</label>
-        <input type="text" id="street" />
-      </section>
-      <section class="help-col2 help-row2">
-        <label for="houseNmb" class="ft-light">Hausnummer</label>
-        <input type="text" id="houseNmb" />
-      </section>
-      <section class="help-col1 help-row3">
-        <label for="cityNmb" class="ft-light">PLZ</label>
-        <input type="text" id="cityNmb" />
-      </section>
-      <section class="help-col2 help-row3">
-        <label for="city" class="ft-light">Stadt</label>
-        <input type="text" id="city" />
-      </section>
-      <section class="help-col1 help-row4">
-        <label for="mail" class="ft-light">E-Mail*</label>
-        <input type="text" class="help-input-empty" id="mail" />
-      </section>
-      <input
-        type="button"
-        value="Absenden"
-        class="bg-blutrubin ft-light"
-        id="help-button"
-        onclick="checkSupportRequest()"
-        disabled
-      />
-    </section>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <title>Support</title>
+</head>
+
+
+<body class="ds-grid bg-darken" id="help-grid">
+
+
+  <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+    <img src="./assets/logo.svg" alt="Dreamscape Unternehmenslogo" />
+    <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+      <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+    </ul>
+    <a href="#"><i class="icon-mail ds-none ds-lg-block"></i></a>
+    <i class="icon-hamburger ds-lg-none"></i>
+    <div class="menu-slide bg-darken">
+      <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0">
+        <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+        <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+        <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+        <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+        <li>
+          <a href="#"><i class="icon-mail"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1 class="text-light" id="help-title">H1 Sie haben Fragen?</h1>
+  <p class="text-light" id="help-text">Erklärung zu Fragen</p>
+
+  <form class="ds-grid" id="help-form">
+    <label for="help-fstName" class="help-col1 grid-gap text-light" id="help-fstName-txt">Vorname</label>
+    <input type="text" class="help-col1" id="help-fstName" />
+    <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-fstName-err">Falsch</label>
+
+    <label for="help-lstName" class="help-col2 grid-gap text-light" id="help-lstName-txt">Nachname</label>
+    <input type="text" class="help-col2" id="help-lstName" />
+    <label for="help-city" class="help-col2 text-blutrubin help-form-err ds-none" id="help-lstName-err">Falsch</label>
+
+    <label for="help-street" class="help-col1 grid-gap text-light" id="help-street-txt">Straße</label>
+    <input type="text" class="help-col1" id="help-street" />
+    <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-street-err">Falsch</label>
+
+    <label for="help-houseNmb" class="help-col2 grid-gap text-light" id="help-houseNmb-txt">Hausnummer</label>
+    <input type="text" class="help-col2" id="help-houseNmb" />
+    <label for="help-city" class="help-col2 text-blutrubin help-form-err ds-none" id="help-houseNmb-err">Falsch</label>
+
+    <label for="help-cityNmb" class="help-col1 grid-gap text-light" id="help-cityNmb-txt">PLZ</label>
+    <input type="text" class="help-col1" id="help-cityNmb" />
+    <label for="help-cityNmb" class="help-col1 text-blutrubin help-form-err ds-none" id="help-cityNmb-err">Falsch</label>
+
+    <label for="help-city" class="help-col2 grid-gap text-light" id="help-city-txt">Stadt</label>
+    <input type="text" class="help-col2" id="help-city" />
+    <label for="help-city" class="help-col2 text-blutrubin help-form-err ds-none" id="help-city-err">Falsch</label>
+
+    <label for="help-mail" class="help-col1 grid-gap text-light" id="help-mail-txt">E-Mail*</label>
+    <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help-mail')"/>
+    <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Falsch</label>
+
+    <input type="button" value="Absenden" class="bg-blutrubin grid-gap text-light" id="help-button"
+      onclick="checkSupportRequest()" disabled />
+  </form>
+
+  <footer class="bg-darkgrey">
+    <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
+    <p class="main-p foo-data text-light" id="foo-data-vers">
+      2023 © Edition
+    </p>
+    <p class="foo-title text-lightgray" id="foo-title-time">Local Time</p>
+    <p class="main-p foo-data text-light" id="foo-data-time">
+      11:59 pm [DUMMY!!]
+    </p>
+    <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
+    <div class="ds-flex foo-data" id="foo-soci-container">
+      <a href="https://www.facebook.com/" target="_blank"><img src="./assets/facebook.svg" class="foo-flex-item" /></a>
+      <a href="https://www.instagram.com/" target="_blank"><img src="./assets/instagram.svg"
+          class="foo-flex-item" /></a>
+    </div>
+  </footer>
+</body>
+
 </html>

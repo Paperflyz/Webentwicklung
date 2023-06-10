@@ -11,6 +11,17 @@ function switchTab(tabI) {
     document.getElementById(cntId + (2 - tabI)).style["visibility"] = "hidden";
 }
 
+function checkMailInput(idArea) {
+    let inputField = document.getElementById(idArea);
+    let isValid = new RegExp("^[^\s@]+@[^\s@]+\.[a-zA-Z]{1,3}").test(inputField.value);
+
+    if(isValid === true) {
+        alert("Ist ok.");
+    } else {
+        alert("E-Mail-Adresse ungültig!")
+    }
+}
+
 function checkSupportRequest() {
     let button = document.getElementById("help-button");
     button.setAttribute("disabled", "");
