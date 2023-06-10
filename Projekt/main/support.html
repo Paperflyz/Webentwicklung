@@ -42,34 +42,33 @@
   <form class="ds-grid" id="help-form">
     <label for="help-fstName" class="help-col1 grid-gap text-light" id="help-fstName-txt">Vorname</label>
     <input type="text" class="help-col1" id="help-fstName" />
-    <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-fstName-err">Falsch</label>
 
     <label for="help-lstName" class="help-col2 grid-gap text-light" id="help-lstName-txt">Nachname</label>
     <input type="text" class="help-col2" id="help-lstName" />
-    <label for="help-city" class="help-col2 text-blutrubin help-form-err ds-none" id="help-lstName-err">Falsch</label>
 
     <label for="help-street" class="help-col1 grid-gap text-light" id="help-street-txt">Straße</label>
     <input type="text" class="help-col1" id="help-street" />
-    <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-street-err">Falsch</label>
 
     <label for="help-houseNmb" class="help-col2 grid-gap text-light" id="help-houseNmb-txt">Hausnummer</label>
     <input type="text" class="help-col2" id="help-houseNmb" />
-    <label for="help-city" class="help-col2 text-blutrubin help-form-err ds-none" id="help-houseNmb-err">Falsch</label>
 
-    <label for="help-cityNmb" class="help-col1 grid-gap text-light" id="help-cityNmb-txt">PLZ</label>
-    <input type="text" class="help-col1" id="help-cityNmb" />
-    <label for="help-cityNmb" class="help-col1 text-blutrubin help-form-err ds-none" id="help-cityNmb-err">Falsch</label>
+    <label for="help-plz" class="help-col1 grid-gap text-light" id="help-plz-txt">PLZ</label>
+    <input type="text" class="help-col1" id="help-plz" onblur="checkPlzInput('help')"/>
+    <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-plz-err">Bitte geben Sie eine gültige deutsche PLZ an!</span>
 
     <label for="help-city" class="help-col2 grid-gap text-light" id="help-city-txt">Stadt</label>
     <input type="text" class="help-col2" id="help-city" />
-    <label for="help-city" class="help-col2 text-blutrubin help-form-err ds-none" id="help-city-err">Falsch</label>
 
     <label for="help-mail" class="help-col1 grid-gap text-light" id="help-mail-txt">E-Mail*</label>
-    <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help-mail')"/>
-    <label for="help-city" class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Falsch</label>
+    <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help')"/>
+    <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+
+    <label for="help-msg" class="help-col grid-gap text-light" id="help-msg-txt">Ihr Anliegen*</label>
+    <textarea class="help-col help-input-empty" id="help-msg" placeholder="Bitte eintragen..." onblur="checkMessageInput('help')"></textarea>
+    <span class="help-col text-blutrubin help-form-err ds-none" id="help-msg-err">Bitte schildern Sie Ihr Anliegen!</span>
 
     <input type="button" value="Absenden" class="bg-primary grid-gap text-light" id="help-button"
-      onclick="checkSupportRequest()" disabled />
+      onclick="checkSupportRequest()" />
   </form>
 
   <footer class="bg-darkgrey">

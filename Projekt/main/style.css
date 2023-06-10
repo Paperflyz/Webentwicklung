@@ -521,6 +521,8 @@ SUPPORT.HTML
 
 
 
+/* Support - Titel */
+
 #help-grid {
   grid-row-gap: var(--grid-gutter-width);
   padding-bottom: 10vh;
@@ -540,6 +542,8 @@ SUPPORT.HTML
   grid-column: 2 / 12;
 }
 
+/* Support - Form */
+
 #help-form {
   --help-input-shadowHei: 4px;
 
@@ -548,25 +552,9 @@ SUPPORT.HTML
   grid-auto-flow: row;
 }
 
-input {
-  line-height: 250%;
-  border-radius: 0px 31px 0px 0px;
-  font-weight: calc(0.67 * var(--weight-bold));
+.help-col {
+  grid-column: 2 / 12;
 }
-
-input[type="text"] {
-  font-size: var(--font-size-small);
-  
-  border: 0;
-  outline: none;
-  padding-left: 10px;
-}
-
-#help-button {
-  font-size: var(--font-size-regular);
-}
-
-/* Support - Grid */
 
 .help-col1 {
   grid-column: 2 / 12;
@@ -575,8 +563,6 @@ input[type="text"] {
 .help-col2 {
   grid-column: 2 / 12;
 }
-
-/* Support - Text-Shadow */
 
 .help-input-empty {
   box-shadow: 4px var(--help-input-shadowHei) 0px 0px var(--color-primary);
@@ -592,16 +578,40 @@ input[type="text"] {
 
 .help-form-err {
   margin-top: var(--help-input-shadowHei);
+  font-size: 12px;
 }
 
-#help-mail-txt {
+input, #help-msg {
+  border-radius: 0px 31px 0px 0px;
+  font-weight: calc(0.67 * var(--weight-bold));
+}
+
+input[type="text"], #help-msg {
+  font-size: var(--font-size-small);
+  
+  border: 0;
+  outline: none;
+  padding-left: 10px;
+}
+
+input[type="text"], #help-button {
+  line-height: 250%;
+}
+
+#help-mail-txt, #help-msg-txt {
   font-weight: var(--font-weight-bold);
+}
+
+#help-msg {
+  line-height: 150%;
+  height: 150px;
 }
 
 #help-button {
   grid-column: 7 / 12;
   line-height: 200%;
   text-transform: uppercase;
+  font-size: var(--font-size-regular);
   font-weight: var(--weight-bold);
 }
 
@@ -610,7 +620,16 @@ input[type="text"] {
 
 
 
-/* BIGGER THAN SM (>= 576px) */
+/* Defined BREAKPOINTS
+  xs: <576px
+  sm: >= 576px
+  md: >= 768px
+  lg: >= 992px
+  xl >= 1200px
+  xxl >= 1400px
+*/
+
+/* BIGGER THAN XS */
 
 @media screen and (min-width: 576px) {
   .person-image {
@@ -642,7 +661,7 @@ input[type="text"] {
 
 
 
-/* BIGGER THAN MD (>= 768px) */
+/* BIGGER THAN SM */
 
 @media screen and (min-width: 768px) {
 
@@ -668,8 +687,77 @@ input[type="text"] {
     grid-column: 4 / 10;
   }
 
+  .help-col {
+    grid-column: 3 / 11;
+  }
+
+  .help-col1 {
+    grid-column: 3 / 7;
+  }
+
+  .help-col2 {
+    grid-column: 7 / 11;
+  }
+  
+  #help-fstName-txt, #help-lstName-txt {
+    grid-row: 1;
+  }
+  
+  #help-fstName, #help-lstName {
+    grid-row: 2;
+  }
+
+  #help-street-txt, #help-houseNmb-txt {
+    grid-row: 3;
+  }
+  
+  #help-street, #help-houseNmb {
+    grid-row: 4;
+  }
+
+  #help-cityNmb-txt, #help-city-txt {
+    grid-row: 5;
+  }
+  
+  #help-cityNmb, #help-city {
+    grid-row: 6;
+  }
+
+  #help-cityNmb-err {
+    grid-row: 7;
+  }
+
+  #help-mail-txt {
+    grid-row: 8;
+  }
+  
+  #help-mail {
+    grid-row: 9;
+  }
+
+  #help-mail-err {
+    grid-row: 10;
+  }
+
+  #help-msg-txt {
+    grid-row: 11;
+  }
+  
+  #help-msg {
+    grid-row: 12;
+  }
+
+  #help-msg-err {
+    grid-row: 13;
+  }
+
   #help-button {
-    grid-column: 9 / 12;
+    grid-column: 8 / 10;
+    grid-row: 14;
+  }
+
+  #help-button {
+    grid-column: 8 / 11;
   }
 }
 
@@ -677,21 +765,9 @@ input[type="text"] {
 
 
 
-
-/* BIGGER THAN MD (>= 992px) */
+/* Bigger than MD */
 
 @media screen and (min-width: 992px) {
-/* Defined BREAKPOINTS
-    xs: <576px
-    sm: >= 576px
-    md: >= 768px
-    lg: >= 992px
-    xl >= 1200px
-    xxl >= 1400px
-  */
-
-/* Bigger than LG */
-@media (min-width: 992px) {
   :root {
     --grid-gutter-width: 32px;
 
@@ -771,6 +847,10 @@ input[type="text"] {
     grid-column: 3 / 11;
   }
 
+  .help-col {
+    grid-column: 4 / 10;
+  }
+
   .help-col1 {
     grid-column: 4 / 7;
   }
@@ -778,58 +858,9 @@ input[type="text"] {
   .help-col2 {
     grid-column: 7 / 10;
   }
-  
-  #help-fstName-txt, #help-lstName-txt {
-    grid-row: 1;
-  }
-  
-  #help-fstName, #help-lstName {
-    grid-row: 2;
-  }
-
-  #help-fstName-err, #help-lstName-err {
-    grid-row: 3;
-  }
-
-  #help-street-txt, #help-houseNmb-txt {
-    grid-row: 4;
-  }
-  
-  #help-street, #help-houseNmb {
-    grid-row: 5;
-  }
-
-  #help-street-err, #help-houseNmb-err {
-    grid-row: 6;
-  }
-
-  #help-cityNmb-txt, #help-city-txt {
-    grid-row: 7;
-  }
-  
-  #help-cityNmb, #help-city {
-    grid-row: 8;
-  }
-
-  #help-cityNmb-err, #help-city-err {
-    grid-row: 9;
-  }
-
-  #help-mail-txt {
-    grid-row: 10;
-  }
-  
-  #help-mail {
-    grid-row: 11;
-  }
-
-  #help-mail-err {
-    grid-row: 12;
-  }
 
   #help-button {
     grid-column: 8 / 10;
-    grid-row: 13;
   }
 }
 
@@ -838,7 +869,7 @@ input[type="text"] {
 
 
 
-/* BIGGER THAN XXL (>= 1400px) */
+/* BIGGER THAN LG & XL */
 
 @media screen and (min-width: 1400px) {
   #main-sect3-img {
