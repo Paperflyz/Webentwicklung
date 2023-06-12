@@ -1,0 +1,64 @@
+{
+    "objekte": [
+      {
+        "id": 1,
+        "name": "Ballon",
+        "pfad": "balloons.jpg",
+        "preis": 1.99
+      },
+      {
+        "id": 2,
+        "name": "Becher",
+        "pfad": "cup.jpg",
+        "preis": 0.99
+      },
+      {
+        "id": 3,
+        "name": "Desinfektionsmittel",
+        "pfad": "desinfektion.jpg",
+        "preis": 4.99
+      },
+      {
+        "id": 4,
+        "name": "Zaun",
+        "pfad": "fence.jpg",
+        "preis": 19.99
+      },
+      {
+        "id": 5,
+        "name": "Halle",
+        "pfad": "halle.png",
+        "preis": 199.99
+      },
+      {
+        "id": 6,
+        "name": "Holztoilette",
+        "pfad": "holztoilette.png",
+        "preis": 79.99
+      },
+      {
+        "id": 7,
+        "name": "Mikrofon",
+        "pfad": "microphone.jpg",
+        "preis": 149.99
+      },
+      {
+        "id": 8,
+        "name": "Waschbecken",
+        "pfad": "sink_premium.jpg",
+        "preis": 249.99
+      },
+      {
+        "id": 9,
+        "name": "Soundanlage",
+        "pfad": "sound-box.jpg",
+        "preis": 499.99
+      },
+      {
+        "id": 10,
+        "name": "Toilettenpapier",
+        "pfad": "toilet_paper.jpg",
+        "preis": 2.99
+      }
+    ]
+  }
