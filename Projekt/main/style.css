@@ -62,14 +62,14 @@ body {
 }
 
 h1 {
-  font-size: clamp(1.5rem, 4vw, var(--h1_font_size));
+  font-size: clamp(2rem, 4vw, var(--h1_font_size));
   font-weight: var(--font-weight-bolder);
   grid-column: 2 / 12;
   text-transform: uppercase;
 }
 
 h2 {
-  font-size: clamp(1rem, 3vw, var(--h2_font_size));
+  font-size: clamp(1.5rem, 3vw, var(--h2_font_size));
   font-weight: var(--weight-bold);
   background-color: rgba(34, 34, 34, 0.6);
 }
