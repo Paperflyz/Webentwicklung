@@ -196,6 +196,10 @@ label {
   justify-content: space-around;
 }
 
+.justify-contend-end {
+  justify-content: end;
+}
+
 .align-items-center {
   align-items: center;
 }
@@ -214,6 +218,10 @@ label {
 
 .text-decoration-none {
   text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* General - rest (Bullet, Distance) */
@@ -240,29 +248,10 @@ NAV
 
 /* Nav - Icons */
 
-.icon-mail {
-  background: url(./assets/icons/mail.svg);
-  display: block;
-  background-repeat: no-repeat;
-  width: 29px;
-  height: 22px;
-  background-size: 29px 22px;
-  cursor: pointer;
-}
-
-.icon-hamburger {
-  background-image: url(./assets/icons/hamburger.svg);
-  position:relative; 
-  display: block;
-  background-repeat: no-repeat;
-  width: 29px;
-  height: 22px;
-  background-size: 29px 22px;
-  cursor: pointer;
-}
-
-.icon-hamburger.opened {
-  background-image: url(./assets/icons/hamburger-closed.svg);
+.icon-nav {
+  position: relative;
+  width: 2rem;
+  margin-inline: .5rem;
 }
 
 /* Nav - General & Image */
@@ -271,7 +260,9 @@ nav {
   grid-row: 1;
   --nav-height: 5.625rem;
   height: var(--nav-height);
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 nav:before {
@@ -284,26 +275,24 @@ nav:before {
   border-bottom: 1px var(--color-white) solid;
 }
 
-nav img {
+#logo {
   max-width: 50%;
   height: 3.75rem;
 }
 
 /* Nav - Menu */
 
-nav ul li {
+a[class*="nav-link"] {
   margin-inline: 2rem;
-  font-size: var(--font-size-big);
+  font-size: var(--font-size-regular);
+  display: block;
+}
+
+a.nav-link-meta {
   display: none;
+  font-size: clamp(1rem, 1.5vw, var(--font-size-regular))
 }
 
-nav ul li:last-of-type {
-  display: block;
-}
-
-nav ul li i {
-  display: block;
-}
 
 .menu-slide {
   position: absolute;
@@ -317,11 +306,10 @@ nav ul li i {
 
 .menu-slide.show {
   left: 0;
-
 }
 
 .menu-slide ul {
-  height: 50%;
+  height: 75%;
   text-transform: uppercase;
 }
 
@@ -405,7 +393,7 @@ INDEX.HTML
   --main-header-columns: 2 / 12;
 
   grid-row: 2;
-  background: url(./assets/background_header.png);
+  background: url(./assets/graphics/background_header.png);
   background-size: cover;
   background-repeat: no-repeat;
   padding-block: 15vh;
@@ -795,17 +783,10 @@ input[type="text"], #help-button {
     --h5_font_size: 1.25rem;
   }
 
-  nav ul li {
-    font-size: var(--font-size-regular);
-  }
-
-  nav ul li {
+  a.nav-link-meta {
     display: block;
   }
 
-  nav ul li:last-of-type {
-    display: none;
-  }
 
   #main-header {
     --grid-columns: 3 / 11;
