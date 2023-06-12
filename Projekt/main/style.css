@@ -62,17 +62,16 @@ body {
 }
 
 h1 {
-  font-size: var(--h1_font_size);
-  line-height: var(--h1_font_size);
+  font-size: clamp(1.5rem, 4vw, var(--h1_font_size));
   font-weight: var(--font-weight-bolder);
   grid-column: 2 / 12;
   text-transform: uppercase;
 }
 
 h2 {
-  font-size: var(--h2_font_size);
-  line-height: var(--h2_font_size);
+  font-size: clamp(1rem, 3vw, var(--h2_font_size));
   font-weight: var(--weight-bold);
+  background-color: rgba(34, 34, 34, 0.6);
 }
 
 p,
@@ -275,9 +274,13 @@ nav:before {
   border-bottom: 1px var(--color-white) solid;
 }
 
+nav > a {
+  width: clamp(15rem, 50%, 22rem);
+  z-index: 1;
+}
+
 #logo {
-  max-width: 50%;
-  height: 3.75rem;
+  width: 100%;
 }
 
 /* Nav - Menu */
