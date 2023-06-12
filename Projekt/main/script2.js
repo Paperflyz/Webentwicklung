@@ -15,7 +15,7 @@ const hamburger_close = document.getElementById("icon-close");
 //     e.target.closest("nav").querySelector(".menu-slide").classList.toggle("show");
 // })
 
-fetch('./data.json')
+fetch('./data.json', {mode: "no-cors"})
   .then(response => response.json())
   .then(data => {
     // Hier hast du Zugriff auf die Daten aus der JSON-Datei
