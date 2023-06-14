@@ -18,6 +18,7 @@ GENERAL SETTINGS
   --color_text-gray: #aaaaaa;
 
   --color-white: #ffffff;
+  --color-gray: #D9D9D9;
   --color-dark: #464646;
   --color-darken: #2b2b2b;
 
@@ -71,7 +72,6 @@ h1 {
 h2 {
   font-size: clamp(1.5rem, 3vw, var(--h2_font_size));
   font-weight: var(--weight-bold);
-  background-color: rgba(34, 34, 34, 0.6);
 }
 
 p,
@@ -114,6 +114,10 @@ label {
 
 .bg-secondary {
   background: var(--color-secondary);
+}
+
+.bg-gray {
+  background: var(--color-gray);
 }
 
 .bg-darkgrey {
@@ -165,8 +169,12 @@ label {
   grid-auto-rows: min-content;
 }
 
+.grid-row-gap {
+  grid-row-gap: var(--grid-gutter-width);
+}
+
 .grid-gap {
-  margin-top: var(--grid-gutter-width);
+  margin-top: var(--grid-gutter-width); /* ❔ */
 }
 
 .col-12 {
@@ -233,6 +241,18 @@ label {
   padding: 0;
 }
 
+.my-1 {
+  margin-block: .5rem;
+}
+
+.my-2 {
+  margin-block: 1rem;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
 
 
 /* 
@@ -261,7 +281,7 @@ nav {
   height: var(--nav-height);
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 nav:before {
@@ -277,6 +297,10 @@ nav:before {
 nav > a {
   width: clamp(15rem, 50%, 22rem);
   z-index: 1;
+}
+
+nav li {
+  z-index: 1; /* Notwendig da Links sonst nicht anklickbar sind */
 }
 
 #logo {
@@ -418,20 +442,15 @@ INDEX.HTML
 }
 
 #main-header-btn {
-  border-radius: 2rem;
+
   grid-column: var(--main-header-columns);
-  grid-row: 3 / 4;
-  border: none;
+  grid-row: 3 / 4;  
   margin-top: 100px;
-  padding-block: 1rem;
-  font-size: 1rem;
-  font-weight: var(--font-weight-bolder);
-  text-transform: uppercase;
 }
 
 /* Index - Section 2-4 */
 
-.main-sect {
+.section-standard {
   grid-row-gap: var(--grid-gutter-width);
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -517,6 +536,23 @@ INDEX.HTML
   margin-bottom: 10px;
 }
 
+/* Buttons */
+
+.btn-pill {
+  border-radius: 2rem;
+  width: 100%;
+  border: none;
+  padding-block: 1rem;
+  font-size: 1rem;
+  font-weight: var(--font-weight-bolder);
+  text-transform: uppercase;
+}
+
+/* Containers */
+
+.container-xxl {
+  max-width: 1400px;
+}
 
 
 /*
@@ -623,6 +659,71 @@ input[type="text"], #help-button {
   font-weight: var(--weight-bold);
 }
 
+/* Shop Page */
+
+
+article.card {
+  grid-column: 2 / -2;
+  padding-block: 2rem;
+  border-radius: 0 20% 0 0;
+  position: relative;
+  overflow: hidden;
+
+}
+
+article.card > * {
+  z-index: 1;
+} 
+
+article.card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  transition: transform .5s ease-in-out;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+article.card:hover:before {
+  transform: translate(-50%, -50%) scale(10);
+}
+
+article.card button {
+  cursor: pointer;
+  transition: background .5s ease-in-out;
+}
+
+article.card:hover button {
+  background: var(--color-darken);
+}
+
+article.card.card-primary:before {
+  background: var(--color-primary);
+}
+
+article.card.card-secondary:before {
+  background: var(--color-secondary);
+}
+
+article.card div.card-header,
+article.card div.card-footer {
+  display: inline; /* Notwendig, da parent display flex ist und die alignment-properties nicht wirken würden */
+  width: 50%;
+}
+
+article.card div.card-body {
+  width: 50%;
+}
+
+article.card img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+
 
 
 
@@ -660,6 +761,10 @@ input[type="text"], #help-button {
 
   #help-button {
     grid-column: 8 / 12;
+  }
+
+  #main-header-btn {
+    grid-column: 4 / 10;
   }
 
 }
@@ -767,6 +872,16 @@ input[type="text"], #help-button {
   #help-button {
     grid-column: 8 / 11;
   }
+
+section article:nth-child(odd) {
+  grid-column: 2 / 7;
+}
+
+section article:nth-child(even) {
+  grid-column: 7 / 12;
+}
+
+
 }
 
 
@@ -892,4 +1007,13 @@ input[type="text"], #help-button {
   #main-sect4-tab2 {
     grid-column: 7 / 9;
   }
+
+  section article:nth-child(odd) {
+    grid-column: 3 / 7;
+  }
+
+  section article:nth-child(even) {
+    grid-column: 7 / 11;
+  }
+
 }
