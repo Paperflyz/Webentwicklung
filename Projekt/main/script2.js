@@ -1,5 +1,6 @@
 const hamburger = document.getElementById("icon-hamburger");
 const hamburger_close = document.getElementById("icon-close");
+const shopSectionContainer = document.querySelector("#shop-section > div");
 
 
 [hamburger, hamburger_close].forEach(el => {
@@ -9,22 +10,7 @@ const hamburger_close = document.getElementById("icon-close");
         e.target.closest("nav").querySelector(".menu-slide").classList.toggle("show");
 
     })
-})
-// hamburger.addEventListener("click", (e) => {
-//     e.target.classList.toggle("opened");
-//     e.target.closest("nav").querySelector(".menu-slide").classList.toggle("show");
-// })
+});
 
-fetch('./data.json', {mode: "no-cors"})
-  .then(response => response.json())
-  .then(data => {
-    // Hier hast du Zugriff auf die Daten aus der JSON-Datei
-    console.log(data.objekte); // Beispiel: Konsolenausgabe der "objekte" in der JSON-Datei
 
-    // Weitere Verarbeitung der Daten
-    // ...
-  })
-  .catch(error => {
-    // Fehlerbehandlung, falls das Laden der JSON-Datei fehlschlägt
-    console.error('Fehler beim Laden der JSON-Datei:', error);
-  });
+
