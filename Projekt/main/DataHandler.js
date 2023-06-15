@@ -2,28 +2,39 @@
 
 const itemId = 'selectedId';
 
-function writeStorage(newId) {
-    let idArr = readStorage();
-    idArr.push(newId);
-    localStorage[itemId] = idArr;
-}
-
-function readStorage() {
-    let idArr = localStorage[itemId];
-    if (idArr === undefined) {
-        idArr = [];
+export function writeStorage(elementId, amount) {
+    let dataArr = readStorage();
+    let found = false;
+    for (let i = 0; i < dataArr.length; i++) {
+        if (dataArr[i][0] === elementId) {
+            dataArr[i][1] = amount;
+            found = true;
+            break;
+        }
     }
-    return idArr;
+
+    if (!found) {
+        dataArr.push([elementId, amount]);
+    }
+    localStorage.setItem(itemId, JSON.stringify(dataArr));
 }
 
-function clearStorage() {
-    localStorage.clear();
+export function readStorage() {
+    let data = localStorage.getItem(itemId);
+    if (data === null) {
+        return [];
+    }
+    return JSON.parse(data);
+}
+
+export function clearStorage() {
+    localStorage.removeItem(itemId);
 }
 
 /* Funktion bzgl. den angebotenen Elementen */
 
-const elementsArr = [
-    {
+export function getProducts() {
+    return [{
         "id": 1,
         "name": "Ballon",
         "pfad": "balloons.jpg",
@@ -103,12 +114,22 @@ const elementsArr = [
         "beschreibung": "Das weichste Toilettenpapier, das du je benutzt hast!",
         "kategorie": "Sanitär"
     }
-]
+    ];
+}
 
-function getElement(id) {
-    for (let aElement of elementsArr) {
-        if (aElement.id === id) {
-            return aElement;
+export function getProductById(id) {
+    for (let aProduct of getProducts()) {
+        if (aProduct.id === id) {
+            return aProduct;
+        }
+    }
+    return null;
+}
+
+export function getProductByName(name) {
+    for (let aProduct of getProducts()) {
+        if (aProduct.name === name) {
+            return aProduct;
         }
     }
     return null;

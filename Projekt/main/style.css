@@ -18,6 +18,7 @@ GENERAL SETTINGS
   --color_text-gray: #aaaaaa;
 
   --color-white: #ffffff;
+  --color-gray: #d9d9d9;
   --color-dark: #464646;
   --color-darken: #2b2b2b;
 
@@ -162,11 +163,18 @@ label {
 .ds-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: var(--grid-gutter-width);
   grid-auto-rows: min-content;
 }
 
-.grid-gap {
+.col-gap {
+  grid-column-gap: var(--grid-gutter-width);
+}
+
+.row-gap {
+  grid-row-gap: var(--grid-gutter-width);
+}
+
+.one-row-gap {
   margin-top: var(--grid-gutter-width);
 }
 
@@ -335,7 +343,6 @@ footer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: var(--grid-gutter-width);
-  grid-auto-rows: min-content;
   padding-top: 10vh;
   padding-bottom: 10vh;
 }
@@ -367,6 +374,26 @@ footer {
 #foo-title-soci,
 #foo-soci-container {
   grid-column: 9 / 13;
+}
+
+
+
+/*
+
+GENERAL
+
+- general classes for every .html - files
+
+*/
+
+
+
+.button-confirm {
+  line-height: 200%;
+  text-transform: uppercase;
+  font-size: var(--font-size-regular);
+  font-weight: var(--weight-bold);
+  border-radius: 0px 31px 0px 0px;
 }
 
 
@@ -518,6 +545,92 @@ INDEX.HTML
 
 /*
 
+CHECKOUT.HTML
+
+- all CSS instructions regarding the page "checkout.html"
+
+*/
+
+
+
+/* Checkout - Titel */
+
+#out-grid {
+  padding-bottom: 10vh;
+}
+
+#out-nav {
+  grid-row: 1;
+}
+
+#out-title {
+  grid-row: 2;
+  padding-top: 5vh;
+}
+
+#out-flex {
+  grid-row: 3;
+  grid-column: 1 / 12;
+  flex-direction: row;
+  width: 300%;
+  transition: transform 1s ease-in-out;
+}
+
+#out-flex > * {
+  width: 100%;
+}
+
+#out-empty {
+  font-weight: var(--font-weight-bold);
+  grid-column: 2 / -2;
+}
+
+/* Checkout - Warenkorb */
+
+.out-element-img, .out-element-div, #out-button-confirmBasket {
+  grid-column: 3 / 11;
+}
+
+.out-element-img {
+  height: 100%;
+  max-width: 100%;
+  justify-self: center;
+  object-fit: cover;
+}
+
+.out-element-div {
+  height: 100%;
+  background: var(--color-gray);
+  margin-top: calc(-1 * var(--grid-gutter-width));
+
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: min-content auto;
+  padding-top: var(--grid-gutter-width);
+  padding-bottom: calc(2 * var(--grid-gutter-width));
+}
+
+.out-element-desc-title, .out-element-amount, .out-element-amount-title, .out-element-amount-txt {
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.out-element-desc-title, .out-element-desc-txt, .out-element-amount {
+  grid-column: 2 / -2;
+}
+
+.out-element-desc-txt {
+  font-size: 0px;
+  transform-origin: top;
+  transition: font-size 0.5s;
+}
+
+.out-element-amount-title, .out-element-amount-circle {
+  display: none;
+}
+
+
+/*
+
 SUPPORT.HTML
 
 - all CSS instructions regarding the page "support.html"
@@ -599,7 +712,7 @@ input[type="text"], #help-msg {
   padding-left: 10px;
 }
 
-input[type="text"], #help-button {
+input[type="text"] {
   line-height: 250%;
 }
 
@@ -614,10 +727,6 @@ input[type="text"], #help-button {
 
 #help-button {
   grid-column: 7 / 12;
-  line-height: 200%;
-  text-transform: uppercase;
-  font-size: var(--font-size-regular);
-  font-weight: var(--weight-bold);
 }
 
 
@@ -659,6 +768,13 @@ input[type="text"], #help-button {
     grid-column: 8 / 12;
   }
 
+  .out-element-img, .out-element-div, #out-button-confirmBasket {
+    grid-column: 4 / 10;
+  }
+  
+  .out-element-div {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 
@@ -763,6 +879,65 @@ input[type="text"], #help-button {
 
   #help-button {
     grid-column: 8 / 11;
+  }
+
+  .out-element-img {
+    grid-column: 2 / 4;
+  }
+  
+  .out-element-div {
+    grid-column: 4 / 12;
+    background: var(--color-white);
+    margin-top: 0;
+
+    grid-template-columns: repeat(8, 1fr);
+    padding-left: var(--grid-gutter-width);
+    padding-bottom: var(--grid-gutter-width);
+  }
+
+  .out-element-amount {
+    display: none;
+  }
+
+  .out-element-desc-txt {
+    font-size: initial;
+  }
+
+  .out-element-amount-title, .out-element-amount-circle {
+    display: block;
+  }
+
+  .out-element-desc-title, .out-element-desc-txt {
+    grid-column: 1 / 6;
+  }
+
+  .out-element-amount-title, .out-element-amount-circle {
+    grid-column: 7;
+  }
+
+  .out-element-amount-title {
+    text-align: center;
+  }
+
+  .out-element-amount-circle {
+    width: 70px;
+    height: 70px;
+    aspect-ratio: 1 / 1;  /* Inspiriert von: https://kulturbanause.de/blog/css-aspect-ratio-seitenverhaeltnis/ */
+    border-radius: 35px;
+  
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+  }
+
+  .out-element-amount-txt {
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-bold);
+  }
+
+  #out-button-confirmBasket {
+    grid-column: 9 / 12;
   }
 }
 
@@ -888,5 +1063,26 @@ input[type="text"], #help-button {
 
   #main-sect4-tab2 {
     grid-column: 7 / 9;
+  }
+
+  .out-element-img {
+    grid-column: 3 / 5;
+  }
+  
+  .out-element-div {
+    grid-column: 5 / 11;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .out-element-desc-title, .out-element-desc-txt {
+    grid-column: 1 / 4;
+  }
+
+  .out-element-amount-title, .out-element-amount-circle {
+    grid-column: 5;
+  }
+
+  #out-button-confirmBasket {
+    grid-column: 8 / 11;
   }
 }

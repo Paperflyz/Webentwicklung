@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Warenkorb</title>
+    <script>
+        localStorage.setItem('selectedId', "[[7, 2], [1, 3]]");
+        //localStorage.removeItem('selectedId');
+    </script>
+</head>
+
+<body class="bg-darken">
+
+    <div class="ds-grid row-gap" id="out-grid">
+        <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center" id="out-nav">
+            <img src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" />
+            <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
+                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+            </ul>
+            <a href="#"><i class="icon-mail ds-none ds-lg-block"></i></a>
+            <i class="icon-hamburger ds-lg-none"></i>
+            <div class="menu-slide bg-darken">
+                <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0">
+                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+                    <li>
+                        <a href="#"><i class="icon-mail"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <h1 class="text-light" id="out-title">Shopseite > Warenkorb</h1>
+    </div>
+
+    <div class="ds-flex" id="out-flex">
+        <div class="ds-grid row-gap" id="out-basket">
+            <span class="ds-none text-light" id="out-empty">Warenkorb ist leer!  :(</span>
+        
+            <button class="bg-primary text-light button-confirm" id="out-button-confirmBasket">Bestätigen</button>
+        </div>
+        <div class="ds-grid col-gap" id="out-data">
+            <form class="ds-grid col-gap" id="help-form">
+                <label for="help-fstName" class="help-col1 one-row-gap text-light" id="help-fstName-txt">Vorname*</label>
+                <input type="text" class="help-col1" id="help-fstName" />
+            
+                <label for="help-lstName" class="help-col2 one-row-gap text-light" id="help-lstName-txt">Nachname*</label>
+                <input type="text" class="help-col2" id="help-lstName" />
+            
+                <label for="help-street" class="help-col1 one-row-gap text-light" id="help-street-txt">Straße*</label>
+                <input type="text" class="help-col1" id="help-street" />
+            
+                <label for="help-houseNmb" class="help-col2 one-row-gap text-light" id="help-houseNmb-txt">Hausnummer*</label>
+                <input type="text" class="help-col2" id="help-houseNmb" />
+            
+                <label for="help-plz" class="help-col1 one-row-gap text-light" id="help-plz-txt">PLZ*</label>
+                <input type="text" class="help-col1" id="help-plz" onblur="checkPlzInput('help')"/>
+                <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-plz-err">Bitte geben Sie eine gültige deutsche PLZ an!</span>
+            
+                <label for="help-city" class="help-col2 one-row-gap text-light" id="help-city-txt">Stadt*</label>
+                <input type="text" class="help-col2" id="help-city" />
+            
+                <label for="help-mail" class="help-col1 one-row-gap text-light" id="help-mail-txt">E-Mail*</label>
+                <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help')"/>
+                <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+            
+                <input type="button" value="Absenden" class="bg-primary one-row-gap text-light button-confirm" id="help-button"
+                  onclick="checkSupportRequest()" />
+              </form>
+        </div>
+        <div id="out-confirm">
+            <p>Box 3</p>
+        </div>
+    </div>
+    
+    <footer class="bg-darkgrey" id="out-foo">
+        <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
+        <p class="main-p foo-data text-light" id="foo-data-vers">
+            2023 © Edition
+        </p>
+        <p class="foo-title text-lightgray" id="foo-title-time">Local Time</p>
+        <p class="main-p foo-data text-light" id="foo-data-time">
+            11:59 pm [DUMMY!!]
+        </p>
+        <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
+        <div class="ds-flex foo-data" id="foo-soci-container">
+            <a href="https://www.facebook.com/" target="_blank"><img src="./assets/icons/facebook.svg"
+                    class="foo-flex-item" /></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="./assets/icons/instagram.svg"
+                    class="foo-flex-item" /></a>
+        </div>
+    </footer>
+    
+    <script type="module" src="./CheckoutHandler.js" defer></script>
+</body>
+
+</html>
