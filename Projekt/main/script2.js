@@ -5,7 +5,7 @@ shopSectionContainer.addEventListener("click", e => {
   if (!e.target.matches("button")) return;
 
   const articleName = e.target.closest("article").querySelector("h3");
-  writeStorage(getProductByName(articleName.textContent).id, 1);  
+  changeStorage(getProductByName(articleName.textContent).id, 1);  
 })
 
 products.forEach((el, idx) => {

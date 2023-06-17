@@ -56,7 +56,6 @@ function buildBasket() {
         // Titel einfügen
         let newNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
         newNode.innerHTML = aTheme;
-        insertBefore(basketButton, 'hr', ['hr-theme'], {});
 
         // Gegenstände alphabetisch sortieren (nach Name)
         let elementArr = themeObj[aTheme];
@@ -72,12 +71,12 @@ function buildBasket() {
 
         // Gegenstände einfügen
         for (let aElement of elementArr) {
-            newNode = insertBefore(basketButton, 'img', ['out-element-img'], {'src': './assets/graphics/' + aElement.pfad});
+            newNode = insertBefore(basketButton, 'img', ['out-element-img'], {'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt});
             newNode.addEventListener('click', changeElementDiv);
-            let divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'row-gap', 'bg-light'], {});
+            let divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
             divNode.addEventListener('click', changeElementDiv);
             
-            appendChild(divNode, 'h2', ['out-element-desc-title'], {}).innerHTML = aElement.name;
+            appendChild(divNode, 'h3', ['out-element-desc-title'], {}).innerHTML = aElement.name;
             appendChild(divNode, 'span', ['out-element-amount-title'], {}).innerHTML = 'Anzahl';
             appendChild(divNode, 'p', ['out-element-desc-txt'], {}).innerHTML = aElement.beschreibung;
             appendChild(divNode, 'span', ['out-element-amount'], {}).innerHTML = "Anzahl: " + aElement.amount;
@@ -89,15 +88,15 @@ function buildBasket() {
 
 
     // Gesamtpreis einfügen
-    insertBefore(basketButton, 'hr', [], {'id': 'hr-price'});
     insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-title'}).innerHTML = 'TOTAL:';
     insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-txt'}).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
 }
 
 
 // Beschreibung ein-/ausblenden (nur mobile-view)
+
 function changeElementDiv() {
-    let maxWidth = 767;
+    /* let maxWidth = 767;
     if (window.matchMedia('screen and (min-width: ' + maxWidth + 'px)').matches === true) {
         return;
     }
@@ -111,10 +110,12 @@ function changeElementDiv() {
     let descNode = clickedDiv.querySelector('.out-element-desc-txt');
 
     if (window.getComputedStyle(descNode).fontSize === '0px') {
-        descNode.style['font-size'] = 'initial';
+        console.log('true');
+        descNode.style.fontSize = 'initial';
     } else {
-        descNode.style['font-size'] = '0px';
-    }
+        console.log('false');
+        descNode.style.fontSize = '0px';
+    } */
 }
 
 // Div-Wechsel

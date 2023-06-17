@@ -2,19 +2,20 @@
 
 const itemId = 'selectedId';
 
-function writeStorage(elementId, amount) {
+function changeStorage(elementId, change) {
     let dataArr = readStorage();
-    let found = false;
+    let arrI = -1;
     for (let i = 0; i < dataArr.length; i++) {
         if (dataArr[i][0] === elementId) {
-            dataArr[i][1] = amount;
-            found = true;
+            arrI = i;
             break;
         }
     }
 
-    if (!found) {
-        dataArr.push([elementId, amount]);
+    if (arrI === -1) {
+        dataArr.push([elementId, change]);
+    } else {
+        dataArr[arrI][1] += change;
     }
     localStorage.setItem(itemId, JSON.stringify(dataArr));
 }
