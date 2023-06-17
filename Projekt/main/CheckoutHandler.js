@@ -80,6 +80,14 @@ function buildBasket() {
             appendChild(divNode, 'span', ['out-element-amount-title'], {}).innerHTML = 'Anzahl';
             appendChild(divNode, 'p', ['out-element-desc-txt'], {}).innerHTML = aElement.beschreibung;
             appendChild(divNode, 'span', ['out-element-amount'], {}).innerHTML = "Anzahl: " + aElement.amount;
+            let flexNode = appendChild(divNode, 'div', ['ds-flex', 'out-element-flex'], {});
+
+            let btnNode1 = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary', 'text-light'], {});
+            btnNode1.innerHTML = '+';
+            btnNode1.addEventListener('click', changeElementAmount);
+            let btnNode2 = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary', 'text-light'], {});
+            btnNode2.innerHTML = '-';
+            btnNode2.addEventListener('click', changeElementAmount);
 
             let circleNode = appendChild(divNode, 'div', ['out-element-amount-circle', 'bg-secondary'], {});
             appendChild(circleNode, 'span', ['out-element-amount-txt', 'text-light'], {}).innerHTML = aElement.amount;
@@ -90,6 +98,35 @@ function buildBasket() {
     // Gesamtpreis einfügen
     insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-title'}).innerHTML = 'TOTAL:';
     insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-txt'}).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
+}
+
+function changeElementAmount() {
+    // Element & Button identifizieren
+    let clickBtn = event.target;
+    let elementDiv = clickBtn.parentNode.parentNode;
+    let amountChange = (clickBtn.innerHTML === '+') ? 1 : -1;
+
+    // Mengenanzeige aktualisieren
+    let amountHtml = elementDiv.querySelector('.out-element-amount');
+    let smallDiv = (window.getComputedStyle(amountHtml).display != 'none');
+    if (!smallDiv) {
+        amountHtml = elementDiv.querySelector('.out-element-amount-txt');
+        let newVal = parseInt(amountHtml.innerHTML) + amountChange;
+        amountHtml.innerHTML = newVal;
+    } else {
+        let newVal = parseInt(amountHtml.innerHTML.split(' ')[1]) + amountChange;
+        amountHtml.innerHTML = 'Anzahl: ' + newVal;
+    }
+
+    // Elementpreis aktualisieren
+    let elementName = elementDiv.querySelector('.out-element-desc-title').innerHTML;
+    let singlePrice = getProductByName(elementName).preis;
+    // TODO
+
+    // Gesamtpreis aktualisieren
+    let totalHtml = elementDiv.parentNode.querySelector('#out-price-txt');
+    let newPrice = parseFloat(totalHtml.innerHTML.split(' ')[0]) + (amountChange * singlePrice);
+    totalHtml.innerHTML = (Math.round(100 * newPrice) / 100).toFixed(2) + ' €';
 }
 
 

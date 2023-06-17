@@ -765,8 +765,14 @@ CHECKOUT.HTML
   text-transform: uppercase;
 }
 
-.out-element-desc-title, .out-element-desc-txt, .out-element-amount {
+.out-element-desc-title, .out-element-desc-txt {
   grid-column: 2 / -2;
+}
+
+.out-element-amount {
+  grid-column: 2 / 6;
+  line-height: calc(2 * var(--grid-gutter-width));
+  vertical-align: center;
 }
 
 .out-element-desc-txt {
@@ -776,6 +782,27 @@ CHECKOUT.HTML
 
 .out-element-amount-title, .out-element-amount-circle {
   display: none;
+}
+
+.out-element-flex {
+  grid-column: 6 / 9;
+  justify-content: space-evenly;
+  justify-self: center;
+  align-items: center;
+}
+
+.out-element-button {
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1 / 1; /* Inspiriert von: https://kulturbanause.de/blog/css-aspect-ratio-seitenverhaeltnis/ */
+  border-radius: 15px;
+  margin: 2px;
+  font-size: var(--h5_font_size);
+  font-weight: var(--font-weight-bold);
+
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
 }
 
 #out-price-title, #out-price-txt {
@@ -1062,6 +1089,15 @@ article.card img {
   .out-element-div {
     grid-template-columns: repeat(6, 1fr);
   }
+
+  .out-element-amount {
+    grid-column: 2 / 5;
+  }
+  
+  .out-element-flex {
+    grid-column: 5 / 7;
+  }
+
   #main-header-btn {
     grid-column: 4 / 10;
   }
@@ -1205,10 +1241,6 @@ article.card img {
     display: none;
   }
 
-  .out-element-desc-txt {
-    font-size: initial;
-  }
-
   .out-element-amount-title, .out-element-amount-circle {
     display: block;
   }
@@ -1217,8 +1249,13 @@ article.card img {
     grid-column: 1 / 6;
   }
 
-  .out-element-amount-title, .out-element-amount-circle {
-    grid-column: 7;
+  .out-element-desc-txt {
+    font-size: initial;
+    grid-row: span 2;
+  }
+
+  .out-element-amount-title, .out-element-amount-circle, .out-element-flex {
+    grid-column: -3 / -1;
   }
 
   .out-element-amount-title {
@@ -1235,6 +1272,10 @@ article.card img {
     justify-content: center;
     justify-self: center;
     align-items: center;
+  }
+
+  .out-element-flex {
+    grid-row: 3;
   }
 
   .out-element-amount-txt {
@@ -1417,8 +1458,8 @@ section article:nth-child(even) {
     grid-column: 1 / 4;
   }
 
-  .out-element-amount-title, .out-element-amount-circle {
-    grid-column: 5;
+  .out-element-amount-title, .out-element-amount-circle, .out-element-flex {
+    grid-column: -3;
   }
 
   #out-button-confirmBasket {
