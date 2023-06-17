@@ -277,6 +277,7 @@ NAV
   position: relative;
   width: 2rem;
   margin-inline: .5rem;
+  cursor: pointer;
 }
 
 /* Nav - General & Image */

@@ -5,42 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <script src="./DataHandler.js" defer></script>
     <script src="./FormCheck.js" defer></script>
     <script src="./General.js" defer></script>
     <script src="./CheckoutHandler.js" defer></script>
-    <script src="./DataHandler.js" defer></script>
+
     <title>Warenkorb</title>
-    <script>
-        localStorage.setItem('selectedId', "[[7, 10], [1, 10]]");
-        //localStorage.removeItem('selectedId');
-    </script>
 </head>
 
 <body class="bg-darken" onload="buildBasket()">
 
     <div class="ds-grid grid-row-gap" id="out-grid">
-        <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center" id="out-nav">
-            <img src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" />
-            <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
-                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                <li><a href="#" class="text-light text-decoration-none">Link</a></li>
+        <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+            <a href="./index.html"><img id="logo" src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" /></a>
+            <ul class="p-0 text-uppercase ds-flex bullet-unstyled justify-content-end align-items-center">
+              <li><a href="./shop.html" class="text-light text-decoration-none nav-link-meta">Produktauswahl</a></li>
+              <li><a href="#" class="text-light text-decoration-none nav-link-meta">Impressum</a></li>
+              <li><a href="#" class="text-light text-decoration-none nav-link-meta">Datenschutz</a></li>
+              <li><img id="icon-hamburger" class="icon-nav ds-lg-none" src="./assets/icons/hamburger.svg" alt="Ein Hamburger-Icon um zwischen dem Navigationsmenü zu schalten."></i></li>
+              <li><img id="icon-close" class="icon-nav ds-none ds-lg-none" src="./assets/icons/hamburger-closed.svg" alt="Ein Schließ-Icon um zwischen dem Navigationsmenü zu schalten. "></i></li>
+              <li><a href="./support.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/mail.svg" alt="Ein Grün-Farbenes Briefsymbol als illustratives Icon"></a></li>
+              <li><a href="./checkout.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/shopping-trolley.svg" alt="Ein Orange-Farbener Einkaufswagen als illustratives Icon"></a></li>
             </ul>
-            <a href="#"><i class="icon-mail ds-none ds-lg-block"></i></a>
-            <i class="icon-hamburger ds-lg-none"></i>
             <div class="menu-slide bg-darken">
-                <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0">
-                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                    <li><a href="#" class="text-light text-decoration-none">Link</a></li>
-                    <li>
-                        <a href="#"><i class="icon-mail"></i></a>
-                    </li>
-                </ul>
+              <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0 text-center">
+                <li><a href="./shop.html" class="text-light text-decoration-none nav-link">Zur Produktauswahl</a></li>
+                <li><a href="#" class="text-light text-decoration-none nav-link">Impressum</a></li>
+                <li><a href="#" class="text-light text-decoration-none nav-link">Datenschutz</a></li>
+                <li><a href="./support.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/mail.svg" alt="Ein Grün-Farbenes Briefsymbol als illustratives Icon"></a></li>
+                <li><a href="./checkout.html"><img src="./assets/icons/shopping-trolley.svg" alt="Ein Orange-Farbener Einkaufswagen als illustratives Icon"></a></li>
+              </ul>
             </div>
-        </nav>
+          </nav>
     
         <h1 class="text-light" id="out-title">Shopseite > Warenkorb</h1>
     </div>

@@ -65,9 +65,6 @@ function checkForm(idArea) {
         isValid = checkInput(idArea, aId) && isValid;
     }
 
-    // NUR TEST: MUSS ENTFERNT WERDEN!!
-    isValid = true;
-
     // Ergebnis der Kontrolle auswerten [false]
     if (isValid === false) {
         lockButton(document.getElementsByTagName('form')[0].querySelector('input[type="button"]'));
