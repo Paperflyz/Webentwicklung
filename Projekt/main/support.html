@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js"></script>
+  <script src="FormCheck.js" defer></script>
+  <script src="./General.js" defer></script>
   <title>Support</title>
 </head>
 
@@ -14,7 +15,7 @@
 <body class="ds-grid row-gap col-gap bg-darken" id="help-grid">
 
   <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center" id="help-nav">
-    <img src="./assets/logo.svg" alt="Dreamscape Unternehmenslogo" />
+    <img src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" />
     <ul class="ds-none p-0 text-uppercase ds-lg-flex bullet-unstyled">
       <li><a href="#" class="text-light text-decoration-none">Link</a></li>
       <li><a href="#" class="text-light text-decoration-none">Link</a></li>
@@ -39,36 +40,38 @@
   <h1 class="text-light" id="help-title">H1 Sie haben Fragen?</h1>
   <p class="text-light" id="help-text">Erklärung zu Fragen</p>
 
-  <form class="ds-grid col-gap" id="help-form">
-    <label for="help-fstName" class="help-col1 one-row-gap text-light" id="help-fstName-txt">Vorname</label>
-    <input type="text" class="help-col1" id="help-fstName" />
+  <form class="ds-grid col-gap form">
+    <label for="help-fstName" class="form-col1 form-row1 one-row-gap text-light">Vorname</label>
+    <input type="text" class="form-col1 form-row2" id="help-fstName" />
 
-    <label for="help-lstName" class="help-col2 one-row-gap text-light" id="help-lstName-txt">Nachname</label>
-    <input type="text" class="help-col2" id="help-lstName" />
+    <label for="help-lstName" class="form-col2 form-row1 one-row-gap text-light">Nachname</label>
+    <input type="text" class="form-col2 form-row2" id="help-lstName" />
 
-    <label for="help-street" class="help-col1 one-row-gap text-light" id="help-street-txt">Straße</label>
-    <input type="text" class="help-col1" id="help-street" />
+    <label for="help-street" class="form-col1 form-row3 one-row-gap text-light">Straße</label>
+    <input type="text" class="form-col1 form-row4" id="help-street" />
 
-    <label for="help-houseNmb" class="help-col2 one-row-gap text-light" id="help-houseNmb-txt">Hausnummer</label>
-    <input type="text" class="help-col2" id="help-houseNmb" />
+    <label for="help-houseNmb" class="form-col2 form-row3 one-row-gap text-light">Hausnummer</label>
+    <input type="text" class="form-col2 form-row4" id="help-houseNmb" />
 
-    <label for="help-plz" class="help-col1 one-row-gap text-light" id="help-plz-txt">PLZ</label>
-    <input type="text" class="help-col1" id="help-plz" onblur="checkPlzInput('help')"/>
-    <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-plz-err">Bitte geben Sie eine gültige deutsche PLZ an!</span>
+    <label for="help-plz" class="form-col1 form-row5 one-row-gap text-light">PLZ</label>
+    <input type="text" class="form-col1 form-row6" id="help-plz" onblur="checkInput('help', 'plz')" />
+    <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ
+      an!</span>
 
-    <label for="help-city" class="help-col2 one-row-gap text-light" id="help-city-txt">Stadt</label>
-    <input type="text" class="help-col2" id="help-city" />
+    <label for="help-city" class="form-col2 form-row5 one-row-gap text-light">Stadt</label>
+    <input type="text" class="form-col2 form-row6" id="help-city" />
 
-    <label for="help-mail" class="help-col1 one-row-gap text-light" id="help-mail-txt">E-Mail*</label>
-    <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help')"/>
-    <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+    <label for="help-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
+    <input type="text" class="form-col1 form-row9 form-input-empty" id="help-mail" onblur="checkInput('help', 'mail')" />
+    <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse
+      an!</span>
 
-    <label for="help-msg" class="help-col one-row-gap text-light" id="help-msg-txt">Ihr Anliegen*</label>
-    <textarea class="help-col help-input-empty" id="help-msg" placeholder="Bitte eintragen..." onblur="checkMessageInput('help')"></textarea>
-    <span class="help-col text-blutrubin help-form-err ds-none" id="help-msg-err">Bitte schildern Sie Ihr Anliegen!</span>
+    <label for="help-msg" class="form-col form-row11 one-row-gap form-needed-txt text-light">Ihr Anliegen*</label>
+    <textarea class="form-col form-row12 form-input-empty" id="help-msg" placeholder="Bitte eintragen..." onblur="checkInput('help', 'msg')"></textarea>
+    <span class="form-col form-row13 text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
 
-    <input type="button" value="Absenden" class="bg-primary one-row-gap text-light button-confirm" id="help-button"
-      onclick="checkSupportRequest()" />
+    <input type="button" value="Absenden"
+      class="form-row14 bg-primary one-row-gap text-light form-button button-confirm" onclick="checkForm('help')" />
   </form>
 
   <footer class="bg-darkgrey">
@@ -82,7 +85,8 @@
     </p>
     <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
     <div class="ds-flex foo-data" id="foo-soci-container">
-      <a href="https://www.facebook.com/" target="_blank"><img src="./assets/icons/facebook.svg" class="foo-flex-item" /></a>
+      <a href="https://www.facebook.com/" target="_blank"><img src="./assets/icons/facebook.svg"
+          class="foo-flex-item" /></a>
       <a href="https://www.instagram.com/" target="_blank"><img src="./assets/icons/instagram.svg"
           class="foo-flex-item" /></a>
     </div>

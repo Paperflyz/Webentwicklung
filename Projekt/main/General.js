@@ -1,13 +1,11 @@
-export function lockButton(buttonId) {
-    let button = document.getElementById(buttonId);
+function lockButton(button) {
     button.setAttribute('disabled', '');
     button.classList.add('bg-blutrubin');
     button.classList.remove('bg-primary');
     button.style['opacity'] = 0.5;
 }
 
-export function unlockButton(buttonId) {
-    let button = document.getElementById(buttonId);
+function unlockButton(button) {
     button.removeAttribute('disabled');
     button.classList.remove('bg-blutrubin');
     button.classList.add('bg-primary');
@@ -16,14 +14,14 @@ export function unlockButton(buttonId) {
 
 /* Node erstellen & aufsetzen */
 
-export function insertBefore(nextNode, tag, classArr, attbObj) {
+function insertBefore(nextNode, tag, classArr, attbObj) {
     let newNode = document.createElement(tag);
     nextNode.parentNode.insertBefore(newNode, nextNode);
     adjustNode(newNode, classArr, attbObj);
     return newNode;
 }
 
-export function appendChild(parentNode, tag, classArr, attbObj) {
+function appendChild(parentNode, tag, classArr, attbObj) {
     let newNode = document.createElement(tag);
     parentNode.appendChild(newNode);
     adjustNode(newNode, classArr, attbObj);

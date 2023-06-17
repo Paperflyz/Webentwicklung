@@ -2,7 +2,7 @@
 
 const itemId = 'selectedId';
 
-export function writeStorage(elementId, amount) {
+function writeStorage(elementId, amount) {
     let dataArr = readStorage();
     let found = false;
     for (let i = 0; i < dataArr.length; i++) {
@@ -19,7 +19,7 @@ export function writeStorage(elementId, amount) {
     localStorage.setItem(itemId, JSON.stringify(dataArr));
 }
 
-export function readStorage() {
+function readStorage() {
     let data = localStorage.getItem(itemId);
     if (data === null) {
         return [];
@@ -27,13 +27,31 @@ export function readStorage() {
     return JSON.parse(data);
 }
 
-export function clearStorage() {
+function clearStorage() {
     localStorage.removeItem(itemId);
 }
 
 /* Funktion bzgl. den angebotenen Elementen */
 
-export function getProducts() {
+function getProductById(id) {
+    for (let aProduct of getProducts()) {
+        if (aProduct.id === id) {
+            return aProduct;
+        }
+    }
+    return null;
+}
+
+function getProductByName(name) {
+    for (let aProduct of getProducts()) {
+        if (aProduct.name === name) {
+            return aProduct;
+        }
+    }
+    return null;
+}
+
+function getProducts() {
     return [{
         "id": 1,
         "name": "Ballon",
@@ -115,22 +133,4 @@ export function getProducts() {
         "kategorie": "Sanitär"
     }
     ];
-}
-
-export function getProductById(id) {
-    for (let aProduct of getProducts()) {
-        if (aProduct.id === id) {
-            return aProduct;
-        }
-    }
-    return null;
-}
-
-export function getProductByName(name) {
-    for (let aProduct of getProducts()) {
-        if (aProduct.name === name) {
-            return aProduct;
-        }
-    }
-    return null;
 }

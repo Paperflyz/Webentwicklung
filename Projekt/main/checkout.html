@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <script src="./FormCheck.js" defer></script>
+    <script src="./General.js" defer></script>
+    <script src="./CheckoutHandler.js" defer></script>
+    <script src="./DataHandler.js" defer></script>
     <title>Warenkorb</title>
     <script>
-        localStorage.setItem('selectedId', "[[7, 2], [1, 3]]");
+        localStorage.setItem('selectedId', "[[7, 10], [1, 10]]");
         //localStorage.removeItem('selectedId');
     </script>
 </head>
 
-<body class="bg-darken">
+<body class="bg-darken" onload="buildBasket()">
 
     <div class="ds-grid row-gap" id="out-grid">
         <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center" id="out-nav">
@@ -43,44 +47,50 @@
 
     <div class="ds-flex" id="out-flex">
         <div class="ds-grid row-gap" id="out-basket">
-            <span class="ds-none text-light" id="out-empty">Warenkorb ist leer!  :(</span>
+            <span class="ds-none text-light" id="out-empty">Warenkorb ist leer! :(</span>
+            <button class="bg-primary text-light button-confirm" id="out-button-confirmBasket" onclick="moveOutArea(1)">Bestätigen</button>
+        </div>
+        <form class="ds-grid col-gap form">
+            <label for="out-fstName" class="form-col1 form-row1 one-row-gap form-needed-txt text-light" id="test1">Vorname*</label>
+            <input type="text" class="form-col1 form-row2 form-input-empty" id="out-fstName" onblur="checkInput('out', 'fstName')" />
+            <span class="form-col1 form-row3 text-blutrubin form-err ds-none" id="test2">Bitte geben Sie Ihren Vornamen an!</span>
         
-            <button class="bg-primary text-light button-confirm" id="out-button-confirmBasket">Bestätigen</button>
-        </div>
-        <div class="ds-grid col-gap" id="out-data">
-            <form class="ds-grid col-gap" id="help-form">
-                <label for="help-fstName" class="help-col1 one-row-gap text-light" id="help-fstName-txt">Vorname*</label>
-                <input type="text" class="help-col1" id="help-fstName" />
-            
-                <label for="help-lstName" class="help-col2 one-row-gap text-light" id="help-lstName-txt">Nachname*</label>
-                <input type="text" class="help-col2" id="help-lstName" />
-            
-                <label for="help-street" class="help-col1 one-row-gap text-light" id="help-street-txt">Straße*</label>
-                <input type="text" class="help-col1" id="help-street" />
-            
-                <label for="help-houseNmb" class="help-col2 one-row-gap text-light" id="help-houseNmb-txt">Hausnummer*</label>
-                <input type="text" class="help-col2" id="help-houseNmb" />
-            
-                <label for="help-plz" class="help-col1 one-row-gap text-light" id="help-plz-txt">PLZ*</label>
-                <input type="text" class="help-col1" id="help-plz" onblur="checkPlzInput('help')"/>
-                <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-plz-err">Bitte geben Sie eine gültige deutsche PLZ an!</span>
-            
-                <label for="help-city" class="help-col2 one-row-gap text-light" id="help-city-txt">Stadt*</label>
-                <input type="text" class="help-col2" id="help-city" />
-            
-                <label for="help-mail" class="help-col1 one-row-gap text-light" id="help-mail-txt">E-Mail*</label>
-                <input type="text" class="help-col1 help-input-empty" id="help-mail" onblur="checkMailInput('help')"/>
-                <span class="help-col1 text-blutrubin help-form-err ds-none" id="help-mail-err">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
-            
-                <input type="button" value="Absenden" class="bg-primary one-row-gap text-light button-confirm" id="help-button"
-                  onclick="checkSupportRequest()" />
-              </form>
-        </div>
-        <div id="out-confirm">
-            <p>Box 3</p>
+            <label for="out-lstName" class="form-col2 form-row1 one-row-gap form-needed-txt text-light">Nachname*</label>
+            <input type="text" class="form-col2 form-row2 form-input-empty" id="out-lstName" onblur="checkInput('out', 'lstName')" />
+            <span class="form-col2 form-row3 text-blutrubin form-err ds-none">Bitte geben Sie Ihren Nachnamen an!</span>
+        
+            <label for="out-street" class="form-col1 form-row3 one-row-gap form-needed-txt text-light">Straße*</label>
+            <input type="text" class="form-col1 form-row4 form-input-empty" id="out-street" onblur="checkInput('out', 'street')" />
+            <span class="form-col1 form-row5 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Straße an!</span>
+        
+            <label for="out-houseNmb" class="form-col2 form-row3 one-row-gap form-needed-txt text-light">Hausnummer*</label>
+            <input type="text" class="form-col2 form-row4 form-input-empty" id="out-houseNmb" onblur="checkInput('out', 'houseNmb')" />
+            <span class="form-col2 form-row5 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Hausnummer an!</span>
+        
+            <label for="out-plz" class="form-col1 form-row5 one-row-gap form-needed-txt text-light">PLZ*</label>
+            <input type="text" class="form-col1 form-row6 form-input-empty" id="out-plz" onblur="checkInput('out', 'plz')" />
+            <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ an!</span>
+        
+            <label for="out-city" class="form-col2 form-row5 one-row-gap form-needed-txt text-light">Stadt*</label>
+            <input type="text" class="form-col2 form-row6 form-input-empty" id="out-city" onblur="checkInput('out', 'city')" />
+            <span class="form-col2 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Stadt an!</span>
+        
+            <label for="out-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
+            <input type="text" class="form-col1 form-row9 form-input-empty" id="out-mail" onblur="checkInput('out', 'mail')" />
+            <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+        
+            <input type="button" value="Absenden" class="form-row14 bg-primary one-row-gap text-light form-button button-confirm"
+                onclick="checkForm('out')" />
+        </form>
+        <div class="ds-grid col-gap" id="out-confirm">
+            <div class="ds-grid bg-light" id="out-confirm-div">
+                <h2 id="out-confirm-h2">Vielen Dank für Ihren Einkauf</h2>
+                <p class="out-confirm-p">Sie erhalten in Kürze eine Bestätigungs E-Mail mit einer Zusammenfassung Ihrer Bestellung.</p>
+                <p class="out-confirm-p">Die Rechnung wird Ihnen an die von Ihnen angegebene Adresse versendet.</p>
+            </div>
+            <a class="bg-primary text-light button-confirm" id="out-confirm-link" href="./index.html">ZUR STARTSEITE</a>
         </div>
     </div>
-    
     <footer class="bg-darkgrey" id="out-foo">
         <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
         <p class="main-p foo-data text-light" id="foo-data-vers">
@@ -98,8 +108,6 @@
                     class="foo-flex-item" /></a>
         </div>
     </footer>
-    
-    <script type="module" src="./CheckoutHandler.js" defer></script>
 </body>
 
 </html>
