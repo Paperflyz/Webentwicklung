@@ -311,7 +311,7 @@ nav li {
 
 a[class*="nav-link"] {
   margin-inline: 2rem;
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-regular); 
   display: block;
 }
 

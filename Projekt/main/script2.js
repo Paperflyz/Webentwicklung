@@ -1,4 +1,4 @@
-import getProducts from "./DataHandler.js";
+import { getProductById, getProductByName, getProducts, writeStorage, readStorage } from "./DataHandler.js";
 const hamburger = document.getElementById("icon-hamburger");
 const hamburger_close = document.getElementById("icon-close");
 const shopSectionContainer = document.querySelector("#shop-section > div");
@@ -13,6 +13,15 @@ const products = getProducts();
 
     })
 });
+
+shopSectionContainer.addEventListener("click", e => {
+  if (!e.target.matches("button")) return;
+
+  const articleName = e.target.closest("article").querySelector("h3");
+  writeStorage(getProductByName(articleName.textContent).id, 1);
+  console.log(getProductByName(articleName.textContent).id);
+  
+})
 
 products.forEach((el, idx) => {
     shopSectionContainer.insertAdjacentHTML(
