@@ -16,7 +16,11 @@ function changeStorage(elementId, change) {
         dataArr.push([elementId, change]);
     } else {
         dataArr[arrI][1] += change;
+        if (dataArr[arrI][1] === 0) {
+            dataArr.splice(arrI, 1);
+        }
     }
+
     localStorage.setItem(itemId, JSON.stringify(dataArr));
 }
 

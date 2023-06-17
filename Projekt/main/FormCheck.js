@@ -80,7 +80,7 @@ function checkForm(idArea) {
 
 
     if (idArea === 'out') {
-        moveOutArea(2);
+        confirmArea(2);
     } else {
         alert('input valid');
     }

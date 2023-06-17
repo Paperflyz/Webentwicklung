@@ -101,31 +101,47 @@ function buildBasket() {
 }
 
 function changeElementAmount() {
-    // Element & Button identifizieren
+    // HTML-Elemente & Produktdaten ermitteln
     let clickBtn = event.target;
     let elementDiv = clickBtn.parentNode.parentNode;
-    let amountChange = (clickBtn.innerHTML === '+') ? 1 : -1;
+    let basketDiv = elementDiv.parentNode;
+
+    let elementName = elementDiv.querySelector('.out-element-desc-title').innerHTML;
+    let productData = getProductByName(elementName);
 
     // Mengenanzeige aktualisieren
+    let amountChange = (clickBtn.innerHTML === '+') ? 1 : -1;
+
     let amountHtml = elementDiv.querySelector('.out-element-amount');
     let smallDiv = (window.getComputedStyle(amountHtml).display != 'none');
+    let newVal = 0;
     if (!smallDiv) {
         amountHtml = elementDiv.querySelector('.out-element-amount-txt');
-        let newVal = parseInt(amountHtml.innerHTML) + amountChange;
+        newVal = parseInt(amountHtml.innerHTML) + amountChange;
         amountHtml.innerHTML = newVal;
     } else {
-        let newVal = parseInt(amountHtml.innerHTML.split(' ')[1]) + amountChange;
+        newVal = parseInt(amountHtml.innerHTML.split(' ')[1]) + amountChange;
         amountHtml.innerHTML = 'Anzahl: ' + newVal;
     }
 
-    // Elementpreis aktualisieren
-    let elementName = elementDiv.querySelector('.out-element-desc-title').innerHTML;
-    let singlePrice = getProductByName(elementName).preis;
-    // TODO
+    if (newVal === 0) {
+        // Amount = 0 (-> Element wird aus Warenkorb entfernt)
+        let possTitleHtml = elementDiv.previousElementSibling.previousElementSibling;
+        if (possTitleHtml.tagName.toLowerCase() === 'h2' && elementDiv.nextElementSibling.tagName.toLowerCase() === 'h2') {
+            basketDiv.removeChild(possTitleHtml);
+        }
+        basketDiv.removeChild(elementDiv.previousSibling);
+        basketDiv.removeChild(elementDiv);
+    }
+
+    // Local Storage aktualisieren
+    changeStorage(productData.id, amountChange);
+
+    // TODO: Elementpreis aktualisieren
 
     // Gesamtpreis aktualisieren
-    let totalHtml = elementDiv.parentNode.querySelector('#out-price-txt');
-    let newPrice = parseFloat(totalHtml.innerHTML.split(' ')[0]) + (amountChange * singlePrice);
+    let totalHtml = basketDiv.querySelector('#out-price-txt');
+    let newPrice = parseFloat(totalHtml.innerHTML.split(' ')[0]) + (amountChange * productData.preis);
     totalHtml.innerHTML = (Math.round(100 * newPrice) / 100).toFixed(2) + ' €';
 }
 
@@ -156,7 +172,14 @@ function changeElementDiv() {
 }
 
 // Div-Wechsel
-function moveOutArea(newAreaId) {
+function confirmArea(newAreaId) {
+    // Wechsel zum nächsten Bereich
     let percent = 100 * newAreaId / 3;
     document.getElementById('out-flex').style.transform = 'translateX(-' + percent + '%)';
+
+    // Bereichspezifische Anweisungen durchführen
+    if (newAreaId === 2) {
+        // Warenkorb aus Local Storage löschen
+        clearStorage();
+    }
 }
