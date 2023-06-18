@@ -327,6 +327,40 @@ a.nav-link-meta {
   font-size: clamp(1rem, 1.5vw, var(--font-size-regular))
 }
 
+a[href*="checkout"] {
+  position: relative;
+}
+
+a.show[href*="checkout"]:after {
+  content: '+ 1';
+  position: absolute;
+  width: 100%;
+  padding: .5rem;
+  background: var(--color-secondary);
+  border-radius: 2rem;
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  top: 150%;
+  left: -10%;
+  opacity: 0%;
+  animation: shine 1s;
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0%
+  }
+
+  50% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
 
 .menu-slide {
   position: absolute;
