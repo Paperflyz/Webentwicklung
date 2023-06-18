@@ -2,13 +2,39 @@ const shopSectionContainer = document.querySelector("#shop-section > div");
 const products = getProducts();
 
 shopSectionContainer.addEventListener("click", e => {
+  /* Use event delegation to prevent many event listeners (for each button) */
   if (!e.target.matches("button")) return;
 
   const articleName = e.target.closest("article").querySelector("h3");
-  changeStorage(getProductByName(articleName.textContent).id, 1);  
+  let inStock = true;
+
+  const storageItemsReduced = 
+  JSON.parse(localStorage.getItem("initialItems"))
+  .map(el => {
+    if(el.name == articleName.textContent){
+      if(el.bestand > 0) el.bestand -= 1;
+      if(el.bestand === 0) { 
+        inStock = false;
+        e.target.disabled = true;
+        e.target.classList.add("disabled");
+      }
+    } 
+    return el;
+  });
+
+  /* Break if there is no stock */
+  if(inStock === false) return;
+
+  /* Change Objects in localStorage with updated stock */
+  localStorage.setItem("initialItems", JSON.stringify(storageItemsReduced));
+
+  /* Necessary for the checkout part */
+  changeStorage(getProductByName(articleName.textContent).id, 1);
+  
 })
 
 products.forEach((el, idx) => {
+  /* Insert all items into DOM from products array */
     shopSectionContainer.insertAdjacentHTML(
         "beforeend",
         `
@@ -27,6 +53,14 @@ products.forEach((el, idx) => {
           </article>
         `
     )
+
+    /* Set Button of all items into disabled if the stock is equal to 0 */
+    const curStorageItem = JSON.parse(localStorage.getItem("initialItems"))[idx];
+    console.log(curStorageItem);
+    if(!curStorageItem.bestand) { 
+      shopSectionContainer.querySelectorAll("button")[idx].disabled = true;
+      shopSectionContainer.querySelectorAll("button")[idx].classList.add("disabled")      
+    }
 })
 
 

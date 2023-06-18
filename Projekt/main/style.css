@@ -586,6 +586,12 @@ INDEX.HTML
   padding-bottom: 10vh;
 }
 
+.header-standard {
+  grid-row-gap: var(--grid-gutter-width);
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
 .main-sect-title {
   grid-row: 1;
   grid-column: 2 / 12;
@@ -999,6 +1005,11 @@ article.card:hover:before {
 article.card button {
   cursor: pointer;
   transition: background .5s ease-in-out;
+}
+
+article.card button.disabled {
+  background: var(--color-gray) !important;
+  cursor: not-allowed;
 }
 
 article.card:hover button {
