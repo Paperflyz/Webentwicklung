@@ -805,7 +805,7 @@ CHECKOUT.HTML
   text-transform: uppercase;
 }
 
-.out-element-desc-title, .out-element-desc-txt {
+.out-element-desc-title, .out-element-desc-txt, .out-element-onePrice, .out-element-totalPrice {
   grid-column: 2 / -2;
 }
 
@@ -843,6 +843,15 @@ CHECKOUT.HTML
   justify-content: center;
   justify-self: center;
   align-items: center;
+}
+
+.out-element-onePrice {
+  font-style: italic;
+}
+
+.out-element-totalPrice {
+  text-align: right;
+  font-weight: var(--font-weight-bold);
 }
 
 #out-price-title, #out-price-txt {
@@ -1290,7 +1299,7 @@ article.card img {
     display: block;
   }
 
-  .out-element-desc-title, .out-element-desc-txt {
+  .out-element-desc-title, .out-element-desc-txt, .out-element-onePrice {
     grid-column: 1 / 6;
   }
 
@@ -1299,7 +1308,7 @@ article.card img {
     grid-row: span 2;
   }
 
-  .out-element-amount-title, .out-element-amount-circle, .out-element-flex {
+  .out-element-amount-title, .out-element-amount-circle, .out-element-flex, .out-element-totalPrice {
     grid-column: -3 / -1;
   }
 
@@ -1319,10 +1328,6 @@ article.card img {
     align-items: center;
   }
 
-  .out-element-flex {
-    grid-row: 3;
-  }
-
   .out-element-amount-txt {
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-bold);
@@ -1330,6 +1335,14 @@ article.card img {
 
   #out-button-confirmBasket {
     grid-column: 9 / 12;
+  }
+
+  .out-element-onePrice {
+    text-align: right;
+  }
+
+  .out-element-totalPrice {
+    text-align: center;
   }
 
 section article:nth-child(odd) {
@@ -1499,11 +1512,11 @@ section article:nth-child(even) {
     grid-template-columns: repeat(6, 1fr);
   }
 
-  .out-element-desc-title, .out-element-desc-txt {
+  .out-element-desc-title, .out-element-desc-txt, .out-element-onePrice {
     grid-column: 1 / 4;
   }
 
-  .out-element-amount-title, .out-element-amount-circle, .out-element-flex {
+  .out-element-amount-title, .out-element-amount-circle, .out-element-flex, .out-element-totalPrice {
     grid-column: -3;
   }
 
