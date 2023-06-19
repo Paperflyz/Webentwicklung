@@ -53,7 +53,7 @@
     <input type="text" class="form-col2 form-row4" id="help-houseNmb" />
 
     <label for="help-plz" class="form-col1 form-row5 one-row-gap text-light">PLZ</label>
-    <input type="text" class="form-col1 form-row6" id="help-plz" onblur="checkInput('help', 'plz')" />
+    <input type="text" class="form-col1 form-row6" id="help-plz" />
     <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ
       an!</span>
 
@@ -61,17 +61,17 @@
     <input type="text" class="form-col2 form-row6" id="help-city" />
 
     <label for="help-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
-    <input type="text" class="form-col1 form-row9 form-input-empty" id="help-mail" onblur="checkInput('help', 'mail')" />
+    <input type="text" class="form-col1 form-row9 form-input-empty" id="help-mail" />
     <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse
       an!</span>
 
     <label for="help-msg" class="form-col form-row11 one-row-gap form-needed-txt text-light">Ihr Anliegen*</label>
-    <textarea class="form-col form-row12 form-input-empty" id="help-msg" placeholder="Bitte eintragen..." onblur="checkInput('help', 'msg')"></textarea>
+    <textarea class="form-col form-row12 form-input-empty" id="help-msg" placeholder="Bitte eintragen..."></textarea>
     <span class="form-col form-row13 text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
 
     <span class="form-col1 form-row14 one-row-gap form-desc text-lightgray">* = verpflichtende Eingabe</span>
     <input type="button" value="Absenden"
-      class="form-row14 bg-primary one-row-gap text-light form-button button-confirm" onclick="checkForm('help')" />
+      class="form-row14 bg-primary one-row-gap text-light form-button button-confirm" />
   </form>
 
   <footer class="bg-darkgrey">

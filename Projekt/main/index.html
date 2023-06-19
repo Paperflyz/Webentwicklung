@@ -49,74 +49,76 @@
     </div>
   </nav>
 
-  <header class="col-12 ds-grid col-gap" id="main-header">
+  <header class="ds-flex col-12" id="main-header">
     <h1 class="text-light" id="main-header-title">Erwecke dein Event zum Leben</h1>
     <h2 class="text-primary" id="main-header-txt">
       Entdecke die Vielfalt unserer Bauteile und erschaffe etwas Einzigartiges
     </h2>
-    <button class="bg-secondary btn-pill text-light" id="main-header-btn">
+    <a class="bg-secondary btn-pill text-light" id="main-header-btn" href="./shop.html">
       Jetzt loslegen und gestalten!
-    </button>
+    </a>
   </header>
 
-  <section class="ds-grid col-gap bg-darken col-12 section-standard" id="main-sect2">
-    <h2 class="text-light main-sect-title">H2 Über DreamScape Events</h2>
-    <p class="text-light main-sect-txt">
-      Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
-      Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-      mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-      tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-      suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
-      ante fermentum sit amet.
-    </p>
-
-    <img src="./assets/graphics/denis.jpg" class="person-image" id="denis-img" />
-    <p class="person-text text-light" id="denis-txt">
-      Denis Kudic<br>Event Manager
-    </p>
-
-    <img src="./assets/graphics/sebastian.jpg" class="person-image" id="seb-img" />
-    <p class="person-text text-light" id="seb-txt">
-      Sebastian Rose<br>Event Manager
-    </p>
+  <section class="bg-darken grid-full-wid section-standard" id="main-sect2">
+    <div class="ds-grid col-gap main-sect-grid" id="main-sect2-grid">
+      <h2 class="text-light main-sect-title grid-full-wid">H2 Über DreamScape Events</h2>
+      <p class="text-light main-sect-txt">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
+        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
+        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
+        suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
+        ante fermentum sit amet.
+      </p>
+  
+      <img src="./assets/graphics/denis.jpg" class="person-image" id="denis-img" />
+      <p class="person-text text-light" id="denis-txt">
+        Denis Kudic<br>Event Manager
+      </p>
+  
+      <img src="./assets/graphics/sebastian.jpg" class="person-image" id="seb-img" />
+      <p class="person-text text-light" id="seb-txt">
+        Sebastian Rose<br>Event Manager
+      </p>
+    </div>
   </section>
 
-  <section class="ds-grid col-gap bg-primary col-12 section-standard" id="main-sect3">
-    <h2 class="text-dark main-sect-title">H3 Lorem Ipsum</h2>
-    <p class="text-dark main-sect-txt">
-      Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
-      Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-      mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-      tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-      suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
-      ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
-      Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In
-      iaculis arcu eros, eget tempus orci facilisis id. Praesent lorem orci,
-      mattis non efficitur id, ultricies vel nibh. Sed volutpat lacus vitae
-      gravida viverra. Fusce vel tempor elit. Proin tempus,.
-    </p>
-
-    <img src="./assets/graphics/example.jpg" id="main-sect3-img" />
+  <section class="bg-primary grid-full-wid section-standard" id="main-sect3">
+    <div class="ds-grid col-gap main-sect-grid" id="main-sect3-grid">
+      <h2 class="text-dark main-sect-title grid-full-wid">H3 Lorem Ipsum</h2>
+      <p class="text-dark main-sect-txt">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi.
+        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
+        tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
+        suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus
+        ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales.
+        Quisque sagittis orci ut diam condimentum, vel euismod erat placerat. In
+        iaculis arcu eros, eget tempus orci facilisis id. Praesent lorem orci,
+        mattis non efficitur id, ultricies vel nibh. Sed volutpat lacus vitae
+        gravida viverra. Fusce vel tempor elit. Proin tempus,.
+      </p>
+  
+      <img src="./assets/graphics/example.jpg" id="main-sect3-img" />
+    </div>
   </section>
 
-  <section class="ds-grid col-gap bg-darken col-12 section-standard" id="main-sect4">
-    <h2 class="text-light main-sect-title" id="main-sect4-h2">H4 Lorem Ipsum</h2>
-    <div class="bg-primary main-sect4-activeTab" id="main-sect4-tab1" onclick="switchTab(0)">
-      <p class="text-dark">Lorem Ipsum</p>
-    </div>
-    <div class="bg-secondary main-sect4-hiddenTab" id="main-sect4-tab2" onclick="switchTab(1)">
-      <p class="text-dark">Lorem Ipsum</p>
-    </div>
-    <div class="bg-light main-sect4-tabcontainer" id="main-sect4-tabcontainer1">
-      <p class="main-p">Test 1</p>
-      <p class="main-p">Test 1</p>
-      <p class="main-p">Test 1</p>
-    </div>
-    <div class="bg-light main-sect4-tabcontainer" id="main-sect4-tabcontainer2">
-      <p class="main-p">Test 2</p>
-      <p class="main-p">Test 2</p>
-      <p class="main-p">Test 2</p>
-      <p class="main-p">Test 2</p>
+  <section class="bg-darken grid-full-wid section-standard" id="main-sect4">
+    <div class="ds-grid col-gap main-sect-grid" id="main-sect4-grid">
+      <h2 class="text-light main-sect-title grid-full-wid" id="main-sect4-h2">H4 Lorem Ipsum</h2>
+      <p class="bg-primary main-sect4-activeTab text-dark" id="main-sect4-tab1">Lorem</p>
+      <p class="bg-secondary main-sect4-hiddenTab text-dark" id="main-sect4-tab2">Lorem Ipsum</p>
+      <div class="bg-light main-sect4-tabcontainer grid-full-wid" id="main-sect4-tabcontainer1">
+        <p class="main-p">Test 1</p>
+        <p class="main-p">Test 1</p>
+        <p class="main-p">Test 1</p>
+      </div>
+      <div class="bg-light main-sect4-tabcontainer grid-full-wid" id="main-sect4-tabcontainer2">
+        <p class="main-p">Test 2</p>
+        <p class="main-p">Test 2</p>
+        <p class="main-p">Test 2</p>
+        <p class="main-p">Test 2</p>
+      </div>
     </div>
   </section>
 

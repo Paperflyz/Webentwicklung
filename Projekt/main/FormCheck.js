@@ -1,5 +1,13 @@
 // Needed: 'General.js'
 
+document.getElementsByClassName('form-button')[0].addEventListener('click', checkForm);
+for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
+    aElement.addEventListener('blur', function() {
+        let idParts = event.target.getAttribute('id').split('-');
+        checkInput(idParts[0], idParts[1]);
+    });
+}
+
  function checkInput(idArea, idField) {
     // HTML-Elemente identifizieren
     let htmlForm = document.getElementsByTagName('form')[0];
@@ -42,9 +50,9 @@
     }
 
     // Auswertung der Kontrolle (d.h. HTML-Elemente anpassen)
-    if (isValid && !isEmpty) {
+    if (inputNeeded && isValid && !isEmpty) {
         htmlInput.classList.add('form-input-true');
-    } else if (!isValid) {
+    } else if (inputNeeded && !isValid) {
         htmlInput.classList.add('form-input-false');
         htmlSpan.classList.remove('ds-none');
     }
@@ -53,7 +61,18 @@
 
 
 
-function checkForm(idArea) {
+function checkForm() {
+    // HTML-Seite bestimmen
+    let idArea = '';
+    switch (document.URL.split('/')[3]) {
+        case 'support.html':
+            idArea = 'help';
+            break;
+        case 'checkout.html':
+            idArea = 'out';
+            break;
+    }
+
     // Eingabe kontrollieren
     let allIdFields = ['fstName', 'lstName', 'street', 'houseNmb', 'plz', 'city', 'mail'];
     if (idArea === 'help') {

@@ -1,3 +1,6 @@
+document.getElementById('main-sect4-tab1').addEventListener('click', function() { switchTab(0); });
+document.getElementById('main-sect4-tab2').addEventListener('click', function() { switchTab(1); });
+
 function switchTab(tabI) {
     let tabId = "main-sect4-tab";
     let cntId = "main-sect4-tabcontainer";

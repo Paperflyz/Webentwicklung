@@ -44,40 +44,39 @@
     <div class="ds-flex" id="out-flex">
         <div class="ds-grid grid-row-gap" id="out-basket">
             <span class="ds-none text-light" id="out-empty">Warenkorb ist leer! :(</span>
-            <button class="bg-primary text-light button-confirm" id="out-button-confirmBasket" onclick="confirmArea(1)">Bestätigen</button>
+            <button class="bg-primary text-light button-confirm" id="out-button-confirmBasket">Bestätigen</button>
         </div>
         <form class="ds-grid col-gap form">
             <label for="out-fstName" class="form-col1 form-row1 one-row-gap form-needed-txt text-light" id="test1">Vorname*</label>
-            <input type="text" class="form-col1 form-row2 form-input-empty" id="out-fstName" onblur="checkInput('out', 'fstName')" />
+            <input type="text" class="form-col1 form-row2 form-input-empty" id="out-fstName" />
             <span class="form-col1 form-row3 text-blutrubin form-err ds-none" id="test2">Bitte geben Sie Ihren Vornamen an!</span>
         
             <label for="out-lstName" class="form-col2 form-row1 one-row-gap form-needed-txt text-light">Nachname*</label>
-            <input type="text" class="form-col2 form-row2 form-input-empty" id="out-lstName" onblur="checkInput('out', 'lstName')" />
+            <input type="text" class="form-col2 form-row2 form-input-empty" id="out-lstName" />
             <span class="form-col2 form-row3 text-blutrubin form-err ds-none">Bitte geben Sie Ihren Nachnamen an!</span>
         
             <label for="out-street" class="form-col1 form-row3 one-row-gap form-needed-txt text-light">Straße*</label>
-            <input type="text" class="form-col1 form-row4 form-input-empty" id="out-street" onblur="checkInput('out', 'street')" />
+            <input type="text" class="form-col1 form-row4 form-input-empty" id="out-street" />
             <span class="form-col1 form-row5 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Straße an!</span>
         
             <label for="out-houseNmb" class="form-col2 form-row3 one-row-gap form-needed-txt text-light">Hausnummer*</label>
-            <input type="text" class="form-col2 form-row4 form-input-empty" id="out-houseNmb" onblur="checkInput('out', 'houseNmb')" />
+            <input type="text" class="form-col2 form-row4 form-input-empty" id="out-houseNmb" />
             <span class="form-col2 form-row5 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Hausnummer an!</span>
         
             <label for="out-plz" class="form-col1 form-row5 one-row-gap form-needed-txt text-light">PLZ*</label>
-            <input type="text" class="form-col1 form-row6 form-input-empty" id="out-plz" onblur="checkInput('out', 'plz')" />
+            <input type="text" class="form-col1 form-row6 form-input-empty" id="out-plz" />
             <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ an!</span>
         
             <label for="out-city" class="form-col2 form-row5 one-row-gap form-needed-txt text-light">Stadt*</label>
-            <input type="text" class="form-col2 form-row6 form-input-empty" id="out-city" onblur="checkInput('out', 'city')" />
+            <input type="text" class="form-col2 form-row6 form-input-empty" id="out-city" />
             <span class="form-col2 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Stadt an!</span>
         
             <label for="out-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
-            <input type="text" class="form-col1 form-row9 form-input-empty" id="out-mail" onblur="checkInput('out', 'mail')" />
+            <input type="text" class="form-col1 form-row9 form-input-empty" id="out-mail" />
             <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
         
             <span class="form-col1 form-row11 one-row-gap form-desc text-lightgray">* = verpflichtende Eingabe</span>
-            <input type="button" value="Absenden" class="form-row11 bg-primary one-row-gap text-light form-button button-confirm"
-                onclick="checkForm('out')" />
+            <input type="button" value="Absenden" class="form-row11 bg-primary one-row-gap text-light form-button button-confirm" />
         </form>
         <div class="ds-grid col-gap" id="out-confirm">
             <div class="ds-grid bg-light" id="out-confirm-div">

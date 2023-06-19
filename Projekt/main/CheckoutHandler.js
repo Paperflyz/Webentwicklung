@@ -1,5 +1,7 @@
 // Needed: 'General.js' & 'DataHandler.js'
 
+document.getElementById('out-button-confirmBasket').addEventListener('click', function() { confirmArea(1); });
+
 // Funktion: Ausgewählte Elemente ermitteln & in Checkout-Page einfügen
 function buildBasket() {
     let basketButton = document.getElementById('out-button-confirmBasket');
