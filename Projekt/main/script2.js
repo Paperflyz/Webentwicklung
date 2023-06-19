@@ -1,6 +1,6 @@
 const shopSectionContainer = document.querySelector("#shop-section > div");
 const products = getProducts();
-const shopIconElement = document.getElementById("shop-icon");
+const shopIconElement = document.querySelector(".shop-icon");
 
 shopSectionContainer.addEventListener("click", e => {
   /* Use event delegation to prevent many event listeners (for each button) */

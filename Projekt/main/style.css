@@ -365,15 +365,15 @@ a.show[href*="checkout"]:after {
 .menu-slide {
   position: absolute;
   top: var(--nav-height);
-  left: -100%;
+  right: 100%;
   width: 100vw;
   height: calc(100vh - var(--nav-height));
-  transition: left 0.5s ease-in;
+  transition: right 0.5s ease-in;
   z-index: 1;
 }
 
 .menu-slide.show {
-  left: 0;
+  right: 0;
 }
 
 .menu-slide ul {
