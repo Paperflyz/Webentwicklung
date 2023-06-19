@@ -1,5 +1,5 @@
-const hamburger = document.getElementById("icon-hamburger");
-const hamburger_close = document.getElementById("icon-close");
+const hamburger = document.querySelector(".icon-hamburger");
+const hamburger_close = document.querySelector(".icon-close");
 
 function lockButton(button) {
     button.setAttribute('disabled', '');
