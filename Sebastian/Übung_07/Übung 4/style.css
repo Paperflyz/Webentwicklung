@@ -1,0 +1,15 @@
+.gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: .5rem .1rem;
+}
+
+.item {
+    background-color: orange;
+    border: 3px solid #333;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+    font-family: "Arial"
+}

@@ -1,0 +1,28 @@
+ul {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+li {
+    flex: auto;
+    padding: 3.5em;
+    margin: 3;
+}
+
+li:nth-child(3) {
+    flex: 100%;
+}
+
+
+/* Ignore below*/
+ul {
+    margin-left: -40px;
+}
+
+li {
+    background: #0be;
+    border: 2px solid #0088ff;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    list-style: none;
+}

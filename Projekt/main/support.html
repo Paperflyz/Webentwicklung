@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="FormCheck.js" defer></script>
+  <script src="./General.js" defer></script>
+  <title>Support</title>
+</head>
+
+
+<body class="ds-grid grid-row-gap col-gap bg-darken" id="help-grid">
+
+  <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+    <a href="./index.html"><img id="logo" src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" /></a>
+    <ul class="p-0 text-uppercase ds-flex bullet-unstyled justify-content-end align-items-center">
+      <li><a href="./shop.html" class="text-light text-decoration-none nav-link-meta">Produktauswahl</a></li>
+      <li><a href="./impressum.html" class="text-light text-decoration-none nav-link-meta">Impressum</a></li>
+      <li><a href="./datenschutz.html" class="text-light text-decoration-none nav-link-meta">Datenschutz</a></li>
+      <li><img id="icon-hamburger" class="icon-nav ds-lg-none" src="./assets/icons/hamburger.svg" alt="Ein Hamburger-Icon um zwischen dem Navigationsmenü zu schalten."></i></li>
+      <li><img id="icon-close" class="icon-nav ds-none ds-lg-none" src="./assets/icons/hamburger-closed.svg" alt="Ein Schließ-Icon um zwischen dem Navigationsmenü zu schalten. "></i></li>
+      <li><a href="./support.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/mail.svg" alt="Ein Grün-Farbenes Briefsymbol als illustratives Icon"></a></li>
+      <li><a href="./checkout.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/shopping-trolley.svg" alt="Ein Orange-Farbener Einkaufswagen als illustratives Icon"></a></li>
+    </ul>
+    <div class="menu-slide bg-darken">
+      <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0 text-center">
+        <li><a href="./shop.html" class="text-light text-decoration-none nav-link">Zur Produktauswahl</a></li>
+        <li><a href="./impressum.html" class="text-light text-decoration-none nav-link">Impressum</a></li>
+        <li><a href="./datenschutz.html" class="text-light text-decoration-none nav-link">Datenschutz</a></li>
+        <li><a href="./support.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/mail.svg" alt="Ein Grün-Farbenes Briefsymbol als illustratives Icon"></a></li>
+        <li><a href="./checkout.html"><img src="./assets/icons/shopping-trolley.svg" alt="Ein Orange-Farbener Einkaufswagen als illustratives Icon"></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1 class="text-light" id="help-title">H1 Sie haben Fragen?</h1>
+  <p class="text-light" id="help-text">Erklärung zu Fragen</p>
+
+  <form class="ds-grid col-gap form">
+    <label for="help-fstName" class="form-col1 form-row1 one-row-gap text-light">Vorname</label>
+    <input type="text" class="form-col1 form-row2" id="help-fstName" />
+
+    <label for="help-lstName" class="form-col2 form-row1 one-row-gap text-light">Nachname</label>
+    <input type="text" class="form-col2 form-row2" id="help-lstName" />
+
+    <label for="help-street" class="form-col1 form-row3 one-row-gap text-light">Straße</label>
+    <input type="text" class="form-col1 form-row4" id="help-street" />
+
+    <label for="help-houseNmb" class="form-col2 form-row3 one-row-gap text-light">Hausnummer</label>
+    <input type="text" class="form-col2 form-row4" id="help-houseNmb" />
+
+    <label for="help-plz" class="form-col1 form-row5 one-row-gap text-light">PLZ</label>
+    <input type="text" class="form-col1 form-row6" id="help-plz" onblur="checkInput('help', 'plz')" />
+    <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ
+      an!</span>
+
+    <label for="help-city" class="form-col2 form-row5 one-row-gap text-light">Stadt</label>
+    <input type="text" class="form-col2 form-row6" id="help-city" />
+
+    <label for="help-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
+    <input type="text" class="form-col1 form-row9 form-input-empty" id="help-mail" onblur="checkInput('help', 'mail')" />
+    <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse
+      an!</span>
+
+    <label for="help-msg" class="form-col form-row11 one-row-gap form-needed-txt text-light">Ihr Anliegen*</label>
+    <textarea class="form-col form-row12 form-input-empty" id="help-msg" placeholder="Bitte eintragen..." onblur="checkInput('help', 'msg')"></textarea>
+    <span class="form-col form-row13 text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
+
+    <span class="form-col1 form-row14 one-row-gap form-desc text-lightgray">* = verpflichtende Eingabe</span>
+    <input type="button" value="Absenden"
+      class="form-row14 bg-primary one-row-gap text-light form-button button-confirm" onclick="checkForm('help')" />
+  </form>
+
+  <footer class="bg-darkgrey">
+    <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
+    <p class="main-p foo-data text-light" id="foo-data-vers">
+      2023 © Edition
+    </p>
+    <p class="foo-title text-lightgray" id="foo-title-time">Local Time</p>
+    <p class="main-p foo-data text-light" id="foo-data-time">
+      11:59 pm [DUMMY!!]
+    </p>
+    <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
+    <div class="ds-flex foo-data" id="foo-soci-container">
+      <a href="https://www.facebook.com/" target="_blank"><img src="./assets/icons/facebook.svg"
+          class="foo-flex-item" /></a>
+      <a href="https://www.instagram.com/" target="_blank"><img src="./assets/icons/instagram.svg"
+          class="foo-flex-item" /></a>
+    </div>
+  </footer>
+</body>
+
+</html>

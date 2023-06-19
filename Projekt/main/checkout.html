@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <script src="./DataHandler.js" defer></script>
+    <script src="./FormCheck.js" defer></script>
+    <script src="./General.js" defer></script>
+    <script src="./CheckoutHandler.js" defer></script>
+
+    <title>Warenkorb</title>
+</head>
+
+<body class="bg-darken" onload="buildBasket()">
+
+    <div class="ds-grid grid-row-gap" id="out-grid">
+        <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+            <a href="./index.html"><img id="logo" src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" /></a>
+            <ul class="p-0 text-uppercase ds-flex bullet-unstyled justify-content-end align-items-center">
+              <li><a href="./shop.html" class="text-light text-decoration-none nav-link-meta">Produktauswahl</a></li>
+              <li><a href="./impressum.html" class="text-light text-decoration-none nav-link-meta">Impressum</a></li>
+              <li><a href="./datenschutz.html" class="text-light text-decoration-none nav-link-meta">Datenschutz</a></li>
+              <li><img id="icon-hamburger" class="icon-nav ds-lg-none" src="./assets/icons/hamburger.svg" alt="Ein Hamburger-Icon um zwischen dem Navigationsmenü zu schalten."></i></li>
+              <li><img id="icon-close" class="icon-nav ds-none ds-lg-none" src="./assets/icons/hamburger-closed.svg" alt="Ein Schließ-Icon um zwischen dem Navigationsmenü zu schalten. "></i></li>
+              <li><a href="./support.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/mail.svg" alt="Ein Grün-Farbenes Briefsymbol als illustratives Icon"></a></li>
+              <li><a href="./checkout.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/shopping-trolley.svg" alt="Ein Orange-Farbener Einkaufswagen als illustratives Icon"></a></li>
+            </ul>
+            <div class="menu-slide bg-darken">
+              <ul class="bullet-unstyled ds-flex justify-content-around align-items-center flex-flow-column p-0 text-center">
+                <li><a href="./shop.html" class="text-light text-decoration-none nav-link">Zur Produktauswahl</a></li>
+                <li><a href="./impressum.html" class="text-light text-decoration-none nav-link">Impressum</a></li>
+                <li><a href="./datenschutz.html" class="text-light text-decoration-none nav-link">Datenschutz</a></li>
+                <li><a href="./support.html"><img class="ds-none ds-lg-block icon-nav" src="./assets/icons/mail.svg" alt="Ein Grün-Farbenes Briefsymbol als illustratives Icon"></a></li>
+                <li><a href="./checkout.html"><img src="./assets/icons/shopping-trolley.svg" alt="Ein Orange-Farbener Einkaufswagen als illustratives Icon"></a></li>
+              </ul>
+            </div>
+          </nav>
+    
+        <h1 class="text-light" id="out-title">Shopseite > Warenkorb</h1>
+    </div>
+
+    <div class="ds-flex" id="out-flex">
+        <div class="ds-grid grid-row-gap" id="out-basket">
+            <span class="ds-none text-light" id="out-empty">Warenkorb ist leer! :(</span>
+            <button class="bg-primary text-light button-confirm" id="out-button-confirmBasket" onclick="confirmArea(1)">Bestätigen</button>
+        </div>
+        <form class="ds-grid col-gap form">
+            <label for="out-fstName" class="form-col1 form-row1 one-row-gap form-needed-txt text-light" id="test1">Vorname*</label>
+            <input type="text" class="form-col1 form-row2 form-input-empty" id="out-fstName" onblur="checkInput('out', 'fstName')" />
+            <span class="form-col1 form-row3 text-blutrubin form-err ds-none" id="test2">Bitte geben Sie Ihren Vornamen an!</span>
+        
+            <label for="out-lstName" class="form-col2 form-row1 one-row-gap form-needed-txt text-light">Nachname*</label>
+            <input type="text" class="form-col2 form-row2 form-input-empty" id="out-lstName" onblur="checkInput('out', 'lstName')" />
+            <span class="form-col2 form-row3 text-blutrubin form-err ds-none">Bitte geben Sie Ihren Nachnamen an!</span>
+        
+            <label for="out-street" class="form-col1 form-row3 one-row-gap form-needed-txt text-light">Straße*</label>
+            <input type="text" class="form-col1 form-row4 form-input-empty" id="out-street" onblur="checkInput('out', 'street')" />
+            <span class="form-col1 form-row5 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Straße an!</span>
+        
+            <label for="out-houseNmb" class="form-col2 form-row3 one-row-gap form-needed-txt text-light">Hausnummer*</label>
+            <input type="text" class="form-col2 form-row4 form-input-empty" id="out-houseNmb" onblur="checkInput('out', 'houseNmb')" />
+            <span class="form-col2 form-row5 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Hausnummer an!</span>
+        
+            <label for="out-plz" class="form-col1 form-row5 one-row-gap form-needed-txt text-light">PLZ*</label>
+            <input type="text" class="form-col1 form-row6 form-input-empty" id="out-plz" onblur="checkInput('out', 'plz')" />
+            <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ an!</span>
+        
+            <label for="out-city" class="form-col2 form-row5 one-row-gap form-needed-txt text-light">Stadt*</label>
+            <input type="text" class="form-col2 form-row6 form-input-empty" id="out-city" onblur="checkInput('out', 'city')" />
+            <span class="form-col2 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie Ihre Stadt an!</span>
+        
+            <label for="out-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
+            <input type="text" class="form-col1 form-row9 form-input-empty" id="out-mail" onblur="checkInput('out', 'mail')" />
+            <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+        
+            <span class="form-col1 form-row11 one-row-gap form-desc text-lightgray">* = verpflichtende Eingabe</span>
+            <input type="button" value="Absenden" class="form-row11 bg-primary one-row-gap text-light form-button button-confirm"
+                onclick="checkForm('out')" />
+        </form>
+        <div class="ds-grid col-gap" id="out-confirm">
+            <div class="ds-grid bg-light" id="out-confirm-div">
+                <h2 id="out-confirm-h2">Vielen Dank für Ihren Einkauf</h2>
+                <p class="out-confirm-p">Sie erhalten in Kürze eine Bestätigungs E-Mail mit einer Zusammenfassung Ihrer Bestellung.</p>
+                <p class="out-confirm-p">Die Rechnung wird Ihnen an die von Ihnen angegebene Adresse versendet.</p>
+            </div>
+            <a class="bg-primary text-light button-confirm" id="out-confirm-link" href="./index.html">ZUR STARTSEITE</a>
+        </div>
+    </div>
+    <footer class="bg-darkgrey" id="out-foo">
+        <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>
+        <p class="main-p foo-data text-light" id="foo-data-vers">
+            2023 © Edition
+        </p>
+        <p class="foo-title text-lightgray" id="foo-title-time">Local Time</p>
+        <p class="main-p foo-data text-light" id="foo-data-time">
+            11:59 pm [DUMMY!!]
+        </p>
+        <p class="foo-title text-lightgray" id="foo-title-soci">Socials</p>
+        <div class="ds-flex foo-data" id="foo-soci-container">
+            <a href="https://www.facebook.com/" target="_blank"><img src="./assets/icons/facebook.svg"
+                    class="foo-flex-item" /></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="./assets/icons/instagram.svg"
+                    class="foo-flex-item" /></a>
+        </div>
+    </footer>
+</body>
+
+</html>
