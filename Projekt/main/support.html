@@ -12,9 +12,9 @@
 </head>
 
 
-<body class="ds-grid grid-row-gap col-gap bg-darken" id="help-grid">
+<body class="ds-grid grid-row-gap bg-darken" id="help-grid">
 
-  <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
+  <nav class="ds-flex justify-content-around grid-full-wid bg-darken align-items-center">
     <a href="./index.html"><img id="logo" src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" /></a>
     <ul class="p-0 text-uppercase ds-flex bullet-unstyled justify-content-end align-items-center">
       <li><a href="./shop.html" class="text-light text-decoration-none nav-link-meta">Produktauswahl</a></li>
@@ -37,41 +37,48 @@
   </nav>
 
   <h1 class="text-light" id="help-title">H1 Sie haben Fragen?</h1>
-  <p class="text-light" id="help-text">Erklärung zu Fragen</p>
 
-  <form class="ds-grid col-gap form">
-    <label for="help-fstName" class="form-col1 form-row1 one-row-gap text-light">Vorname</label>
-    <input type="text" class="form-col1 form-row2" id="help-fstName" />
-
-    <label for="help-lstName" class="form-col2 form-row1 one-row-gap text-light">Nachname</label>
-    <input type="text" class="form-col2 form-row2" id="help-lstName" />
-
-    <label for="help-street" class="form-col1 form-row3 one-row-gap text-light">Straße</label>
-    <input type="text" class="form-col1 form-row4" id="help-street" />
-
-    <label for="help-houseNmb" class="form-col2 form-row3 one-row-gap text-light">Hausnummer</label>
-    <input type="text" class="form-col2 form-row4" id="help-houseNmb" />
-
-    <label for="help-plz" class="form-col1 form-row5 one-row-gap text-light">PLZ</label>
-    <input type="text" class="form-col1 form-row6" id="help-plz" />
-    <span class="form-col1 form-row7 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ
-      an!</span>
-
-    <label for="help-city" class="form-col2 form-row5 one-row-gap text-light">Stadt</label>
-    <input type="text" class="form-col2 form-row6" id="help-city" />
-
-    <label for="help-mail" class="form-col1 form-row8 one-row-gap form-needed-txt text-light">E-Mail*</label>
-    <input type="text" class="form-col1 form-row9 form-input-empty" id="help-mail" />
-    <span class="form-col1 form-row10 text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse
-      an!</span>
-
-    <label for="help-msg" class="form-col form-row11 one-row-gap form-needed-txt text-light">Ihr Anliegen*</label>
-    <textarea class="form-col form-row12 form-input-empty" id="help-msg" placeholder="Bitte eintragen..."></textarea>
-    <span class="form-col form-row13 text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
-
-    <span class="form-col1 form-row14 one-row-gap form-desc text-lightgray">* = verpflichtende Eingabe</span>
-    <input type="button" value="Absenden"
-      class="form-row14 bg-primary one-row-gap text-light form-button button-confirm" />
+  <form class="ds-grid grid-col-gap form" id="help-form">
+    <div class="ds-flex grid-row-gap grid-col-gap grid-full-wid form-flex">
+      <div class="ds-flex form-container form-fstName">
+        <label for="help-fstName" class="text-light" id="test1">Vorname</label>
+        <input type="text" id="help-fstName" />
+      </div>
+      <div class="ds-flex form-container form-lstName">
+        <label for="help-lstName" class="text-light">Nachname</label>
+        <input type="text" id="help-lstName" />
+      </div>
+      <div class="ds-flex form-container form-street">
+        <label for="help-street" class="text-light">Straße</label>
+        <input type="text" id="help-street" />
+      </div>
+      <div class="ds-flex form-container form-houseNmb">
+        <label for="help-houseNmb" class="text-light">Hausnummer</label>
+        <input type="text" id="help-houseNmb" />
+      </div>
+      <div class="ds-flex form-container form-plz">
+        <label for="help-plz" class="text-light">PLZ</label>
+        <input type="text" id="help-plz" />
+        <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ an!</span>
+      </div>
+      <div class="ds-flex form-container form-city">
+        <label for="help-city" class="text-light">Stadt</label>
+        <input type="text" id="help-city" />
+      </div>
+      <div class="ds-flex form-container form-mail">
+        <label for="help-mail" class="form-needed-txt text-light">E-Mail*</label>
+        <input type="text" class="form-input-empty" id="help-mail" />
+        <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+      </div>
+      <div class="ds-flex form-container form-msg">
+        <label for="help-msg" class="form-needed-txt text-light">Ihr Anliegen*</label>
+        <textarea class="form-input-empty" id="help-msg" placeholder="Bitte eintragen..."></textarea>
+        <span class="text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
+      </div>
+    </div>
+  
+    <span class="form-desc text-lightgray">* = verpflichtende Eingabe</span>
+    <input type="button" value="Absenden" class="bg-primary text-light form-button button-confirm" />
   </form>
 
   <footer class="bg-darkgrey">
