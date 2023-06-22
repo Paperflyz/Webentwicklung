@@ -14,6 +14,7 @@ function buildBasket() {
         return;
     }
 
+    // Produktdaten der ausgewählten ID's ermitteln
     let elementData = [];
     let totalPrice = 0;
     for (let chosenArr of storageDataArr) {
@@ -38,18 +39,6 @@ function buildBasket() {
             themeObj[aTheme] = [];
         }
         themeObj[aTheme].push(aElement);
-    }
-
-
-    // Gegenstände alphabetisch sortieren (nach Name)
-    for (let i = elementData.length - 2; i >= 0; i--) {
-        for (let j = 0; j <= i; j++) {
-            if (elementData[j].name.localeCompare(elementData[j + 1].name) > -1) {
-                let temp = elementData[j];
-                elementData[j] = elementData[j + 1];
-                elementData[j + 1] = temp;
-            }
-        }
     }
 
     // Kategorien einfügen

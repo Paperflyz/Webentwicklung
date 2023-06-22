@@ -14,6 +14,7 @@ function changeStorage(elementId, change) {
 
     if (arrI === -1) {
         dataArr.push([elementId, change]);
+        arrI = dataArr.length - 1;
     } else {
         dataArr[arrI][1] += change;
         if (dataArr[arrI][1] === 0) {
@@ -22,6 +23,7 @@ function changeStorage(elementId, change) {
     }
 
     localStorage.setItem(itemId, JSON.stringify(dataArr));
+    return dataArr[arrI][1];
 }
 
 function readStorage() {
@@ -61,103 +63,112 @@ function getProducts() {
     return [
         {
             "id": 1,
-            "name": "Ballon",
-            "pfad": "balloons.jpg",
-            "preis": 1.99,
-            "beschreibung": "Flieg hoch und verbreite Freude!",
-            "kategorie": "Event",
-            "alt": "16 Luftballons in verschiedenen Farben steigen im Himmel empor",
-            "bestand": 7
-        },
-        {
+            "name": "Halle",
+            "pfad": "halle.png",
+            "preis": 199.99,
+            "beschreibung": "Eine gemütliche und große Halle für Events jeglicher Art!<br>Halle beinhaltet Toiletten und Waschbecken.",
+            "kategorie": "Standort",
+            "alt": "Frontalansicht einer Halle mit 9 Metallsäulen und einem durchsichtigem Dach.",
+            "bestand": 1
+        }, {
             "id": 2,
-            "name": "Becher",
-            "pfad": "cup.jpg",
-            "preis": 0.99,
-            "beschreibung": "Genieße deinen Lieblingsdrink in Style!",
-            "kategorie": "Geschirr",
-            "alt": "2 Papierbecher liegen quer auf einer grauen Oberfläche",
-            "bestand": 12
-        },
-        {
+            "name": "Wiese",
+            "pfad": "empty.png",
+            "preis": 199.99,
+            "beschreibung": "Eine Location unter den Sternen!",
+            "kategorie": "Standort",
+            "alt": "Frontalansicht einer Halle mit 9 Metallsäulen und einem durchsichtigem Dach.",
+            "bestand": 1
+        }, {
             "id": 3,
-            "name": "Desinfektionsmittel",
-            "pfad": "desinfektion.jpg",
-            "preis": 4.99,
-            "beschreibung": "Halte Keime fern und bleibe gesund!",
-            "kategorie": "Hygiene",
-            "alt": "Zwei Hände eines Mannes mit schwarzem T-Shirt hält in der rechten Hand Desinfektionsmittel mit hellblauer Kappe.",
-            "bestand": 5
-        },
-        {
+            "name": "Eigenfläche",
+            "pfad": "empty.png",
+            "preis": 0.00,
+            "beschreibung": "Auf dem eigenen Grundstück ist es doch am Gemütlichsten!",
+            "kategorie": "Standort",
+            "alt": "Frontalansicht einer Halle mit 9 Metallsäulen und einem durchsichtigem Dach.",
+            "bestand": 1
+        }, {
             "id": 4,
             "name": "Zaun",
             "pfad": "fence.jpg",
             "preis": 19.99,
-            "beschreibung": "Gib deinem Garten einen neuen Look!",
-            "kategorie": "Event",
+            "beschreibung": "Gib deinem Garten einen neuen Look!<br>pro Anzahl: 30 Meter Zaun",
+            "kategorie": "Erweiterungen",
             "alt": "Frontalansicht eines dunkelblauen Drahtzaunes und im hintergrund eine gemähte Wiese.",
             "bestand": 3
-        },
-        {
+        }, {
             "id": 5,
-            "name": "Halle",
-            "pfad": "halle.png",
-            "preis": 199.99,
-            "beschreibung": "Die perfekte Location für deine Veranstaltungen!",
-            "kategorie": "Event",
-            "alt": "Frontalansicht einer Halle mit 9 Metallsäulen und einem durchsichtigem Dach.",
-            "bestand": 1
-        },
-        {
+            "name": "Ballon",
+            "pfad": "balloons.jpg",
+            "preis": 1.99,
+            "beschreibung": "Flieg hoch und verbreite Freude!",
+            "kategorie": "Dekoration",
+            "alt": "16 Luftballons in verschiedenen Farben steigen im Himmel empor",
+            "bestand": 7
+        }, {
             "id": 6,
+            "name": "Becher",
+            "pfad": "cup.jpg",
+            "preis": 0.99,
+            "beschreibung": "Genieße deinen Lieblingsdrink in Style!",
+            "kategorie": "Dekoration",
+            "alt": "2 Papierbecher liegen quer auf einer grauen Oberfläche",
+            "bestand": 12
+        }, {
+            "id": 7,
+            "name": "Desinfektionsmittel",
+            "pfad": "desinfektion.jpg",
+            "preis": 4.99,
+            "beschreibung": "Halte Keime fern und bleibe gesund!",
+            "kategorie": "Erweiterungen",
+            "alt": "Zwei Hände eines Mannes mit schwarzem T-Shirt hält in der rechten Hand Desinfektionsmittel mit hellblauer Kappe.",
+            "bestand": 5
+        }, {
+            "id": 8,
             "name": "Holztoilette",
             "pfad": "holztoilette.png",
             "preis": 79.99,
             "beschreibung": "Die rustikale Lösung für deine Outdoor-Bedürfnisse!",
-            "kategorie": "Sanitär",
+            "kategorie": "Erweiterungen",
             "alt": "Eine hellgraue Holztoilette mit Halbmondausschnitt an der Vordertür mitten im Wald.",
             "bestand": 8
-        },
-        {
-            "id": 7,
+        }, {
+            "id": 9,
             "name": "Mikrofon",
             "pfad": "microphone.jpg",
             "preis": 149.99,
             "beschreibung": "Zeige deine Gesangstalente auf der Bühne!",
-            "kategorie": "Audio",
+            "kategorie": "Equipment",
             "alt": "Ein Mikrofon mit silbernem Metallkopf und geblurrtem Hintergrund.",
             "bestand": 10
-        },
-        {
-            "id": 8,
+        }, {
+            "id": 10,
             "name": "Waschbecken",
             "pfad": "sink_premium.jpg",
             "preis": 249.99,
             "beschreibung": "Ein elegantes Waschbecken für dein Badezimmer!",
-            "kategorie": "Sanitär",
+            "kategorie": "Erweiterungen",
             "alt": "Ein schwarzes Waschbecken moderner Art mit schwarzem Wasserhahn und Temperaturregler im dunklen Badezimmer.",
             "bestand": 6
-        },
-        {
-            "id": 9,
+        }, {
+            "id": 11,
             "name": "Soundanlage",
             "pfad": "sound-box.jpg",
             "preis": 499.99,
             "beschreibung": "Mache jede Party zu einem unvergesslichen Erlebnis!",
-            "kategorie": "Audio",
+            "kategorie": "Equipment",
             "alt": "Eine beleuchtete Soundanlage mit vielen Knöpfen und Reglern die von einer Person mit dem rechten Arm bedient wird.",
             "bestand": 4
-        },
-        {
-            "id": 10,
+        }, {
+            "id": 12,
             "name": "Toilettenpapier",
             "pfad": "toilet_paper.jpg",
             "preis": 2.99,
             "beschreibung": "Das weichste Toilettenpapier, das du je benutzt hast!",
-            "kategorie": "Sanitär",
+            "kategorie": "Erweiterungen",
             "alt": "Weiße Toilettenpapierrolle stehend auf einem hellblauen Untergrund.",
             "bestand": 9
         }
-    ]    
+    ]   
 }
