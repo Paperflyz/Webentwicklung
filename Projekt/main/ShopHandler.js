@@ -1,5 +1,41 @@
 const translateObj = {'Standort': 'location', 'Erweiterungen': 'addon', 'Equipment': 'equip', 'Dekoration': 'deco'};
 const shopIconElement = document.getElementById("shop-icon");
+const shopSection = document.getElementById("shop-section");
+
+/* Collapsing Handler durch Event-Delegation */
+shopSection.addEventListener("click", (e) => {
+  /* Breche ab, falls Klick nicht auf eine H2 erfolgte */
+  if(!e.target.matches("h2")) return;
+  collapseItems(e.target);
+})
+
+const collapseItems = function(el) {
+  const siblingDiv = el.nextElementSibling;
+  /* Notwendig um die Funktion abzubrechen, während die Animation noch läuft */
+  if(siblingDiv.classList.contains("collapsing")) return;
+  el.classList.toggle("opened");
+
+  if(siblingDiv.classList.contains("show")) { 
+    siblingDiv.style.height = siblingDiv.scrollHeight + "px";
+    setTimeout(() => siblingDiv.style.height = 0, 100);
+  }
+  /* Starte direkt Animation 'collapsing' */
+  siblingDiv.classList.replace("collapse", "collapsing");
+
+
+  if(siblingDiv.classList.contains("show")) { siblingDiv.classList.remove("show"); } 
+  else {
+    siblingDiv.style.height = siblingDiv.scrollHeight + "px";
+    setTimeout(() => {
+      siblingDiv.classList.add("show");
+      siblingDiv.style.height = "";
+    }, 400)
+  }
+
+  setTimeout(() => {
+    siblingDiv.classList.replace("collapsing", "collapse");
+  }, 400);
+}
 
 
 function checkStatusButton(buttonNode, category, remainingAmount) {

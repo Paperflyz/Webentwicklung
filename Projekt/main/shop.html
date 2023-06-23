@@ -11,7 +11,7 @@
   <title>Document</title>
 </head>
 
-<body id="shop-body" class="ds-grid">
+<body class="ds-grid grid-columns-auto">
   <nav class="col-12 ds-flex justify-content-around bg-darken align-items-center">
     <a href="./index.html"><img id="logo" src="./assets/icons/logo.svg" alt="Dreamscape Unternehmenslogo" /></a>
     <ul class="p-0 text-uppercase ds-flex bullet-unstyled justify-content-end align-items-center">
@@ -46,18 +46,20 @@
       Wähle aus hochwertigen Bauteilen für dein maßgeschneidertes Setup
     </h2>
   </header>
-  <section id="shop-section" class="ds-flex section-standard bg-gray text-light">
-    <h2 class="shop-basket-theme text-dark">Schritt 1: Event-Location (Ort)</h2>
-    <div id="shop-location" class="ds-grid shop-container">
-    </div>
-    <h2 class="shop-basket-theme text-dark">Schritt 2: Event-Location (Ausstattung)</h2>
-    <div id="shop-addon" class="ds-grid shop-container">
-    </div>
-    <h2 class="shop-basket-theme text-dark">Schritt 3: Sound-Ausstattung</h2>
-    <div id="shop-equip" class="ds-grid shop-container">
-    </div>
-    <h2 class="shop-basket-theme text-dark">Schritt 4: Dekoration</h2>
-    <div id="shop-deco" class="ds-grid shop-container">
+  <section id="shop-section" class="bg-gray section-standard text-light">
+    <div class="container-xxl mx-auto ds-flex flex-flow-column">
+      <h2 class="shop-basket-theme text-dark opened">Schritt 1: Event-Location (Ort)</h2>
+      <div id="shop-location" class="ds-grid shop-container collapse show">
+      </div>
+      <h2 class="shop-basket-theme text-dark">Schritt 2: Event-Location (Ausstattung)</h2>
+      <div id="shop-addon" class="ds-grid shop-container collapse">
+      </div>
+      <h2 class="shop-basket-theme text-dark">Schritt 3: Sound-Ausstattung</h2>
+      <div id="shop-equip" class="ds-grid shop-container collapse">
+      </div>
+      <h2 class="shop-basket-theme text-dark">Schritt 4: Dekoration</h2>
+      <div id="shop-deco" class="ds-grid shop-container collapse">
+      </div>
     </div>
   </section>
   <footer class="bg-darkgrey grid-full-wid">
