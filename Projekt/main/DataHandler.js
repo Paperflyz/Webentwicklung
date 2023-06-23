@@ -73,7 +73,7 @@ function getProducts() {
         }, {
             "id": 2,
             "name": "Wiese",
-            "pfad": "empty.png",
+            "pfad": "wiese.jpg",
             "preis": 199.99,
             "beschreibung": "Eine Location unter den Sternen!",
             "kategorie": "Standort",
@@ -82,7 +82,7 @@ function getProducts() {
         }, {
             "id": 3,
             "name": "Eigenfläche",
-            "pfad": "empty.png",
+            "pfad": "eigenflaeche.jpg",
             "preis": 0.00,
             "beschreibung": "Auf dem eigenen Grundstück ist es doch am Gemütlichsten!",
             "kategorie": "Standort",
