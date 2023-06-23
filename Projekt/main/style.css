@@ -1090,11 +1090,10 @@ article.card img {
 
 .shop-basket-theme:after {
   content: '';
-  position: absolute;
+  display: inline-block;
+  flex-shrink: 0;
   width: 2rem;
   height: 2rem;
-  right: 1rem;
-  top: 50%;
   transform: translateY(-50%);
   background: url("../main/assets/icons/icon-arrow-toggle.svg") no-repeat center;
   transition: transform .35s ease;
