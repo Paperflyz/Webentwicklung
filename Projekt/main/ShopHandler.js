@@ -15,6 +15,7 @@ const collapseItems = function(el) {
   if(siblingDiv.classList.contains("collapsing")) return;
   el.classList.toggle("opened");
 
+  /* Falls Accordion aufgeklappt ist, simuliere Höhenveränderung für Animation */
   if(siblingDiv.classList.contains("show")) { 
     siblingDiv.style.height = siblingDiv.scrollHeight + "px";
     setTimeout(() => siblingDiv.style.height = 0, 100);
@@ -22,7 +23,7 @@ const collapseItems = function(el) {
   /* Starte direkt Animation 'collapsing' */
   siblingDiv.classList.replace("collapse", "collapsing");
 
-
+  /* Entferne entsprechend Klasse "show" falls diese bereits vorhanden */
   if(siblingDiv.classList.contains("show")) { siblingDiv.classList.remove("show"); } 
   else {
     siblingDiv.style.height = siblingDiv.scrollHeight + "px";
@@ -32,6 +33,7 @@ const collapseItems = function(el) {
     }, 400)
   }
 
+  /* Beende Animation */
   setTimeout(() => {
     siblingDiv.classList.replace("collapsing", "collapse");
   }, 400);

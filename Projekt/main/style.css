@@ -171,6 +171,11 @@ label {
   grid-auto-rows: min-content;
 }
 
+.ds-single-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .col-gap {
   grid-column-gap: var(--grid-gutter-width);
 }
@@ -257,6 +262,10 @@ label {
 
 .p-0 {
   padding: 0;
+}
+
+.p-1 {
+  padding: 1rem;
 }
 
 .my-1 {
@@ -1324,14 +1333,17 @@ article.card img {
     text-align: center;
   }
 
-section article:nth-child(odd) {
-  grid-column: 1 / span 3;
-}
+  section article:nth-child(odd) {
+    grid-column: 1 / span 3;
+  }
 
-section article:nth-child(even) {
-  grid-column: 4 / span 3;
-}
+  section article:nth-child(even) {
+    grid-column: 4 / span 3;
+  }
 
+  .mx-md-auto {
+    margin-inline: auto;
+  }
 
 }
 
@@ -1423,6 +1435,7 @@ section article:nth-child(even) {
   #out-confirm-link {
     grid-column: 8 / 11;
   }
+
 }
 
 
