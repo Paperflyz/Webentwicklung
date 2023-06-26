@@ -332,6 +332,10 @@ nav > a {
   z-index: 1;
 }
 
+nav img {
+  width: 100%;
+}
+
 nav li {
   z-index: 1; /* Notwendig da Links sonst nicht anklickbar sind */
 }
