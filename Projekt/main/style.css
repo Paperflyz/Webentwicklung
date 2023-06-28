@@ -780,14 +780,6 @@ CHECKOUT.HTML
 
 /* Checkout - Titel */
 
-#out-grid {
-  padding-bottom: 10vh;
-}
-
-#out-title {
-  grid-row: 2;
-  padding-top: 5vh;
-}
 
 #out-flex {
   position: relative;
