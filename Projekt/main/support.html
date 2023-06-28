@@ -35,51 +35,56 @@
       </ul>
     </div>
   </nav>
+  <header class="bg-primary text-light col-12">
+      <h1 class="header-txt p-1">Haben Sie weitere Fragen?</h1>
+  </header>
+  <section class="section-standard">
+    <h2 class="header-txt text-light grid-full-wid">Bei Fragen zu unseren Produkten, Dienstleistungen oder Verbes&shy;serungs&shy;vorschlägen stehen wir Ihnen gerne zur Verfügung!</h2>
+    <form class="ds-grid grid-col-gap form mx-md-auto p-1" id="help-form">
+      <div class="ds-flex grid-row-gap grid-col-gap grid-full-wid form-flex">
+        <div class="ds-flex form-container form-fstName">
+          <label for="help-fstName" class="text-light">Vorname</label>
+          <input type="text" id="help-fstName" />
+        </div>
+        <div class="ds-flex form-container form-lstName">
+          <label for="help-lstName" class="text-light">Nachname</label>
+          <input type="text" id="help-lstName" />
+        </div>
+        <div class="ds-flex form-container form-street">
+          <label for="help-street" class="text-light">Straße</label>
+          <input type="text" id="help-street" />
+        </div>
+        <div class="ds-flex form-container form-houseNmb">
+          <label for="help-houseNmb" class="text-light">Hausnummer</label>
+          <input type="text" id="help-houseNmb" />
+        </div>
+        <div class="ds-flex form-container form-plz">
+          <label for="help-plz" class="text-light">PLZ</label>
+          <input type="text" id="help-plz" />
+          <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ an!</span>
+        </div>
+        <div class="ds-flex form-container form-city">
+          <label for="help-city" class="text-light">Stadt</label>
+          <input type="text" id="help-city" />
+        </div>
+        <div class="ds-flex form-container form-mail">
+          <label for="help-mail" class="form-needed-txt text-light">E-Mail*</label>
+          <input type="text" class="form-input-empty" id="help-mail" />
+          <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
+        </div>
+        <div class="ds-flex form-container form-msg">
+          <label for="help-msg" class="form-needed-txt text-light">Ihr Anliegen*</label>
+          <textarea class="form-input-empty" id="help-msg" placeholder="Bitte eintragen..."></textarea>
+          <span class="text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
+        </div>
+      </div>
+    
+      <span class="form-desc text-lightgray">* = verpflichtende Eingabe</span>
+      <input type="button" value="Absenden" class="bg-primary text-light form-button button-confirm" />
+    </form>
+  </section>
 
-  <h1 class="text-light" id="help-title">H1 Sie haben Fragen?</h1>
-
-  <form class="ds-grid grid-col-gap form mx-md-auto p-1" id="help-form">
-    <div class="ds-flex grid-row-gap grid-col-gap grid-full-wid form-flex">
-      <div class="ds-flex form-container form-fstName">
-        <label for="help-fstName" class="text-light">Vorname</label>
-        <input type="text" id="help-fstName" />
-      </div>
-      <div class="ds-flex form-container form-lstName">
-        <label for="help-lstName" class="text-light">Nachname</label>
-        <input type="text" id="help-lstName" />
-      </div>
-      <div class="ds-flex form-container form-street">
-        <label for="help-street" class="text-light">Straße</label>
-        <input type="text" id="help-street" />
-      </div>
-      <div class="ds-flex form-container form-houseNmb">
-        <label for="help-houseNmb" class="text-light">Hausnummer</label>
-        <input type="text" id="help-houseNmb" />
-      </div>
-      <div class="ds-flex form-container form-plz">
-        <label for="help-plz" class="text-light">PLZ</label>
-        <input type="text" id="help-plz" />
-        <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige deutsche PLZ an!</span>
-      </div>
-      <div class="ds-flex form-container form-city">
-        <label for="help-city" class="text-light">Stadt</label>
-        <input type="text" id="help-city" />
-      </div>
-      <div class="ds-flex form-container form-mail">
-        <label for="help-mail" class="form-needed-txt text-light">E-Mail*</label>
-        <input type="text" class="form-input-empty" id="help-mail" />
-        <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>
-      </div>
-      <div class="ds-flex form-container form-msg">
-        <label for="help-msg" class="form-needed-txt text-light">Ihr Anliegen*</label>
-        <textarea class="form-input-empty" id="help-msg" placeholder="Bitte eintragen..."></textarea>
-        <span class="text-blutrubin form-err ds-none">Bitte schildern Sie Ihr Anliegen!</span>
-      </div>
-    </div>
   
-    <span class="form-desc text-lightgray">* = verpflichtende Eingabe</span>
-    <input type="button" value="Absenden" class="bg-primary text-light form-button button-confirm" />
-  </form>
 
   <footer class="bg-darkgrey">
     <p class="foo-title text-lightgray" id="foo-title-vers">Version</p>

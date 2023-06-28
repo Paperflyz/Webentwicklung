@@ -30,15 +30,15 @@ GENERAL SETTINGS
 
   /* Font - Sizes (header) */
   --h1_font_size: 3rem;
-  --h2_font_size: 1.75rem;
+  --h2_font_size: 2rem;
   --h3_font_size: 1.5rem;
   --h4_font_size: 1.25rem;
   --h5_font_size: 1rem;
 
   /* Font - Sizes (rest) */
   --font-size-small: 1rem;
-  --font-size-regular: 1.5rem;
-  --font-size-big: 2rem;
+  --font-size-regular: 1.25rem;
+  --font-size-big: 1.75rem;
 
   /* Font - Weights */
   --font-weight-thin: 400;
@@ -66,47 +66,25 @@ body {
 }
 
 h1 {
-  font-size: clamp(2rem, 4vw, var(--h1_font_size));
+  font-size: var(--h1_font_size);
   font-weight: var(--font-weight-bolder);
   grid-column: 1 / -1;
   text-transform: uppercase;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, var(--h2_font_size));
-  font-weight: var(-font-weight-bold);
+  font-size: var(--h2_font_size);
+  font-weight: var(--font-weight-bold);
 }
 
 p,
 label {
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-regular);
 }
 
-/* General - Debugging */
-
-.grid-debug {
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: var(--grid-gutter-width);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 5vh;
-  opacity: 50%;
-}
-
-.grid-debug::before {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  content: "";
-  background: lime;
-}
-
-.grid-debug-item {
-  background: hotpink;
-  text-align: center;
-  z-index: 2;
+figure {
+  margin: 0;
+  margin-inline: 1rem;
 }
 
 /* General - Color-Settings (Background & Font) */
@@ -192,7 +170,7 @@ label {
   margin-top: var(--grid-gutter-width);
 }
 
-.col-12 {  /* TODO: Soll durch 'grid-full-wid' ersetzt werden. */
+.col-12 { 
   grid-column: 1 / -1;
 }
 
@@ -250,9 +228,12 @@ label {
   text-decoration: none;
 }
 
-
 .text-center {
   text-align: center;
+}
+
+.font-size-regular {
+  font-size: var(--font-size-regular);
 }
 
 /* General - rest (Bullet, Distance) */
@@ -285,17 +266,9 @@ label {
   margin-inline: auto;
 }
 
-
-
-/* 
-
-NAV
-
+/* NAV
 - all CSS instructions regarding <nav>
-
 */
-
-
 
 /* Nav - Icons */
 
@@ -455,17 +428,10 @@ HEADER
   text-transform: uppercase;
 }
 
-
-
 /*
-
 FOOTER
-
 - all CSS instructions regarding <footer>
-
 */
-
-
 
 footer {
   display: grid;
@@ -503,15 +469,9 @@ footer {
 #foo-soci-container {
   grid-column: 9 / 13;
 }
-
-
-
 /*
-
 GENERAL
-
 - general classes for every .html - files
-
 */
 
 
@@ -672,7 +632,6 @@ INDEX.HTML
 /* Index - Section 2-4 */
 
 .section-standard {
-  grid-row-gap: var(--grid-gutter-width);
   padding-top: 10vh;
   padding-bottom: 10vh;
 }
@@ -692,11 +651,6 @@ INDEX.HTML
   grid-row: 1;
 }
 
-.main-sect-txt {
-  grid-row: 2;
-  grid-column: 1;
-}
-
 /* Index - Section 2 ("About Us") */
 
 #main-sect2-grid, #main-sect3-grid {
@@ -705,7 +659,7 @@ INDEX.HTML
   grid-template-columns: 1fr;
 }
 
-#main-sect3-grid h2 {
+#main-sect3 h2 {
   grid-column: 1;
 }
 
@@ -719,6 +673,8 @@ INDEX.HTML
   justify-self: center;
   max-width: 100%;
   max-height: 300px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .person-text {
@@ -727,14 +683,15 @@ INDEX.HTML
 
 /* Index - Section 3 ("???") */
 
-#main-sect3-img {
-  aspect-ratio: 9 / 16;
+#main-sect3 img {
+  aspect-ratio: 12 / 16;
   max-width: 450px;
   justify-self: center;
   border-top-right-radius: 10vh;
   box-shadow: 1rem -1rem 0 #2b2b2b;
   margin-top: 1rem;
   height: 600px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -750,11 +707,11 @@ INDEX.HTML
 
 #main-sect4-tab1, #main-sect4-tab2 {
   text-align: center;
-  padding: .25rem;
+  padding: 1rem;
 }
 
 .tab {
-  transition: all .3s ease-in;
+  transition: margin .3s ease-in;
 }
 
 #main-sect4-tab1 {
@@ -780,6 +737,7 @@ INDEX.HTML
 
 .main-sect4-tabcontainer {
   grid-row: 3;
+  padding-block: 5rem;
 }
 
 #main-sect4-tabcontainer2 {
@@ -967,7 +925,7 @@ CHECKOUT.HTML
 
 #out-confirm-div {
   grid-column: 2 / 12;
-  border-top-right-radius: calc(2 * var(--h2_font_size));
+  border-top-right-radius: 10rem;
   grid-row-gap: var(--grid-gutter-width);
   padding-top: 5vh;
   padding-bottom: 10vh; 
@@ -1145,7 +1103,13 @@ article.card img {
   display: none;
 }
 
+.data-consent div:first-child {
+  font-size: var(--font-size-big);
+}
 
+.data-consent li {
+  margin-block: 1rem;
+}
 
 
 
@@ -1169,10 +1133,6 @@ article.card img {
 
   #main-sect2-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  #main-sect2 .main-sect-txt {
-    grid-column: 1 / 3;
   }
   
   .persons {
@@ -1228,14 +1188,6 @@ article.card img {
 /* BIGGER THAN SM */
 
 @media screen and (min-width: 768px) {
-  #main-sect3-grid {
-    grid-template-columns: 4fr 4fr;
-  }
-  
-  #main-sect3-img {
-    grid-column: 2;
-    grid-row: 1 / 3;
-  }
 
 
   #main-sect4-grid {
@@ -1377,6 +1329,8 @@ article.card img {
     --h3_font_size: 2.5rem;
     --h4_font_size: 1.875rem;
     --h5_font_size: 1.25rem;
+
+
   }
 
   a.nav-link-meta {
@@ -1413,11 +1367,6 @@ article.card img {
   }
 
 
-  #main-sect2 .main-sect-txt {
-    grid-column: 1;
-  }
-
-
   #seb-img,
   #seb-txt {
     grid-column: 3;
@@ -1426,14 +1375,6 @@ article.card img {
 
   .person-text {
     grid-row: 3;
-  }
-
-  #main-sect3-grid {
-    grid-template-columns: 5fr 3fr;
-  }
-
-  #main-sect3-grid h2 {
-    align-self: end;
   }
 
   #out-confirm-div {
@@ -1448,6 +1389,8 @@ article.card img {
     grid-column: 8 / 11;
   }
 
+
+
 }
 
 
@@ -1457,6 +1400,14 @@ article.card img {
 /* BIGGER THAN LG & XL */
 
 @media screen and (min-width: 1400px) {  
+
+  :root {
+    --font-size-regular: 1.5rem;
+  }
+
+  .col-lg-6 {
+    grid-column: span 6;
+  }
 
   #main-sect2-grid div:first-of-type {
     grid-column: 1 / 3;
@@ -1468,6 +1419,12 @@ article.card img {
 
   .out-element-img {
     grid-column: 3 / 5;
+  }
+
+  .persons {
+    grid-column: 3 / -1;
+    flex-direction: column;
+    grid-row: 1 / 3;
   }
 
   .out-basket-theme {
@@ -1485,6 +1442,11 @@ article.card img {
   .out-element-div {
     grid-column: 5 / 11;
     grid-template-columns: repeat(6, 1fr);
+  }
+
+  #main-sect3 img {
+    grid-column: 2;
+    grid-row: 1 / 3;
   }
 
   .out-element-desc-title, .out-element-desc-txt, .out-element-onePrice {
