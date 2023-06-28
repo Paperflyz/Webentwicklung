@@ -1125,13 +1125,12 @@ article.card img {
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
-  transform: translateY(-50%);
   background: url("../main/assets/icons/icon-arrow-toggle.svg") no-repeat center;
   transition: transform .35s ease;
 }
 
 .shop-basket-theme.opened:after {
-  transform: translateY(-50%) rotate(180deg);
+  transform: rotate(180deg);
 }
 
 
