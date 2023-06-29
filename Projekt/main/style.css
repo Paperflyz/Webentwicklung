@@ -61,7 +61,7 @@ GENERAL SETTINGS
 body {
   min-height: 100vh;
   /* overflow-x: hidden; */
-  overflow-y: overlay;
+  /* overflow-y: overlay; */
   margin: 0;
 }
 
@@ -436,39 +436,55 @@ FOOTER
 footer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: var(--grid-gutter-width);
   padding-top: 10vh;
   padding-bottom: 10vh;
 }
 
-.foo-title {
-  grid-row: 1;
+.footer-headline {
+  color: var(--color_text-gray);
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-thin);
 }
 
-.foo-data {
-  grid-row: 2;
+.footer-headline-versions {
+  grid-column: 2 / span 2;
 }
 
-.foo-flex-item {
-  padding-right: 20px;
-  width: 100%;
-  height: 100%;
+.footer-headline-local_time {
+  grid-column: 6 / span 2;
 }
 
-#foo-title-vers,
-#foo-data-vers {
-  grid-column: 2 / 5;
+.footer-headline-socials {
+  grid-column: 10 / span 2;
 }
 
-#foo-title-time,
-#foo-data-time {
-  grid-column: 5 / 8;
+.footer-text {
+  color: var(--color-white);
+  font-size: var(--font-size-regular);
 }
 
-#foo-title-soci,
-#foo-soci-container {
-  grid-column: 9 / 13;
+.footer-text-versions {
+  grid-column: 2 / span 2;
+  grid-row: 2 / -1;
 }
+
+.footer-text-local_time {
+  grid-column: 6 / span 2;
+  grid-row: 2 / -1;
+}
+
+.footer-text-socials {
+  grid-column: 10 / span 2;
+  grid-row: 2 / -1;
+}
+
+.footer-text-socials img {
+  margin-inline: .2rem;
+}
+
+
 /*
 GENERAL
 - general classes for every .html - files
@@ -688,7 +704,7 @@ INDEX.HTML
   max-width: 450px;
   justify-self: center;
   border-top-right-radius: 10vh;
-  box-shadow: 1rem -1rem 0 #2b2b2b;
+  box-shadow: .5rem -.5rem 0 #2b2b2b;
   margin-top: 1rem;
   height: 600px;
   width: 100%;
@@ -747,6 +763,7 @@ INDEX.HTML
 .main-sect4-tabcontainer > * {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: var(--font-size-regular);
 }
 
 /* Buttons */
@@ -989,7 +1006,7 @@ SHOP.HTML
   position: relative;
   margin: var(--grid-gutter-width);
   border-bottom: 1px var(--color-dark) solid;
-  font-weight: var(--font-weight-bold);
+  font-size: calc(var(--font-size-regular));
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -1181,6 +1198,9 @@ article.card img {
 
 @media screen and (min-width: 768px) {
 
+  .shop-basket-theme {
+    font-size: calc(var(--font-size-big) + 1rem);
+  }
 
   #main-sect4-grid {
     grid-template-columns: 1fr 3fr 3fr 1fr;

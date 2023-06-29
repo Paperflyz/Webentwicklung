@@ -148,16 +148,16 @@ for (let aTheme in themeObj) {
       `
     );
     let addButton = articleHtml.querySelector("button");
-    addButton.addEventListener('click', onAddButton);
+    //addButton.addEventListener('click', onAddButton);
 
     // ggf. Zustand des Buttons anpassen
-    let remainingAmount = aElement.bestand;
-    for (let iArr of chosenArr) {
-      if (iArr[0] === aElement.id) {
-        remainingAmount -= iArr[1];
-        break;
-      }
-    }
+    // let remainingAmount = aElement.bestand;
+    // for (let iArr of chosenArr) {
+    //   if (iArr[0] === aElement.id) {
+    //     remainingAmount -= iArr[1];
+    //     break;
+    //   }
+    // }
 
     checkStatusButton(addButton, aElement.kategorie, remainingAmount);
   }
