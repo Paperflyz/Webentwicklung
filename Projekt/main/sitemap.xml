@@ -1,0 +1,32 @@
+<urlset>
+    <url>
+        <loc>132web.site/projekt/kegelschnecke/index.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>132web.site/projekt/kegelschnecke/shop.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>132web.site/projekt/kegelschnecke/impressum.html</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>132web.site/projekt/kegelschnecke/datenschutz.html</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>132web.site/projekt/kegelschnecke/checkout.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>132web.site/projekt/kegelschnecke/support.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
