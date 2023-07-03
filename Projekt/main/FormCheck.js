@@ -22,9 +22,9 @@ for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
     }
 
     // Input zurücksetzen
-    for (let i of ['empty', 'true', 'false']) {
-        htmlInput.classList.remove('form-input-' + i);
-    }
+    // for (let i of ['empty', 'true', 'false']) {
+    //     htmlInput.classList.remove('form-input-' + i);
+    // }
     if (htmlSpan != null) {
         htmlSpan.classList.add('ds-none');
     }

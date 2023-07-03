@@ -1,5 +1,14 @@
 const hamburger = document.querySelector(".icon-hamburger");
 const hamburger_close = document.querySelector(".icon-close");
+const timeEl = document.querySelector(".footer-text-local_time");
+
+function clockTimer() {
+    const today = new Date();
+    const hours = today.getHours();
+    const minutes = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+    timeEl.textContent = `${hours}:${minutes} Uhr`;
+    setTimeout(() => clockTimer(), 1000);
+}
 
 function lockButton(button) {
     button.setAttribute('disabled', '');
@@ -47,3 +56,5 @@ function adjustNode(node, classArr, attbObj) {
         e.target.closest("nav").querySelector(".menu-slide").classList.toggle("show");
     })
 });
+
+document.addEventListener("DOMContentLoaded", clockTimer);
