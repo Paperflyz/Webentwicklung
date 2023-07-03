@@ -77,7 +77,7 @@ function getProducts() {
             "preis": 199.99,
             "beschreibung": "Eine Location unter den Sternen!",
             "kategorie": "Standort",
-            "alt": "Frontalansicht einer Halle mit 9 Metallsäulen und einem durchsichtigem Dach.",
+            "alt": "Frontalansicht einer Wiese mit Laubbäumen am hellichten Tag bei teilweise bewölktem Wetter.",
             "bestand": 1
         }, {
             "id": 3,
@@ -86,7 +86,7 @@ function getProducts() {
             "preis": 0.00,
             "beschreibung": "Auf dem eigenen Grundstück ist es doch am Gemütlichsten!",
             "kategorie": "Standort",
-            "alt": "Frontalansicht einer Halle mit 9 Metallsäulen und einem durchsichtigem Dach.",
+            "alt": "Ausblick eines Gartens mit Swimming-Pool, Gartenliege und Gartenhecke bei Dämmerung.",
             "bestand": 1
         }, {
             "id": 4,
