@@ -151,7 +151,7 @@ for (let aTheme in themeObj) {
     //addButton.addEventListener('click', onAddButton);
 
     // ggf. Zustand des Buttons anpassen
-    // let remainingAmount = aElement.bestand;
+    let remainingAmount = aElement.bestand;
     // for (let iArr of chosenArr) {
     //   if (iArr[0] === aElement.id) {
     //     remainingAmount -= iArr[1];

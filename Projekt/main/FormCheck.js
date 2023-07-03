@@ -17,7 +17,7 @@ for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
     let htmlInput = document.getElementById(idInput);
     let htmlLabel = htmlForm.querySelector('label[for="' + idInput + '"]');
     let htmlSpan = htmlInput.nextElementSibling;
-    if (htmlSpan.tagName.toLowerCase() != "span") {
+    if (htmlSpan != null && htmlSpan.tagName.toLowerCase() != "span") {
         htmlSpan = null;
     }
 
