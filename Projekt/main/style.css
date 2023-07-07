@@ -564,6 +564,10 @@ FORM
   width: 100%;
 }
 
+.form-mail {
+  flex-basis: 100%;
+}
+
 input, #help-msg {
   border-radius: 0px 31px 0px 0px;
   font-weight: calc(0.67 * var(--weight-bold));
@@ -584,7 +588,7 @@ input[type="text"] {
 }
 
 input[class*="form"]{
-  transition: all .25s ease-in;
+  transition: box-shadow .25s ease-in, outline .25s ease-in;
 }
 .form-needed-txt {
   font-weight: var(--font-weight-bold);

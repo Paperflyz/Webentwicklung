@@ -87,8 +87,16 @@
                         <input type="text" class="form-input-empty" id="out-mail">
                         <span class="text-blutrubin form-err ds-none">Bitte geben Sie eine gültige E-Mail Adresse an!</span>    
                     </div>
+                    <div class="text-light">
+                        <span>Bitte wählen Sie eine Zahlungsmethode aus.</span>
+                        <input type="radio" name="payoption" id="paypal" value="PayPal">
+                        <label for="paypal">PayPal</label><br>
+                        <input type="radio" name="payoption" id="kreditkarte" value="Kreditkarte">
+                        <label for="kreditkarte">Kreditkarte</label><br>
+                        <input type="radio" name="payoption" id="lsv" value="Lastschriftverfahren">
+                        <label for="lsv">Lastschriftverfahren</label>
+                    </div>
                 </div>
-            
                 <span class="form-desc text-lightgray">* = verpflichtende Eingabe</span>
                 <input type="button" value="Absenden" class="bg-primary text-light form-button button-confirm">
             </form>
