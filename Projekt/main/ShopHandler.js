@@ -57,20 +57,21 @@ const collapseItems = function(el) {
 
 function checkStatusButton(buttonNode, elementData) {
   let articleCnt = buttonNode.parentNode.parentNode;
-  let remainingAmount = elementData.bestand - getSelectedAmount(elementData.id);
+  let chosenAmount = getSelectedAmount(elementData.id);
+
+  let remainingAmount = elementData.bestand - chosenAmount;
+  if (remainingAmount === 0) {
+    buttonNode.disabled = true;
+    buttonNode.classList.add("disabled");
+  }
   
-  if (elementData.kategorie === 'Standort') {
+  if (elementData.kategorie === 'Standort' && chosenAmount > 0) {
     // Sonderregel: Nur ein Element erlaubt
     for (let aArticle of articleCnt.parentNode.children) {
       aArticle.querySelector('button').disabled = true;
       aArticle.querySelector('button').classList.add("disabled");
     }
-    // buttonNode.innerHTML = '&#x2713;';
-  } else {
-    if (remainingAmount === 0) {
-      buttonNode.disabled = true;
-      buttonNode.classList.add("disabled");
-    }
+    buttonNode.innerHTML = '&#x2713;';
   }
 }
 

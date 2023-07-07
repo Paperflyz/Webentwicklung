@@ -189,6 +189,22 @@ function changeElementAmount() {
     let totalHtml = basketDiv.querySelector('#out-price-txt');
     let newPrice = parseFloat(totalHtml.innerHTML.split(' ')[0]) + (amountChange * productData.preis);
     totalHtml.innerHTML = (Math.round(100 * newPrice) / 100).toFixed(2) + ' €';
+
+    // Bedingungen kontrollieren
+    let hasLocation = false;
+    let counterAddon = 0;
+    let pointerHtml = elementH2.nextElementSibling.nextElementSibling.nextElementSibling;
+    while (pointerHtml.tagName.toLowerCase() != 'h2') {
+        let elementData = getProductByName(pointerHtml.querySelector('h3').innerHTML);
+        hasLocation = (elementData.kategorie === 'Standort');
+        if (elementData.kategorie === 'Erweiterung') counterAddon++;
+        pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
+    }
+
+    if (!hasLocation || counterAddon > 2) {
+        // TODO: Fehlertext anzeigen
+        lockButton(basketDiv.querySelector('#out-button-confirmBasket'));
+    }
 }
 
 

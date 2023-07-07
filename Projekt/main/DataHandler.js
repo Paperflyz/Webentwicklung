@@ -26,6 +26,9 @@ function changeStorage(itemId, productId, elementId, change) {
         newAmount = targetArr[arrI][1] + change;
         if (newAmount === 0) {
             targetArr.splice(arrI, 1);
+            if (targetArr.length === 0) {
+                dataArr.splice(productId, 1);
+            }
         } else {
             targetArr[arrI][1] = newAmount;
         }
