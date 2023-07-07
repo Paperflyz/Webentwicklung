@@ -55,18 +55,31 @@ const collapseItems = function(el) {
 }
 
 
-function checkStatusButton(buttonNode, elementData) {
+function checkStatusButton(buttonNode, elementData, chosenAmount) {
   let articleCnt = buttonNode.parentNode.parentNode;
-  let chosenAmount = getSelectedAmount(elementData.id);
 
-  let remainingAmount = elementData.bestand - chosenAmount;
+  let remainingAmount = elementData.bestand - getSelectedAmount(elementData.id);
   if (remainingAmount === 0) {
     buttonNode.disabled = true;
     buttonNode.classList.add("disabled");
   }
-  
+
+  let dataArr = readStorage(itemId);
+    let targetArr = dataArr;
+    if (itemId === basketId) {
+        targetArr = dataArr[productId];
+    }
+
+    let arrI = -1;
+    for (let i = 0; i < targetArr.length; i++) {
+        if (targetArr[i][0] === elementId) {
+            arrI = i;
+            break;
+        }
+    }
+
   if (elementData.kategorie === 'Standort' && chosenAmount > 0) {
-    // Sonderregel: Nur ein Element erlaubt
+    // Sonderregel: Nur ein Element pro Produkt erlaubt
     for (let aArticle of articleCnt.parentNode.children) {
       aArticle.querySelector('button').disabled = true;
       aArticle.querySelector('button').classList.add("disabled");
@@ -79,12 +92,13 @@ function onAddButton() {
   let articleCnt = event.target.parentNode.parentNode;
   let elementData = getProductByName(articleCnt.querySelector("h3").innerHTML);
 
+  let newAmount = 0;
   if (productId === -1) {
-    changeStorage(buildId, -1, elementData.id, 1);
+    newAmount = changeStorage(buildId, -1, elementData.id, 1);
   } else {
-    changeStorage(basketId, productId, elementData.id, 1);
+    newAmount = changeStorage(basketId, productId, elementData.id, 1);
   }
-  checkStatusButton(event.target, elementData);
+  checkStatusButton(event.target, elementData, newAmount);
 
   // const storageItemsReduced = 
   // JSON.parse(localStorage.getItem("initialItems"))
@@ -139,9 +153,15 @@ for (let aElement of getProducts()) {
   themeObj[translateObj[aElement.kategorie]].push(aElement);
 }
 
-// Kategorien befüllen
-// let chosenArr = readStorage();
+// Auswahl lesen & auswerten
+let chosenArr = null;
+if (productId === -1) {
+  chosenArr = readStorage(buildId);
+} else {
+  chosenArr = readStorage(basketId)[productId];
+}
 
+// Kategorien befüllen
 for (let aTheme in themeObj) {
   // Elemente alphabetisch sortieren (nach Name)
   let elementArr = themeObj[aTheme];
@@ -180,14 +200,14 @@ for (let aTheme in themeObj) {
     let addButton = articleHtml.querySelector("button");
     addButton.addEventListener('click', onAddButton);
 
-    // ggf. Zustand des Buttons anpassen
-    // for (let iArr of chosenArr) {
-    //   if (iArr[0] === aElement.id) {
-    //     remainingAmount -= iArr[1];
-    //     break;
-    //   }
-    // }
+    let chosenAmount = 0;
+    for (let i = 0; i < chosenArr.length; i++) {
+      if (chosenArr[0] === aElement.id) {
+        chosenAmount = chosenArr[1];
+        break;
+      }
+    }
 
-    checkStatusButton(addButton, aElement);
+    checkStatusButton(addButton, aElement, chosenAmount);
   }
 }

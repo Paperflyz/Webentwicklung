@@ -1,110 +1,116 @@
-// Needed: 'General.js' & 'DataHandler.js'
+// JS-Datei für das HTML-Dokument 'checkout.html'
+// - beinhaltet alle Event-Listener (außer Formular) & JS-Code für Erstellung des Warenkorbes
+// - Needed: 'General.js' & 'DataHandler.js'
 
+let basketButton = document.getElementById('out-button-confirmBasket');
 document.getElementById('out-button-confirmBasket').addEventListener('click', function() { confirmArea(1); });
 
-// Funktion: Ausgewählte Elemente ermitteln & in Checkout-Page einfügen
-function buildBasket() {
-    let basketButton = document.getElementById('out-button-confirmBasket');
-    
-    // Eingabe kontrollieren
-    let storageDataArr = readStorage(basketId);
-    if (storageDataArr.length === 0) {
-        document.getElementById('out-empty').classList.remove('ds-none');
-        lockButton(basketButton);
-        return;
-    }
-
-    let totalPrice = 0;
-    for (let i = 0; i < storageDataArr.length; i++) {
-        let productData = storageDataArr[i];
-        
-        // Produktdaten der ausgewählten ID's ermitteln
-        let elementData = [];
-        for (let chosenArr of productData) {
-            let newData = getProductById(chosenArr[0]);
-            if (newData === null) {
-                alert('ERROR: Element not found!\nPlease reload the page!');
-                lockButton(basketButton);
-                return;
-            }
-            newData.amount = chosenArr[1];
-            totalPrice += newData.amount * newData.preis;
-            elementData.push(newData);
-        }
 
 
-        // Gegenstände gruppieren (nach Kategorie)
-        // let themeArr = [];
-        // let themeObj = {};
-        // for (let aElement of elementData) {
-        //     let aTheme = aElement.kategorie;
-        //     if (!themeArr.includes(aTheme)) {
-        //         themeArr.push(aTheme);
-        //         themeObj[aTheme] = [];
-        //     }
-        //     themeObj[aTheme].push(aElement);
-        // }
-
-        // Produkttitel einfügen
-        let newNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
-        newNode.innerHTML = 'Produkt ' + (i + 1);
-        newNode = insertBefore(basketButton, 'button', ['bg-primary', 'text-light', 'button-confirm', 'out-basket-editBtn'], {});
-        newNode.innerHTML = 'Bearbeiten';
-        newNode.addEventListener('click', function() {
-            localStorage.setItem('activeProductId', i);
-            window.open('shop.html', '_self');
-        });
-
-        // Gegenstände alphabetisch sortieren (nach Name)
-        for (let j = elementData.length - 2; j >= 0; j--) {
-            for (let k = 0; k <= j; k++) {
-                if (elementData[k].name.localeCompare(elementData[k + 1].name) > -1) {
-                    let temp = elementData[k];
-                    elementData[k] = elementData[k + 1];
-                    elementData[k + 1] = temp;
-                }
-            }
-        }
-
-        // Gegenstände einfügen
-        for (let aElement of elementData) {
-            newNode = insertBefore(basketButton, 'img', ['out-element-img'], { 'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt });
-            newNode.addEventListener('click', changeElementDiv);
-            let divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
-            divNode.addEventListener('click', changeElementDiv);
-
-            appendChild(divNode, 'h3', ['out-element-desc-title'], {}).innerHTML = aElement.name;
-            appendChild(divNode, 'span', ['out-element-amount-title'], {}).innerHTML = 'Anzahl';
-            appendChild(divNode, 'p', ['out-element-desc-txt'], {}).innerHTML = aElement.beschreibung;
-            let circleNode = appendChild(divNode, 'div', ['out-element-amount-circle', 'bg-secondary'], {});
-            appendChild(circleNode, 'span', ['out-element-amount-txt', 'text-light'], {}).innerHTML = aElement.amount;
-
-            appendChild(divNode, 'span', ['out-element-amount'], {}).innerHTML = "Anzahl: " + aElement.amount;
-            let flexNode = appendChild(divNode, 'div', ['ds-flex', 'out-element-flex'], {});
-
-            let btnNode = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary'], {});
-            btnNode.innerHTML = '+';
-            btnNode.addEventListener('click', changeElementAmount);
-            if (aElement.amount === aElement.bestand) {
-                lockButton(btnNode);
-                btnNode.classList.add('text-dark');
-            } else {
-                btnNode.classList.add('text-light');
-            }
-            btnNode = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary', 'text-light'], {});
-            btnNode.innerHTML = '-';
-            btnNode.addEventListener('click', changeElementAmount);
-
-            newNode = appendChild(divNode, 'span', ['out-element-onePrice'], {}).innerHTML = '(je ' + aElement.preis + ' €)';
-            newNode = appendChild(divNode, 'span', ['out-element-totalPrice'], {}).innerHTML = (Math.round(100 * aElement.amount * aElement.preis) / 100).toFixed(2) + ' €';
-        }
-    }
+// HTML-Seite aufsetzen  ->  Warenkorb erstellen
 
 
-    // Gesamtpreis einfügen
-    insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-title'}).innerHTML = 'TOTAL:';
-    insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-txt'}).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
+
+// Eingabe kontrollieren: Wurde ein Produkt erstellt?
+let storageDataArr = readStorage(basketId);
+if (storageDataArr.length === 0) {
+    document.getElementById('out-empty').classList.remove('ds-none');
+    lockButton(basketButton);
+    return;
 }
+
+let totalPrice = 0;
+for (let i = 0; i < storageDataArr.length; i++) {
+    let productData = storageDataArr[i];
+    
+    // Produktdaten der ausgewählten ID's ermitteln
+    let elementData = [];
+    for (let chosenArr of productData) {
+        let newData = getProductById(chosenArr[0]);
+        if (newData === null) {
+            alert('ERROR: Element not found!\nPlease reload the page!');
+            lockButton(basketButton);
+            return;
+        }
+        newData.amount = chosenArr[1];
+        totalPrice += newData.amount * newData.preis;
+        elementData.push(newData);
+    }
+
+
+    // Gegenstände gruppieren (nach Kategorie)
+    // let themeArr = [];
+    // let themeObj = {};
+    // for (let aElement of elementData) {
+    //     let aTheme = aElement.kategorie;
+    //     if (!themeArr.includes(aTheme)) {
+    //         themeArr.push(aTheme);
+    //         themeObj[aTheme] = [];
+    //     }
+    //     themeObj[aTheme].push(aElement);
+    // }
+
+    // Produkttitel einfügen
+    let newNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
+    newNode.innerHTML = 'Produkt ' + (i + 1);
+    newNode = insertBefore(basketButton, 'button', ['bg-primary', 'text-light', 'button-confirm', 'out-basket-editBtn'], {});
+    newNode.innerHTML = 'Bearbeiten';
+    newNode.addEventListener('click', function() {
+        localStorage.setItem('activeProductId', i);
+        window.open('shop.html', '_self');
+    });
+
+    // Gegenstände alphabetisch sortieren (nach Name)
+    for (let j = elementData.length - 2; j >= 0; j--) {
+        for (let k = 0; k <= j; k++) {
+            if (elementData[k].name.localeCompare(elementData[k + 1].name) > -1) {
+                let temp = elementData[k];
+                elementData[k] = elementData[k + 1];
+                elementData[k + 1] = temp;
+            }
+        }
+    }
+
+    // Gegenstände einfügen
+    for (let aElement of elementData) {
+        newNode = insertBefore(basketButton, 'img', ['out-element-img'], { 'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt });
+        newNode.addEventListener('click', changeElementDiv);
+        let divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
+        divNode.addEventListener('click', changeElementDiv);
+
+        appendChild(divNode, 'h3', ['out-element-desc-title'], {}).innerHTML = aElement.name;
+        appendChild(divNode, 'span', ['out-element-amount-title'], {}).innerHTML = 'Anzahl';
+        appendChild(divNode, 'p', ['out-element-desc-txt'], {}).innerHTML = aElement.beschreibung;
+        let circleNode = appendChild(divNode, 'div', ['out-element-amount-circle', 'bg-secondary'], {});
+        appendChild(circleNode, 'span', ['out-element-amount-txt', 'text-light'], {}).innerHTML = aElement.amount;
+
+        appendChild(divNode, 'span', ['out-element-amount'], {}).innerHTML = "Anzahl: " + aElement.amount;
+        let flexNode = appendChild(divNode, 'div', ['ds-flex', 'out-element-flex'], {});
+
+        let btnNode = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary'], {});
+        btnNode.innerHTML = '+';
+        btnNode.addEventListener('click', changeElementAmount);
+        if (aElement.amount === aElement.bestand) {
+            lockButton(btnNode);
+            btnNode.classList.add('text-dark');
+        } else {
+            btnNode.classList.add('text-light');
+        }
+        btnNode = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary', 'text-light'], {});
+        btnNode.innerHTML = '-';
+        btnNode.addEventListener('click', changeElementAmount);
+
+        newNode = appendChild(divNode, 'span', ['out-element-onePrice'], {}).innerHTML = '(je ' + aElement.preis + ' €)';
+        newNode = appendChild(divNode, 'span', ['out-element-totalPrice'], {}).innerHTML = (Math.round(100 * aElement.amount * aElement.preis) / 100).toFixed(2) + ' €';
+    }
+}
+
+
+// Gesamtpreis einfügen
+insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-title'}).innerHTML = 'TOTAL:';
+insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-txt'}).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
+
+
 
 function changeElementAmount() {
     // HTML-Elemente & Produktdaten ermitteln
@@ -205,32 +211,6 @@ function changeElementAmount() {
         // TODO: Fehlertext anzeigen
         lockButton(basketDiv.querySelector('#out-button-confirmBasket'));
     }
-}
-
-
-// Beschreibung ein-/ausblenden (nur mobile-view)
-
-function changeElementDiv() {
-    /* let maxWidth = 767;
-    if (window.matchMedia('screen and (min-width: ' + maxWidth + 'px)').matches === true) {
-        return;
-    }
-
-    let clickedDiv = event.target;
-    if (clickedDiv.tagName.toLowerCase() == 'img') {
-        clickedDiv = clickedDiv.nextSibling;
-    } else if (clickedDiv.tagName.toLowerCase() != 'div') {
-        clickedDiv = clickedDiv.parentNode;
-    }
-    let descNode = clickedDiv.querySelector('.out-element-desc-txt');
-
-    if (window.getComputedStyle(descNode).fontSize === '0px') {
-        console.log('true');
-        descNode.style.fontSize = 'initial';
-    } else {
-        console.log('false');
-        descNode.style.fontSize = '0px';
-    } */
 }
 
 // Div-Wechsel
