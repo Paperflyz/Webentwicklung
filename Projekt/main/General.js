@@ -1,7 +1,12 @@
+// JS-Datei mit allgemein benötigten Funktionen
+
+
 const hamburger = document.querySelector(".icon-hamburger");
 const hamburger_close = document.querySelector(".icon-close");
 const timeEl = document.querySelector(".footer-text-local_time");
 
+
+// Funktion: Local Time (Footer)
 function clockTimer() {
     const today = new Date();
     const hours = today.getHours();
@@ -10,6 +15,8 @@ function clockTimer() {
     setTimeout(() => clockTimer(), 1000);
 }
 
+
+// Funktionen: Button (ent-)sperren
 function lockButton(button) {
     button.setAttribute('disabled', '');
     button.classList.add('bg-blutrubin');
@@ -23,6 +30,8 @@ function unlockButton(button) {
     button.classList.add('bg-primary');
     button.style['opacity'] = 1;
 }
+
+
 
 /* Node erstellen & aufsetzen */
 

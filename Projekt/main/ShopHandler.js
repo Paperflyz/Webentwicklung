@@ -1,37 +1,27 @@
-// const { emitKeypressEvents } = require("readline");
+// JS-Datei für die HTML-Datei 'shop.html'
+// - benötigt 'General.js' & 'DataHandler.js'
 
 const translateObj = {'Standort': 'location', 'Erweiterungen': 'addon', 'Equipment': 'equip', 'Dekoration': 'deco'};
 const shopIconElement = document.getElementById("shop-icon");
 const shopSection = document.getElementById("shop-section");
 
-let itemId = 'activeProductId';
-let productId = localStorage.getItem(itemId);
-if (productId === null) {
-  productId = -1;
-} else {
-  productId = parseInt(productId);
-}
 
-localStorage.setItem(itemId, '-1');
-if (productId > -1) {
-  document.getElementsByClassName('shop-button')[0].classList.add('ds-none');
-}
 
 /* Collapsing Handler durch Event-Delegation */
 shopSection.addEventListener("click", (e) => {
   /* Breche ab, falls Klick nicht auf eine H2 erfolgte */
-  if(!e.target.matches("h2")) return;
+  if (!e.target.matches("h2")) return;
   collapseItems(e.target);
 })
 
-const collapseItems = function(el) {
+const collapseItems = function (el) {
   const siblingDiv = el.nextElementSibling;
   /* Notwendig um die Funktion abzubrechen, während die Animation noch läuft */
-  if(siblingDiv.classList.contains("collapsing")) return;
+  if (siblingDiv.classList.contains("collapsing")) return;
   el.classList.toggle("opened");
 
   /* Falls Accordion aufgeklappt ist, simuliere Höhenveränderung für Animation */
-  if(siblingDiv.classList.contains("show")) { 
+  if (siblingDiv.classList.contains("show")) {
     siblingDiv.style.height = siblingDiv.scrollHeight + "px";
     setTimeout(() => siblingDiv.style.height = 0, 100);
   }
@@ -39,7 +29,7 @@ const collapseItems = function(el) {
   siblingDiv.classList.replace("collapse", "collapsing");
 
   /* Entferne entsprechend Klasse "show" falls diese bereits vorhanden */
-  if(siblingDiv.classList.contains("show")) { siblingDiv.classList.remove("show"); } 
+  if (siblingDiv.classList.contains("show")) { siblingDiv.classList.remove("show"); }
   else {
     siblingDiv.style.height = siblingDiv.scrollHeight + "px";
     setTimeout(() => {
@@ -55,6 +45,8 @@ const collapseItems = function(el) {
 }
 
 
+
+// Funktion: Verfügbarkeit des Elementes kontrollieren
 function checkStatusButton(buttonNode, elementData, chosenAmount) {
   let articleCnt = buttonNode.parentNode.parentNode;
 
@@ -79,7 +71,7 @@ function checkStatusButton(buttonNode, elementData, chosenAmount) {
     }
 
   if (elementData.kategorie === 'Standort' && chosenAmount > 0) {
-    // Sonderregel: Nur ein Element pro Produkt erlaubt
+    // Sonderregel: Nur ein Element von Kategorie pro Produkt erlaubt
     for (let aArticle of articleCnt.parentNode.children) {
       aArticle.querySelector('button').disabled = true;
       aArticle.querySelector('button').classList.add("disabled");
@@ -88,6 +80,9 @@ function checkStatusButton(buttonNode, elementData, chosenAmount) {
   }
 }
 
+
+
+// Funktion: Ausgewähltes Element hinzufügen
 function onAddButton() {
   let articleCnt = event.target.parentNode.parentNode;
   let elementData = getProductByName(articleCnt.querySelector("h3").innerHTML);
@@ -99,32 +94,11 @@ function onAddButton() {
     newAmount = changeStorage(basketId, productId, elementData.id, 1);
   }
   checkStatusButton(event.target, elementData, newAmount);
-
-  // const storageItemsReduced = 
-  // JSON.parse(localStorage.getItem("initialItems"))
-  // .map(el => {
-  //   if (el.name == articleName.textContent){
-  //     if(el.bestand > 0) { 
-  //       el.bestand -= 1;
-  //       console.log(el.bestand);
-  //     }
-
-  //     if (el.bestand === 0) { 
-  //       inStock = false;
-  //       event.target.disabled = true;
-  //       event.target.classList.add("disabled");
-  //     }
-  //   } 
-  //   return el;
-  // });
-  
-  // Styling Specific
-  // shopIconElement.classList.add("show");
-  // setTimeout(() => {
-  //   shopIconElement.classList.remove("show");
-  // }, 1000);
 }
 
+
+
+// Event-Listener bei 'Bestätigen'-Button hinzufügen
 document.getElementsByClassName('shop-button')[0].addEventListener('click', function() {
   // Local Storage anpassen
   let basketArr = readStorage(basketId);
@@ -136,15 +110,29 @@ document.getElementsByClassName('shop-button')[0].addEventListener('click', func
 
 
 
-// Shop aufsetzen -> Elemente einfügen
+// Shop aufsetzen -> Elemente in Kategorien einfügen
 
 
 
-// ggf. Local Storage kontrollieren
+// ggf. zu editierendes Produkt bestimmen
+let itemId = 'activeProductId';
+let productId = localStorage.getItem(itemId);
+if (productId === null) {
+  productId = -1;
+} else {
+  productId = parseInt(productId);
+}
+
+localStorage.setItem(itemId, '-1');
+if (productId > -1) {
+  document.getElementsByClassName('shop-button')[0].classList.add('ds-none');
+}
+
+// Local Storage kontrollieren
 checkStorage(basketId);
 checkStorage(buildId);
 
-// Gegenstände gruppieren (nach Kategorie)
+// Elemente gruppieren (nach Kategorie)
 let themeObj = {};
 for (let aTheme of Object.values(translateObj)) {
   themeObj[aTheme] = [];
@@ -176,11 +164,12 @@ for (let aTheme in themeObj) {
     }
   }
 
-  // Elemente einfügen
+  // Elemente von Kategorie einfügen
   let htmlContainer = document.getElementById('shop-' + aTheme);
   for (let i in elementArr) {
     let aElement = elementArr[i];
 
+    // HTML-Code einfügen
     let articleHtml = appendChild(htmlContainer, 'article', ['ds-flex', 'card', (i % 2 == 0 ? 'card-primary' : 'card-secondary'), 'bg-darken', 'flex-flow-column', 'justify-content-around', 'align-items-center'], {'data-id':aElement.id});
     articleHtml.insertAdjacentHTML(
       "beforeend",
@@ -201,6 +190,7 @@ for (let aTheme in themeObj) {
     let addButton = articleHtml.querySelector("button");
     addButton.addEventListener('click', onAddButton);
 
+    // Verfügbarkeit kontrollieren
     let chosenAmount = 0;
     for (let i = 0; i < chosenArr.length; i++) {
       if (chosenArr[0] === aElement.id) {

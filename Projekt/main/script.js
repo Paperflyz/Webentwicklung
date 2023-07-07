@@ -1,3 +1,8 @@
+// JS-Datei für die HTML-Datei 'index.html'
+
+
+// Funktion: Tab-Switch bei FAQ-Bereich
+
 document.getElementById('main-sect4-tab1').addEventListener('click', function() { switchTab(0); });
 document.getElementById('main-sect4-tab2').addEventListener('click', function() { switchTab(1); });
 

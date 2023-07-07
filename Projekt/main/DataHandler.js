@@ -80,6 +80,7 @@ function getSelectedAmount(elementId) {
 }
 
 
+
 // Funktionen bzgl. den angebotenen Elementen
 function getProductById(id) {
     for (let aProduct of getProducts()) {

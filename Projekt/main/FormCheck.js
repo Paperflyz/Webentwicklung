@@ -1,7 +1,8 @@
 // JS-Datei für die Formulare von 'support.html' & 'checkout.html'
 // Needed: 'General.js'
 
-// const { url } = require("inspector");
+
+// Formular aufsetzen -> Event-Listener bei Input-Feldern einfügen
 
 document.getElementsByClassName('form-button')[0].addEventListener('click', checkForm);
 for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
@@ -11,7 +12,10 @@ for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
     });
 }
 
- function checkInput(idArea, idField) {
+
+
+// Funktion: Eingabe bei Input-Feld kontrollieren
+function checkInput(idArea, idField) {
     // HTML-Elemente identifizieren
     let htmlForm = document.getElementsByTagName('form')[0];
     let confirmButton = document.getElementsByTagName('form')[0].querySelector('input[type="button"]');
@@ -64,6 +68,7 @@ for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
 
 
 
+// 'Absenden'-Button bestätigt -> Alle Eingaben überprüfen
 function checkForm() {
     // HTML-Seite bestimmen
     let idArea = '';
@@ -95,7 +100,6 @@ function checkForm() {
     }
 
     // Ergebnis der Kontrolle auswerten [true]
-
     if (idArea === 'out') {
         confirmArea(2);
     } else {

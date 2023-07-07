@@ -1,10 +1,9 @@
 // JS-Datei für das HTML-Dokument 'checkout.html'
 // - benötigt 'General.js' & 'DataHandler.js'
 
+
 let basketButton = document.getElementById('out-button-confirmBasket');
 document.getElementById('out-button-confirmBasket').addEventListener('click', function() { confirmArea(1); });
-
-
 
 // HTML-Seite aufsetzen  ->  Warenkorb erstellen
 
@@ -189,6 +188,8 @@ function changeElementAmount() {
     checkRequirement();
 }
 
+
+
 // Funktion: Bedingungen an Produkte kontrollieren
 function checkRequirement() {
     let minValAddon = 2;
@@ -230,6 +231,8 @@ function checkRequirement() {
         lockButton(confirmButton);
     }
 }
+
+
 
 // Funktion: Slide wechseln
 function confirmArea(newAreaId) {
