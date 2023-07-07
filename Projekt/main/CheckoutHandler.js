@@ -7,66 +7,72 @@ function buildBasket() {
     let basketButton = document.getElementById('out-button-confirmBasket');
     
     // Eingabe kontrollieren
-    let storageDataArr = readStorage();
+    let storageDataArr = readStorage(basketId);
     if (storageDataArr.length === 0) {
         document.getElementById('out-empty').classList.remove('ds-none');
         lockButton(basketButton);
         return;
     }
 
-    // Produktdaten der ausgewählten ID's ermitteln
-    let elementData = [];
     let totalPrice = 0;
-    for (let chosenArr of storageDataArr) {
-        let newData = getProductById(chosenArr[0]);
-        if (newData === null) {
-            alert('ERROR: Element not found!\nPlease reload the page!');
-            lockButton(basketButton);
-            return;
+    for (let i = 0; i < storageDataArr.length; i++) {
+        let productData = storageDataArr[i];
+        
+        // Produktdaten der ausgewählten ID's ermitteln
+        let elementData = [];
+        for (let chosenArr of productData) {
+            let newData = getProductById(chosenArr[0]);
+            if (newData === null) {
+                alert('ERROR: Element not found!\nPlease reload the page!');
+                lockButton(basketButton);
+                return;
+            }
+            newData.amount = chosenArr[1];
+            totalPrice += newData.amount * newData.preis;
+            elementData.push(newData);
         }
-        newData.amount = chosenArr[1];
-        totalPrice += newData.amount * newData.preis;
-        elementData.push(newData);
-    }
 
-    // Gegenstände gruppieren (nach Kategorie)
-    let themeArr = [];
-    let themeObj = {};
-    for (let aElement of elementData) {
-        let aTheme = aElement.kategorie;
-        if (!themeArr.includes(aTheme)) {
-            themeArr.push(aTheme);
-            themeObj[aTheme] = [];
-        }
-        themeObj[aTheme].push(aElement);
-    }
 
-    // Kategorien einfügen
-    themeArr.sort();
-    for (let aTheme of themeArr) {
-        // Titel einfügen
-        let themeNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
-        themeNode.innerHTML = aTheme;
+        // Gegenstände gruppieren (nach Kategorie)
+        // let themeArr = [];
+        // let themeObj = {};
+        // for (let aElement of elementData) {
+        //     let aTheme = aElement.kategorie;
+        //     if (!themeArr.includes(aTheme)) {
+        //         themeArr.push(aTheme);
+        //         themeObj[aTheme] = [];
+        //     }
+        //     themeObj[aTheme].push(aElement);
+        // }
+
+        // Produkttitel einfügen
+        let newNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
+        newNode.innerHTML = 'Produkt ' + (i + 1);
+        newNode = insertBefore(basketButton, 'button', ['bg-primary', 'text-light', 'button-confirm', 'out-basket-editBtn'], {});
+        newNode.innerHTML = 'Bearbeiten';
+        newNode.addEventListener('click', function() {
+            localStorage.setItem('activeProductId', i);
+            window.open('shop.html', '_self');
+        });
 
         // Gegenstände alphabetisch sortieren (nach Name)
-        let elementArr = themeObj[aTheme];
-        for (let i = elementArr.length - 2; i >= 0; i--) {
-            for (let j = 0; j <= i; j++) {
-                if (elementArr[j].name.localeCompare(elementArr[j + 1].name) > -1) {
-                    let temp = elementArr[j];
-                    elementArr[j] = elementArr[j + 1];
-                    elementArr[j + 1] = temp;
+        for (let j = elementData.length - 2; j >= 0; j--) {
+            for (let k = 0; k <= j; k++) {
+                if (elementData[k].name.localeCompare(elementData[k + 1].name) > -1) {
+                    let temp = elementData[k];
+                    elementData[k] = elementData[k + 1];
+                    elementData[k + 1] = temp;
                 }
             }
         }
 
         // Gegenstände einfügen
-        for (let aElement of elementArr) {
-            let newNode = insertBefore(basketButton, 'img', ['out-element-img'], {'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt});
+        for (let aElement of elementData) {
+            newNode = insertBefore(basketButton, 'img', ['out-element-img'], { 'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt });
             newNode.addEventListener('click', changeElementDiv);
             let divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
             divNode.addEventListener('click', changeElementDiv);
-            
+
             appendChild(divNode, 'h3', ['out-element-desc-title'], {}).innerHTML = aElement.name;
             appendChild(divNode, 'span', ['out-element-amount-title'], {}).innerHTML = 'Anzahl';
             appendChild(divNode, 'p', ['out-element-desc-txt'], {}).innerHTML = aElement.beschreibung;
@@ -105,6 +111,10 @@ function changeElementAmount() {
     let clickBtn = event.target;
     let elementDiv = clickBtn.parentNode.parentNode;
     let basketDiv = elementDiv.parentNode;
+    let elementH2 = elementDiv.previousElementSibling;
+    while (elementH2.tagName.toLowerCase() != 'h2') {
+        elementH2 = elementH2.previousElementSibling.previousElementSibling;
+    }
 
     let elementName = elementDiv.querySelector('.out-element-desc-title').innerHTML;
     let productData = getProductByName(elementName);
@@ -165,7 +175,8 @@ function changeElementAmount() {
     }
 
     // Local Storage aktualisieren
-    changeStorage(productData.id, amountChange);
+    let productId = parseInt(elementH2.innerHTML.split(' ')[1]) - 1;
+    changeStorage(basketId, productId, productData.id, amountChange);
 
     // Elementpreis aktualisieren
     if (newVal > 0) {

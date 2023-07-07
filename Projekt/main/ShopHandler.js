@@ -1,6 +1,21 @@
+// const { emitKeypressEvents } = require("readline");
+
 const translateObj = {'Standort': 'location', 'Erweiterungen': 'addon', 'Equipment': 'equip', 'Dekoration': 'deco'};
 const shopIconElement = document.getElementById("shop-icon");
 const shopSection = document.getElementById("shop-section");
+
+let itemId = 'activeProductId';
+let productId = localStorage.getItem(itemId);
+if (productId === null) {
+  productId = -1;
+} else {
+  productId = parseInt(productId);
+}
+
+localStorage.setItem(itemId, '-1');
+if (productId > -1) {
+  document.getElementsByClassName('shop-button')[0].classList.add('ds-none');
+}
 
 /* Collapsing Handler durch Event-Delegation */
 shopSection.addEventListener("click", (e) => {
@@ -40,10 +55,11 @@ const collapseItems = function(el) {
 }
 
 
-function checkStatusButton(buttonNode, category, remainingAmount) {
+function checkStatusButton(buttonNode, elementData) {
   let articleCnt = buttonNode.parentNode.parentNode;
+  let remainingAmount = elementData.bestand - getSelectedAmount(elementData.id);
   
-  if (category === 'Standort') {
+  if (elementData.kategorie === 'Standort') {
     // Sonderregel: Nur ein Element erlaubt
     for (let aArticle of articleCnt.parentNode.children) {
       aArticle.querySelector('button').disabled = true;
@@ -61,43 +77,56 @@ function checkStatusButton(buttonNode, category, remainingAmount) {
 function onAddButton() {
   let articleCnt = event.target.parentNode.parentNode;
   let elementData = getProductByName(articleCnt.querySelector("h3").innerHTML);
-  let remainingAmount = elementData.bestand - changeStorage(elementData.id, 1);
-  checkStatusButton(event.target, elementData.kategorie, remainingAmount);
 
-  /*
-  const storageItemsReduced = 
-  JSON.parse(localStorage.getItem("initialItems"))
-  .map(el => {
-    if (el.name == articleName.textContent){
-      if(el.bestand > 0) { 
-        el.bestand -= 1;
-        console.log(el.bestand);
-      }
+  if (productId === -1) {
+    changeStorage(buildId, -1, elementData.id, 1);
+  } else {
+    changeStorage(basketId, productId, elementData.id, 1);
+  }
+  checkStatusButton(event.target, elementData);
 
-      if (el.bestand === 0) { 
-        inStock = false;
-        event.target.disabled = true;
-        event.target.classList.add("disabled");
-      }
-    } 
-    return el;
-  });
+  // const storageItemsReduced = 
+  // JSON.parse(localStorage.getItem("initialItems"))
+  // .map(el => {
+  //   if (el.name == articleName.textContent){
+  //     if(el.bestand > 0) { 
+  //       el.bestand -= 1;
+  //       console.log(el.bestand);
+  //     }
 
-  localStorage.setItem("initialItems", JSON.stringify(storageItemsReduced));
-  */
+  //     if (el.bestand === 0) { 
+  //       inStock = false;
+  //       event.target.disabled = true;
+  //       event.target.classList.add("disabled");
+  //     }
+  //   } 
+  //   return el;
+  // });
   
   // Styling Specific
-  shopIconElement.classList.add("show");
-  setTimeout(() => {
-    shopIconElement.classList.remove("show");
-  }, 1000);
+  // shopIconElement.classList.add("show");
+  // setTimeout(() => {
+  //   shopIconElement.classList.remove("show");
+  // }, 1000);
 }
+
+document.getElementsByClassName('shop-button')[0].addEventListener('click', function() {
+  // Local Storage anpassen
+  let basketArr = readStorage(basketId);
+  basketArr.push(readStorage(buildId));
+  localStorage.setItem(basketId, JSON.stringify(basketArr));
+  localStorage.setItem(buildId, '[]');
+});
 
 
 
 // Shop aufsetzen -> Elemente einfügen
 
 
+
+// ggf. Local Storage kontrollieren
+checkStorage(basketId);
+checkStorage(buildId);
 
 // Gegenstände gruppieren (nach Kategorie)
 let themeObj = {};
@@ -110,7 +139,7 @@ for (let aElement of getProducts()) {
 }
 
 // Kategorien befüllen
-let chosenArr = readStorage();
+// let chosenArr = readStorage();
 
 for (let aTheme in themeObj) {
   // Elemente alphabetisch sortieren (nach Name)
@@ -148,10 +177,9 @@ for (let aTheme in themeObj) {
       `
     );
     let addButton = articleHtml.querySelector("button");
-    //addButton.addEventListener('click', onAddButton);
+    addButton.addEventListener('click', onAddButton);
 
     // ggf. Zustand des Buttons anpassen
-    let remainingAmount = aElement.bestand;
     // for (let iArr of chosenArr) {
     //   if (iArr[0] === aElement.id) {
     //     remainingAmount -= iArr[1];
@@ -159,6 +187,6 @@ for (let aTheme in themeObj) {
     //   }
     // }
 
-    checkStatusButton(addButton, aElement.kategorie, remainingAmount);
+    checkStatusButton(addButton, aElement);
   }
 }

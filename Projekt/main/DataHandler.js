@@ -1,41 +1,76 @@
 /* Funktionen bzgl. Storage vom Webbrowser */
 
-const itemId = 'selectedId';
+const basketId = 'selectedId';
+const buildId = 'builderArr';
 
-function changeStorage(elementId, change) {
-    let dataArr = readStorage();
+function changeStorage(itemId, productId, elementId, change) {
+    let dataArr = readStorage(itemId);
+    let targetArr = dataArr;
+    if (itemId === basketId) {
+        targetArr = dataArr[productId];
+    }
+
     let arrI = -1;
-    for (let i = 0; i < dataArr.length; i++) {
-        if (dataArr[i][0] === elementId) {
+    for (let i = 0; i < targetArr.length; i++) {
+        if (targetArr[i][0] === elementId) {
             arrI = i;
             break;
         }
     }
 
+    let newAmount = 0;
     if (arrI === -1) {
-        dataArr.push([elementId, change]);
-        arrI = dataArr.length - 1;
+        targetArr.push([elementId, change]);
+        newAmount = change;
     } else {
-        dataArr[arrI][1] += change;
-        if (dataArr[arrI][1] === 0) {
-            dataArr.splice(arrI, 1);
+        newAmount = targetArr[arrI][1] + change;
+        if (newAmount === 0) {
+            targetArr.splice(arrI, 1);
+        } else {
+            targetArr[arrI][1] = newAmount;
         }
     }
 
     localStorage.setItem(itemId, JSON.stringify(dataArr));
-    return dataArr[arrI][1];
+    return newAmount;
 }
 
-function readStorage() {
-    let data = localStorage.getItem(itemId);
-    if (data === null) {
-        return [];
+function readStorage(itemId) {
+    checkStorage(itemId);
+    return JSON.parse(localStorage.getItem(itemId));
+}
+
+function checkStorage(itemId) {
+    if (localStorage.getItem(itemId) === null) {
+        localStorage.setItem(itemId, '[]');
     }
-    return JSON.parse(data);
 }
 
 function clearStorage() {
     localStorage.removeItem(itemId);
+}
+
+function getSelectedAmount(elementId) {
+    let dataArr = readStorage(basketId);
+    let totalAmount = 0;
+    for (let aProduct of dataArr) {
+        for (let i = 0; i < aProduct.length; i++) {
+            if (aProduct[i][0] === elementId) {
+                totalAmount += aProduct[i][1];
+                break;
+            }
+        }
+    }
+
+    dataArr = readStorage(buildId);
+    for (let i = 0; i < dataArr.length; i++) {
+        if (dataArr[i][0] === elementId) {
+            totalAmount += dataArr[i][1];
+            break;
+        }
+    }
+
+    return totalAmount;
 }
 
 /* Funktion bzgl. den angebotenen Elementen */
