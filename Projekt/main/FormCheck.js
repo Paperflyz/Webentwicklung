@@ -1,5 +1,7 @@
 // Needed: 'General.js'
 
+const { url } = require("inspector");
+
 document.getElementsByClassName('form-button')[0].addEventListener('click', checkForm);
 for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
     aElement.addEventListener('blur', function() {
@@ -64,7 +66,8 @@ for (let aElement of document.body.querySelectorAll('input[type="text"]')) {
 function checkForm() {
     // HTML-Seite bestimmen
     let idArea = '';
-    switch (document.URL.split('/')[3]) {
+    let urlParts = document.URL.split('/');
+    switch (urlParts[urlParts.length - 1]) {
         case 'support.html':
             idArea = 'help';
             break;
@@ -92,15 +95,9 @@ function checkForm() {
 
     // Ergebnis der Kontrolle auswerten [true]
 
-
-    // TODO: Mail verschicken
-    // -> (support.html) Support-Anfrage per Mail & per Webseite bestätigen
-    // -> (checkout.html) Auftragsbestätigung per Mail bestätigen & zur nächsten Sicht switchen
-
-
     if (idArea === 'out') {
         confirmArea(2);
     } else {
-        alert('input valid');
+        alert('Vielen Dank für Ihre Anfrage!\nWir werden unverzüglich mit Ihnen in Kontakt treten.');
     }
 }
