@@ -51,9 +51,9 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
         // }
 
         // Produkttitel einfügen
-        let newNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
-        newNode.innerHTML = 'Produkt ' + (i + 1);
-        newNode = insertBefore(basketButton, 'button', ['bg-primary', 'text-light', 'button-confirm', 'out-basket-editBtn'], {});
+        let titleNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
+        titleNode.innerHTML = 'Produkt ' + (i + 1);
+        let newNode = insertBefore(basketButton, 'button', ['bg-primary', 'text-light', 'button-confirm', 'out-basket-editBtn'], {});
         newNode.innerHTML = 'Bearbeiten';
         newNode.addEventListener('click', function () {
             localStorage.setItem('activeProductId', i);
@@ -102,6 +102,9 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
             newNode = appendChild(divNode, 'span', ['out-element-totalPrice'], {}).innerHTML = (Math.round(100 * aElement.amount * aElement.preis) / 100).toFixed(2) + ' €';
         }
     }
+
+    // Bedingung kontrollieren
+    checkRequirement();
 
     // Gesamtpreis einfügen
     insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-title' }).innerHTML = 'TOTAL:';
@@ -169,6 +172,7 @@ function changeElementAmount() {
                 basketDiv.removeChild(possPriceHtml);
                 possEmptyHtml.classList.remove('ds-none');
                 lockButton(basketDiv.querySelector('#out-button-confirmBasket'));
+                errTxt.classList.add('ds-none');
                 return;
             }
         }
@@ -195,26 +199,44 @@ function changeElementAmount() {
     totalHtml.innerHTML = (Math.round(100 * newPrice) / 100).toFixed(2) + ' €';
 
     // Bedingungen kontrollieren
-    let hasLocation = false;
-    let counterAddon = 0;
-    let pointerHtml = elementH2.nextElementSibling.nextElementSibling.nextElementSibling;
-    while (pointerHtml.tagName.toLowerCase() === 'div') {
-        let elementData = getProductByName(pointerHtml.firstChild.innerHTML);
-        hasLocation = (hasLocation || elementData.kategorie === 'Standort');
-        if (elementData.kategorie === 'Erweiterungen') {
-            counterAddon += parseInt(pointerHtml.querySelector('.out-element-amount-circle').firstChild.innerHTML);
+    checkRequirement();
+}
+
+// Bedingungen an Produkte kontrollieren
+function checkRequirement() {
+    let minValAddon = 2;
+    let basketHtml = document.getElementById('out-basket');
+
+    let pointerHtml = basketHtml.firstElementChild.nextElementSibling;
+    let hasLocation = true;
+    let counterAddon = minValAddon;
+    let isValid = true;
+    while (pointerHtml.id != 'out-button-confirmBasket') {
+        if (pointerHtml.tagName.toLowerCase() === 'h2') {
+            if (!hasLocation || counterAddon < minValAddon) {
+                isValid = false;
+                break;
+            }
+            hasLocation = false;
+            counterAddon = 0;
+        } else {
+            let elementData = getProductByName(pointerHtml.nextElementSibling.firstChild.innerHTML);
+            hasLocation = (hasLocation || elementData.kategorie === 'Standort');
+            if (elementData.kategorie === 'Erweiterungen') {
+                counterAddon += parseInt(pointerHtml.nextElementSibling.querySelector('.out-element-amount-circle').firstChild.innerHTML);
+            }
+            pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
         }
-        pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
     }
 
-    let confirmButton = basketDiv.querySelector('#out-button-confirmBasket');
-    let errTxt = basketDiv.querySelector('.error-confirm');
-    if (!hasLocation || counterAddon < 2) {
-        errTxt.classList.remove('ds-none');
-        lockButton(confirmButton);
-    } else {
+    let confirmButton = basketHtml.querySelector('#out-button-confirmBasket');
+    let errTxt = basketHtml.querySelector('.error-confirm');
+    if (isValid) {
         errTxt.classList.add('ds-none');
         unlockButton(confirmButton);
+    } else {
+        errTxt.classList.remove('ds-none');
+        lockButton(confirmButton);
     }
 }
 

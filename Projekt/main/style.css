@@ -60,6 +60,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   font-family: var(--font-family);
   margin: 0;
 

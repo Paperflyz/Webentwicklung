@@ -131,6 +131,7 @@ document.getElementsByClassName('shop-button')[0].addEventListener('click', func
   basketArr.push(readStorage(buildId));
   localStorage.setItem(basketId, JSON.stringify(basketArr));
   localStorage.setItem(buildId, '[]');
+  window.open('shop.html', '_self');
 });
 
 
