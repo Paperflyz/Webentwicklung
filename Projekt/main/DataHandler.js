@@ -102,7 +102,7 @@ function getProducts() {
         {
             "id": 1,
             "name": "Halle",
-            "pfad": "halle.png",
+            "pfad": "halle.jpg",
             "preis": 199.99,
             "beschreibung": "Eine gemütliche und große Halle für Events jeglicher Art!<br>Halle beinhaltet Toiletten und Waschbecken.",
             "kategorie": "Standort",
