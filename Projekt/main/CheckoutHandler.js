@@ -103,12 +103,12 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
         }
     }
 
-    // Bedingung kontrollieren
-    checkRequirement();
-
     // Gesamtpreis einfügen
     insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-title' }).innerHTML = 'TOTAL:';
     insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-txt' }).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
+
+    // Bedingung kontrollieren
+    checkRequirement();
 })();
 
 
@@ -211,7 +211,7 @@ function checkRequirement() {
     let hasLocation = true;
     let counterAddon = minValAddon;
     let isValid = true;
-    while (pointerHtml.id != 'out-button-confirmBasket') {
+    while (pointerHtml.tagName.toLowerCase() != 'span') {
         if (pointerHtml.tagName.toLowerCase() === 'h2') {
             if (!hasLocation || counterAddon < minValAddon) {
                 isValid = false;
@@ -229,6 +229,7 @@ function checkRequirement() {
 
         pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
     }
+    isValid = (hasLocation && counterAddon >= minValAddon);
 
     let confirmButton = basketHtml.querySelector('#out-button-confirmBasket');
     let errTxt = basketHtml.querySelector('.error-confirm');
