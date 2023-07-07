@@ -1,6 +1,5 @@
 // JS-Datei für das HTML-Dokument 'checkout.html'
-// - beinhaltet alle Event-Listener (außer Formular) & JS-Code für Erstellung des Warenkorbes
-// - Needed: 'General.js' & 'DataHandler.js'
+// - benötigt 'General.js' & 'DataHandler.js'
 
 let basketButton = document.getElementById('out-button-confirmBasket');
 document.getElementById('out-button-confirmBasket').addEventListener('click', function() { confirmArea(1); });
@@ -18,12 +17,12 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
         return;
     }
 
-    // Daten der ausgewählten Element-ID's ermitteln
+    // Produkte erstellen
     let totalPrice = 0;
     for (let i = 0; i < storageDataArr.length; i++) {
+        // Daten der ausgewählten Element-ID's ermitteln
         let productData = storageDataArr[i];
 
-        
         let elementData = [];
         for (let chosenArr of productData) {
             let newData = getProductById(chosenArr[0]);
@@ -47,7 +46,7 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
             window.open('shop.html', '_self');
         });
 
-        // Gegenstände alphabetisch sortieren (nach Name)
+        // Elemente alphabetisch sortieren (nach Name)
         for (let j = elementData.length - 2; j >= 0; j--) {
             for (let k = 0; k <= j; k++) {
                 if (elementData[k].name.localeCompare(elementData[k + 1].name) > -1) {
@@ -58,7 +57,7 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
             }
         }
 
-        // Gegenstände einfügen
+        // Elemente von Produkt einfügen
         for (let aElement of elementData) {
             newNode = insertBefore(basketButton, 'img', ['out-element-img'], { 'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt });
             divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
@@ -94,14 +93,15 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
     insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-title' }).innerHTML = 'TOTAL:';
     insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-txt' }).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
 
-    // Bedingung kontrollieren
+    // Bedingungen kontrollieren
     checkRequirement();
 })();
 
 
 
+// Funktion: Menge eines Elementes anpassen
 function changeElementAmount() {
-    // HTML-Elemente & Produktdaten ermitteln
+    // HTML-Elemente & Elementdaten ermitteln
     let clickBtn = event.target;
     let elementDiv = clickBtn.parentNode.parentNode;
     let basketDiv = elementDiv.parentNode;
@@ -149,12 +149,12 @@ function changeElementAmount() {
         basketDiv.removeChild(elementDiv);
         
         if (fstElementTheme && lstElementTheme) {
-            // Produkt löschen
+            // Letztes Element von Produkt wurde gelöscht -> Produkt löschen
             basketDiv.removeChild(possTitleHtml.nextElementSibling);
             basketDiv.removeChild(possTitleHtml);
 
             if (fstElement && lstElement) {
-                // Warenkorb löschen
+                // Letztes Produkt von Warenkorb wurde gelöscht -> Warenkorb löschen
                 basketDiv.removeChild(possPriceHtml.nextElementSibling);
                 basketDiv.removeChild(possPriceHtml);
                 possEmptyHtml.classList.remove('ds-none');
@@ -189,11 +189,12 @@ function changeElementAmount() {
     checkRequirement();
 }
 
-// Bedingungen an Produkte kontrollieren
+// Funktion: Bedingungen an Produkte kontrollieren
 function checkRequirement() {
     let minValAddon = 2;
     let basketHtml = document.getElementById('out-basket');
 
+    // Produkte in Warenkorb kontrollieren
     let pointerHtml = basketHtml.firstElementChild.nextElementSibling;
     let hasLocation = true;
     let counterAddon = minValAddon;
@@ -218,6 +219,7 @@ function checkRequirement() {
     }
     isValid = (hasLocation && counterAddon >= minValAddon);
 
+    // Ergebnis der Kontrolle auswerten
     let confirmButton = basketHtml.querySelector('#out-button-confirmBasket');
     let errTxt = basketHtml.querySelector('.error-confirm');
     if (isValid) {
@@ -229,7 +231,7 @@ function checkRequirement() {
     }
 }
 
-// Div-Wechsel
+// Funktion: Slide wechseln
 function confirmArea(newAreaId) {
     // Wechsel zum nächsten Bereich
     let percent = 100 * newAreaId / 3;
