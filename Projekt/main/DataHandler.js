@@ -50,7 +50,7 @@ function checkStorage(itemId) {
 }
 
 function clearStorage() {
-    localStorage.removeItem(itemId);
+    localStorage.removeItem(basketId);
 }
 
 function getSelectedAmount(elementId) {
