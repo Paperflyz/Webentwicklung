@@ -498,8 +498,15 @@ GENERAL
   font-weight: var(--weight-bold);
   border-radius: 0px 31px 0px 0px;
   cursor: pointer;
+  border: none;
 }
 
+.shop-button {
+  width: fit-content;
+  padding: .5rem 1rem;
+  margin: 1rem;
+  font-size: var(--font-size-small);
+}
 
 
 /*
