@@ -191,7 +191,6 @@ for (let aTheme in themeObj) {
       <div class="card-body ds-flex flex-flow-column align-items-start my-2">
         <h3>${aElement.name}</h3>
         <p>${aElement.beschreibung}</p>
-        <p>Verfügbar: ${aElement.bestand}</p>
         <p>Preis: ${aElement.preis.toFixed(2)} €</p>
       </div>
       <div class="card-footer my-2">
