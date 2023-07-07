@@ -225,8 +225,9 @@ function checkRequirement() {
             if (elementData.kategorie === 'Erweiterungen') {
                 counterAddon += parseInt(pointerHtml.nextElementSibling.querySelector('.out-element-amount-circle').firstChild.innerHTML);
             }
-            pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
         }
+
+        pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
     }
 
     let confirmButton = basketHtml.querySelector('#out-button-confirmBasket');
