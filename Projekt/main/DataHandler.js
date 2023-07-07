@@ -95,7 +95,7 @@ function getProductByName(name) {
     return null;
 }
 
-if(localStorage.getItem("initialItems") == null) localStorage.setItem("initialItems", JSON.stringify(getProducts()));
+//if(localStorage.getItem("initialItems") == null) localStorage.setItem("initialItems", JSON.stringify(getProducts()));
 
 function getProducts() {
     return [
