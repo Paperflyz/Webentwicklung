@@ -194,8 +194,8 @@ function changeElementAmount() {
     let hasLocation = false;
     let counterAddon = 0;
     let pointerHtml = elementH2.nextElementSibling.nextElementSibling.nextElementSibling;
-    while (pointerHtml.tagName.toLowerCase() != 'h2') {
-        let elementData = getProductByName(pointerHtml.querySelector('h3').innerHTML);
+    while (pointerHtml.tagName.toLowerCase() === 'div') {
+        let elementData = getProductByName(pointerHtml.firstChild.innerHTML);
         hasLocation = (elementData.kategorie === 'Standort');
         if (elementData.kategorie === 'Erweiterung') counterAddon++;
         pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
