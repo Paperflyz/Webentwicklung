@@ -1,13 +1,10 @@
 @import url("https://api.fonts.coollabs.io/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
 /* 
-
 GENERAL SETTINGS
-
 */
 
 /* General - Variables */
-
 :root {
   /* Colors */
   --color-primary: #ff9900;
@@ -806,10 +803,7 @@ CHECKOUT.HTML
 */
 
 
-
 /* Checkout - Titel */
-
-
 #out-flex {
   position: relative;
   width: 300vw;
@@ -1105,7 +1099,7 @@ article.card img {
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
-  background: url("../main/assets/icons/icon-arrow-toggle.svg") no-repeat center;
+  background: url("./assets/icons/icon-arrow-toggle.svg") no-repeat center;
   transition: transform .35s ease;
 }
 
@@ -1132,9 +1126,6 @@ article.card img {
 .data-consent li {
   margin-block: 1rem;
 }
-
-
-
 
 
 /* Defined BREAKPOINTS
@@ -1201,10 +1192,6 @@ article.card img {
   }
 
 }
-
-
-
-
 
 
 /* BIGGER THAN SM */
@@ -1338,10 +1325,6 @@ article.card img {
 
 }
 
-
-
-
-
 /* Bigger than MD */
 
 @media screen and (min-width: 992px) {
@@ -1417,10 +1400,6 @@ article.card img {
 
 
 }
-
-
-
-
 
 /* BIGGER THAN LG & XL */
 
