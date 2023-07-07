@@ -88,6 +88,10 @@ figure {
   margin-inline: 1rem;
 }
 
+q {
+  font-style: italic;
+}
+
 /* General - Color-Settings (Background & Font) */
 
 .bg-primary {
