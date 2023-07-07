@@ -96,7 +96,7 @@ function buildBasket() {
             btnNode.addEventListener('click', changeElementAmount);
 
             newNode = appendChild(divNode, 'span', ['out-element-onePrice'], {}).innerHTML = '(je ' + aElement.preis + ' €)';
-            newNode = appendChild(divNode, 'span', ['out-element-totalPrice'], {}).innerHTML = aElement.preis + ' €';
+            newNode = appendChild(divNode, 'span', ['out-element-totalPrice'], {}).innerHTML = (Math.round(100 * aElement.amount * aElement.preis) / 100).toFixed(2) + ' €';
         }
     }
 
@@ -134,34 +134,40 @@ function changeElementAmount() {
         amountHtml.innerHTML = 'Anzahl: ' + newVal;
     }
 
+    // Local Storage aktualisieren
+    let productId = parseInt(elementH2.innerHTML.split(' ')[1]) - 1;
+    changeStorage(basketId, productId, productData.id, amountChange);
+
     // Grenzwerte der Menge kontrollieren
     if (newVal === 0) {
         // Untergrenze erreicht (-> Element wird aus Warenkorb entfernt)
-        let possTitleHtml = elementDiv.previousElementSibling.previousElementSibling; // ist Kategorientitel, wenn 'fstElementTheme' true ist
+        let possTitleHtml = elementDiv.previousElementSibling.previousElementSibling.previousElementSibling; // ist Produkttitel, wenn 'fstElementTheme' true ist
         let possEmptyHtml = possTitleHtml.previousElementSibling; // ist Empty-Anzeige, wenn 'fstElement' true ist
         let possPriceHtml = elementDiv.nextElementSibling; // ist Gesamtpreis-Anzeige, wenn 'lstElement' true ist
 
         let fstElement = (possEmptyHtml.getAttribute('id') === 'out-empty');
         let lstElement = (possPriceHtml.getAttribute('id') === 'out-price-title');
         let fstElementTheme = (possTitleHtml.tagName.toLowerCase() === 'h2');
-        let lstelementTheme = (lstElement || possPriceHtml.tagName.toLowerCase() === 'h2');
+        let lstElementTheme = (lstElement || possPriceHtml.tagName.toLowerCase() === 'h2');
         
-        if (fstElementTheme && lstelementTheme) {
+        // Element löschen
+        basketDiv.removeChild(elementDiv.previousElementSibling);
+        basketDiv.removeChild(elementDiv);
+        
+        if (fstElementTheme && lstElementTheme) {
+            // Produkt löschen
+            basketDiv.removeChild(possTitleHtml.nextElementSibling);
+            basketDiv.removeChild(possTitleHtml);
+
             if (fstElement && lstElement) {
                 // Warenkorb löschen
                 basketDiv.removeChild(possPriceHtml.nextElementSibling);
                 basketDiv.removeChild(possPriceHtml);
                 possEmptyHtml.classList.remove('ds-none');
                 lockButton(basketDiv.querySelector('#out-button-confirmBasket'));
+                return;
             }
-
-            // Kategorie löschen
-            basketDiv.removeChild(possTitleHtml);
         }
-        
-        // Produkt löschen
-        basketDiv.removeChild(elementDiv.previousElementSibling);
-        basketDiv.removeChild(elementDiv);
     } else if (newVal === productData.bestand) {
         // Obergrenze erreicht (->'+'-Button wird gesperrt)
         lockButton(clickBtn);
@@ -173,10 +179,6 @@ function changeElementAmount() {
         clickBtn.previousElementSibling.classList.add('text-light');
         clickBtn.previousElementSibling.classList.remove('text-dark');
     }
-
-    // Local Storage aktualisieren
-    let productId = parseInt(elementH2.innerHTML.split(' ')[1]) - 1;
-    changeStorage(basketId, productId, productData.id, amountChange);
 
     // Elementpreis aktualisieren
     if (newVal > 0) {
