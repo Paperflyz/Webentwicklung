@@ -10,7 +10,7 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
 // HTML-Seite aufsetzen  ->  Warenkorb erstellen
 
 
-document.body.addEventListener('load', function() {
+(function () {
     // Eingabe kontrollieren: Wurde ein Produkt erstellt?
     let storageDataArr = readStorage(basketId);
     if (storageDataArr.length === 0) {
@@ -18,11 +18,11 @@ document.body.addEventListener('load', function() {
         lockButton(basketButton);
         return;
     }
-    
+
     let totalPrice = 0;
     for (let i = 0; i < storageDataArr.length; i++) {
         let productData = storageDataArr[i];
-        
+
         // Produktdaten der ausgewählten ID's ermitteln
         let elementData = [];
         for (let chosenArr of productData) {
@@ -36,8 +36,8 @@ document.body.addEventListener('load', function() {
             totalPrice += newData.amount * newData.preis;
             elementData.push(newData);
         }
-    
-    
+
+
         // Gegenstände gruppieren (nach Kategorie)
         // let themeArr = [];
         // let themeObj = {};
@@ -49,17 +49,17 @@ document.body.addEventListener('load', function() {
         //     }
         //     themeObj[aTheme].push(aElement);
         // }
-    
+
         // Produkttitel einfügen
         let newNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
         newNode.innerHTML = 'Produkt ' + (i + 1);
         newNode = insertBefore(basketButton, 'button', ['bg-primary', 'text-light', 'button-confirm', 'out-basket-editBtn'], {});
         newNode.innerHTML = 'Bearbeiten';
-        newNode.addEventListener('click', function() {
+        newNode.addEventListener('click', function () {
             localStorage.setItem('activeProductId', i);
             window.open('shop.html', '_self');
         });
-    
+
         // Gegenstände alphabetisch sortieren (nach Name)
         for (let j = elementData.length - 2; j >= 0; j--) {
             for (let k = 0; k <= j; k++) {
@@ -70,23 +70,21 @@ document.body.addEventListener('load', function() {
                 }
             }
         }
-    
+
         // Gegenstände einfügen
         for (let aElement of elementData) {
             newNode = insertBefore(basketButton, 'img', ['out-element-img'], { 'src': './assets/graphics/' + aElement.pfad, 'alt': aElement.alt });
-            newNode.addEventListener('click', changeElementDiv);
-            let divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
-            divNode.addEventListener('click', changeElementDiv);
-    
+            divNode = insertBefore(basketButton, 'div', ['out-element-div', 'ds-grid', 'col-gap', 'grid-row-gap', 'bg-light'], {});
+
             appendChild(divNode, 'h3', ['out-element-desc-title'], {}).innerHTML = aElement.name;
             appendChild(divNode, 'span', ['out-element-amount-title'], {}).innerHTML = 'Anzahl';
             appendChild(divNode, 'p', ['out-element-desc-txt'], {}).innerHTML = aElement.beschreibung;
             let circleNode = appendChild(divNode, 'div', ['out-element-amount-circle', 'bg-secondary'], {});
             appendChild(circleNode, 'span', ['out-element-amount-txt', 'text-light'], {}).innerHTML = aElement.amount;
-    
+
             appendChild(divNode, 'span', ['out-element-amount'], {}).innerHTML = "Anzahl: " + aElement.amount;
             let flexNode = appendChild(divNode, 'div', ['ds-flex', 'out-element-flex'], {});
-    
+
             let btnNode = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary'], {});
             btnNode.innerHTML = '+';
             btnNode.addEventListener('click', changeElementAmount);
@@ -99,18 +97,16 @@ document.body.addEventListener('load', function() {
             btnNode = appendChild(flexNode, 'button', ['ds-flex', 'out-element-button', 'bg-primary', 'text-light'], {});
             btnNode.innerHTML = '-';
             btnNode.addEventListener('click', changeElementAmount);
-    
+
             newNode = appendChild(divNode, 'span', ['out-element-onePrice'], {}).innerHTML = '(je ' + aElement.preis + ' €)';
             newNode = appendChild(divNode, 'span', ['out-element-totalPrice'], {}).innerHTML = (Math.round(100 * aElement.amount * aElement.preis) / 100).toFixed(2) + ' €';
         }
     }
-    
-    
-    // Gesamtpreis einfügen
-    insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-title'}).innerHTML = 'TOTAL:';
-    insertBefore(basketButton, 'span', ['text-light'], {'id': 'out-price-txt'}).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
-});
 
+    // Gesamtpreis einfügen
+    insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-title' }).innerHTML = 'TOTAL:';
+    insertBefore(basketButton, 'span', ['text-light'], { 'id': 'out-price-txt' }).innerHTML = (Math.round(100 * totalPrice) / 100).toFixed(2) + ' €';
+})();
 
 
 
@@ -204,14 +200,21 @@ function changeElementAmount() {
     let pointerHtml = elementH2.nextElementSibling.nextElementSibling.nextElementSibling;
     while (pointerHtml.tagName.toLowerCase() === 'div') {
         let elementData = getProductByName(pointerHtml.firstChild.innerHTML);
-        hasLocation = (elementData.kategorie === 'Standort');
-        if (elementData.kategorie === 'Erweiterung') counterAddon++;
+        hasLocation = (hasLocation || elementData.kategorie === 'Standort');
+        if (elementData.kategorie === 'Erweiterungen') {
+            counterAddon += parseInt(pointerHtml.querySelector('.out-element-amount-circle').firstChild.innerHTML);
+        }
         pointerHtml = pointerHtml.nextElementSibling.nextElementSibling;
     }
 
-    if (!hasLocation || counterAddon > 2) {
-        // TODO: Fehlertext anzeigen
-        lockButton(basketDiv.querySelector('#out-button-confirmBasket'));
+    let confirmButton = basketDiv.querySelector('#out-button-confirmBasket');
+    let errTxt = basketDiv.querySelector('.error-confirm');
+    if (!hasLocation || counterAddon < 2) {
+        errTxt.classList.remove('ds-none');
+        lockButton(confirmButton);
+    } else {
+        errTxt.classList.add('ds-none');
+        unlockButton(confirmButton);
     }
 }
 

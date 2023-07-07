@@ -56,12 +56,11 @@ GENERAL SETTINGS
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  overflow-x: hidden;  /* TODO: Ist das in Ordnung? */
   font-family: var(--font-family);
-  /* overflow-y: overlay; */
   margin: 0;
 
 }
