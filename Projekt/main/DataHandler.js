@@ -126,12 +126,12 @@ function getProducts() {
             "bestand": 5
         }, {
             "id": 8,
-            "name": "Holztoilette",
-            "pfad": "holztoilette.png",
+            "name": "Toilette",
+            "pfad": "toilets.jpg",
             "preis": 79.99,
             "beschreibung": "Die rustikale Lösung für deine Outdoor-Bedürfnisse!",
             "kategorie": "Erweiterungen",
-            "alt": "Eine hellgraue Holztoilette mit Halbmondausschnitt an der Vordertür mitten im Wald.",
+            "alt": "Eine reihe von bunten Mobiltoiletten direkt nebeneinander in Diagonalansicht.",
             "bestand": 8
         }, {
             "id": 9,

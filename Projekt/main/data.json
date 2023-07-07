@@ -42,8 +42,8 @@
       },
       {
         "id": 6,
-        "name": "Holztoilette",
-        "pfad": "holztoilette.png",
+        "name": "Toilette",
+        "pfad": "toilets.jpg",
         "preis": 79.99,
         "beschreibung": "Die rustikale Lösung für deine Outdoor-Bedürfnisse!",
         "kategorie": "Sanitär"
