@@ -135,7 +135,7 @@ for (let aTheme in themeObj) {
       "beforeend",
       `
       <div class="card-header my-2">
-        <img src="./assets/graphics/${aElement.pfad}" alt="${aElement.alt}" srcset="">
+        <img src="./assets/graphics/${aElement.pfad}" alt="${aElement.alt}">
       </div>
       <div class="card-body ds-flex flex-flow-column align-items-start my-2">
         <h3>${aElement.name}</h3>
