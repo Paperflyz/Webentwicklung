@@ -54,11 +54,16 @@ GENERAL SETTINGS
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-x: hidden;  /* TODO: Ist das in Ordnung? */
   font-family: var(--font-family);
   /* overflow-y: overlay; */
   margin: 0;
+
 }
 
 h1 {
@@ -662,7 +667,7 @@ INDEX.HTML
   padding-bottom: 10vh;
 }
 
-.main-sect-grid {
+.section-space {
   margin-left: var(--side-width);
   margin-right: var(--side-width);
 }
