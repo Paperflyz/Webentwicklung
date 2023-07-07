@@ -1,6 +1,7 @@
+// JS-Datei für die Formulare von 'support.html' & 'checkout.html'
 // Needed: 'General.js'
 
-const { url } = require("inspector");
+// const { url } = require("inspector");
 
 document.getElementsByClassName('form-button')[0].addEventListener('click', checkForm);
 for (let aElement of document.body.querySelectorAll('input[type="text"]')) {

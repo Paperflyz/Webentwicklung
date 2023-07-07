@@ -1,4 +1,7 @@
-/* Funktionen bzgl. Storage vom Webbrowser */
+// JS-Datei für Elementdaten & Storage vom Webbrowser
+
+
+// Funktionen bzgl. Local Storage vom Webbrowser
 
 const basketId = 'selectedId';
 const buildId = 'builderArr';
@@ -76,7 +79,8 @@ function getSelectedAmount(elementId) {
     return totalAmount;
 }
 
-/* Funktion bzgl. den angebotenen Elementen */
+
+// Funktionen bzgl. den angebotenen Elementen
 function getProductById(id) {
     for (let aProduct of getProducts()) {
         if (aProduct.id === id) {
@@ -94,8 +98,6 @@ function getProductByName(name) {
     }
     return null;
 }
-
-//if(localStorage.getItem("initialItems") == null) localStorage.setItem("initialItems", JSON.stringify(getProducts()));
 
 function getProducts() {
     return [
