@@ -9,7 +9,6 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
 
 // HTML-Seite aufsetzen  ->  Warenkorb erstellen
 
-
 (function () {
     // Eingabe kontrollieren: Wurde ein Produkt erstellt?
     let storageDataArr = readStorage(basketId);
@@ -19,11 +18,12 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
         return;
     }
 
+    // Daten der ausgewählten Element-ID's ermitteln
     let totalPrice = 0;
     for (let i = 0; i < storageDataArr.length; i++) {
         let productData = storageDataArr[i];
 
-        // Produktdaten der ausgewählten ID's ermitteln
+        
         let elementData = [];
         for (let chosenArr of productData) {
             let newData = getProductById(chosenArr[0]);
@@ -36,19 +36,6 @@ document.getElementById('out-button-confirmBasket').addEventListener('click', fu
             totalPrice += newData.amount * newData.preis;
             elementData.push(newData);
         }
-
-
-        // Gegenstände gruppieren (nach Kategorie)
-        // let themeArr = [];
-        // let themeObj = {};
-        // for (let aElement of elementData) {
-        //     let aTheme = aElement.kategorie;
-        //     if (!themeArr.includes(aTheme)) {
-        //         themeArr.push(aTheme);
-        //         themeObj[aTheme] = [];
-        //     }
-        //     themeObj[aTheme].push(aElement);
-        // }
 
         // Produkttitel einfügen
         let titleNode = insertBefore(basketButton, 'h2', ['out-basket-theme', 'text-light']);
