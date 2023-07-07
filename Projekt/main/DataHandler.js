@@ -131,7 +131,7 @@ function getProducts() {
             "preis": 79.99,
             "beschreibung": "Die rustikale Lösung für deine Outdoor-Bedürfnisse!",
             "kategorie": "Erweiterungen",
-            "alt": "Eine reihe von bunten Mobiltoiletten direkt nebeneinander in Diagonalansicht.",
+            "alt": "Eine Reihe von bunten Mobiltoiletten direkt nebeneinander in Diagonalansicht.",
             "bestand": 8
         }, {
             "id": 9,
